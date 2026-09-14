@@ -32,7 +32,9 @@ from automation.video.ltx_provider import (  # noqa: E402
     DEFAULT_WIDTH,
     RIVEN_NEGATIVE_BASE,
     RIVEN_POSITIVE_BASE,
+    LTX_CHECKPOINT_FILE,
     LTX_MODEL_ID,
+    LTX_SINGLE_FILE_URL,
     LTXLocalProvider,
 )
 from automation.video.provider_adapter import (  # noqa: E402
@@ -188,15 +190,56 @@ class LTXAvailabilityHonestyTest(unittest.TestCase):
         self.assertFalse(provider.is_available())
 
 
-class LTXModelChoiceTest(unittest.TestCase):
-    """Task #3 decision encoded: exactly the selected ₹0 backend."""
+class LTXModelSourceTest(unittest.TestCase):
+    """Verified model source (production-blocker fix).
 
-    def test_selected_model_is_ltx_2b_distilled(self) -> None:
-        self.assertIn("ltxv-2b", LTX_MODEL_ID)
-        self.assertIn("distilled", LTX_MODEL_ID)
-        self.assertIn("Lightricks", LTX_MODEL_ID)
+    The intended model is LTX-Video 2B 0.9.6-distilled. It exists ONLY as the
+    single-file checkpoint ltxv-2b-0.9.6-distilled-04-25.safetensors inside
+    the public Lightricks/LTX-Video repo (verified via the live Hugging Face
+    API: the old 'Lightricks/ltxv-2b-0.9.6-distilled' repo ID returns HTTP 401
+    and never resolved; the 0.9.7-distilled diffusers repos are 13B-only).
+    """
+
+    def test_host_repo_is_public_ltx_video_repo(self) -> None:
+        self.assertEqual(LTX_MODEL_ID, "Lightricks/LTX-Video")
+
+    def test_checkpoint_is_the_2b_096_distilled_weights(self) -> None:
+        self.assertEqual(
+            LTX_CHECKPOINT_FILE, "ltxv-2b-0.9.6-distilled-04-25.safetensors"
+        )
+
+    def test_single_file_url_points_at_verified_checkpoint(self) -> None:
+        self.assertEqual(
+            LTX_SINGLE_FILE_URL,
+            "https://huggingface.co/Lightricks/LTX-Video/resolve/main/"
+            "ltxv-2b-0.9.6-distilled-04-25.safetensors",
+        )
+
+    def test_dead_repo_id_is_not_used(self) -> None:
+        """Regression guard: the old ID does not resolve on Hugging Face."""
+        self.assertNotIn("ltxv-2b-0.9.6-distilled", LTX_MODEL_ID.lower())
+
+    def test_provider_uses_single_file_loading(self) -> None:
+        """The hosting repo has no diffusers model_index.json; the provider
+        must load the 2B checkpoint via from_single_file, not from_pretrained."""
+        import inspect
+
+        from automation.video import ltx_provider as module
+
+        ensure_loaded_source = inspect.getsource(module.LTXLocalProvider.ensure_loaded)
+        self.assertIn("LTXPipeline.from_single_file", ensure_loaded_source)
+        self.assertNotIn("LTXPipeline.from_pretrained", ensure_loaded_source)
+        self.assertIn("LTXConditionPipeline.from_single_file", inspect.getsource(module.LTXLocalProvider._condition_pipeline))
+        self.assertNotIn("LTXConditionPipeline.from_pretrained", inspect.getsource(module.LTXLocalProvider._condition_pipeline))
+        self.assertNotIn("LTXPipeline.from_pretrained", inspect.getsource(module.LTXLocalProvider._text_pipeline))
 
     def test_distilled_schedule_used(self) -> None:
+        self.assertEqual(DEFAULT_STEPS, 8)
+
+    def test_api_defaults_preserved(self) -> None:
+        """Surgical fix: all generation defaults must survive unchanged."""
+        self.assertEqual((DEFAULT_WIDTH, DEFAULT_HEIGHT), (512, 320))
+        self.assertEqual(DEFAULT_FPS, 24)
         self.assertEqual(DEFAULT_STEPS, 8)
 
 

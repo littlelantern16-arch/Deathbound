@@ -24,21 +24,31 @@ pip install diffusers transformers accelerate "imageio[ffmpeg]" sentencepiece
 
 Estimated install: ~3-5 GB disk (torch CUDA wheels ~2.5 GB dominate).
 
-## 2. Model weights — download ONLY this one model
+## 2. Model weights — download ONLY this one checkpoint
+
+**Verified source of truth (live HF API, 2026-09):** the 2B 0.9.6-distilled
+weights ship ONLY as the single-file checkpoint
+`ltxv-2b-0.9.6-distilled-04-25.safetensors` (6,340,744,028 bytes ≈ 5.9 GB)
+inside the public `Lightricks/LTX-Video` repo. It is loaded with
+diffusers' `from_single_file`, which auto-resolves the matching diffusers
+config. (There is no `Lightricks/ltxv-2b-0.9.6-distilled` repo — that dead ID
+was the original production blocker — and the 0.9.7-distilled diffusers repos
+are 13B-only.)
 
 | Component | Size | Notes |
 |---|---|---|
-| `ltxv-2b-0.9.6-distilled` transformer fp16 | ~4.3 GB | the video DiT |
-| T5-XXL text encoder (auto-pulled, fp16) | ~9.4 GB | shared LTX component |
-| VAE | ~1-2 GB | decoder |
+| `ltxv-2b-0.9.6-distilled-04-25.safetensors` | ~5.9 GB | the 2B DiT (single file) |
+| T5-XXL text encoder config components (auto-pulled, fp16) | ~9-10 GB | resolved by from_single_file |
+| VAE | ~1-2 GB | included in resolved config |
 
-**Expected total download: ~13-15 GB.** Destination: the HF cache
-(`%USERPROFILE%\.cache\huggingface\hub` by default). Free disk needed:
-**≥ 20 GB**. Weights are auto-downloaded on first `ensure_loaded()`; or
-pre-fetch with:
+**Expected total download: ~14-17 GB.** Destination: the HF cache
+(`D:\Deathbound\cache\huggingface` when HF_HOME is set by
+`scripts/setup_ltx_windows.ps1`, else `%USERPROFILE%\.cache\huggingface`).
+Free disk needed: **≥ 20 GB**. Weights are auto-downloaded on first
+`ensure_loaded()`; or pre-fetch with:
 
 ```powershell
-D:\Deathbound\tools\ltx-env\Scripts\python -c "from diffusers import LTXPipeline; import torch; LTXPipeline.from_pretrained('Lightricks/ltxv-2b-0.9.6-distilled', torch_dtype=torch.float16); print('weights cached')"
+D:\Deathbound\tools\ltx-env\Scripts\python -c "from diffusers import LTXPipeline; import torch; LTXPipeline.from_single_file('https://huggingface.co/Lightricks/LTX-Video/resolve/main/ltxv-2b-0.9.6-distilled-04-25.safetensors', torch_dtype=torch.float16); print('weights cached')"
 ```
 
 Do NOT download any other checkpoint. Weights are gitignored

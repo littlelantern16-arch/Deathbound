@@ -16,9 +16,24 @@ Heavy imports (torch/diffusers) are lazy: the module imports cleanly in
 environments without torch (CI, repo validation) and only loads the model
 inside ``ensure_loaded`` during a real run.
 
-Model: Lightricks/ltxv-2b-0.9.6-distilled (LTXV OpenRail-M, commercial use
+Model: LTX-Video 2B 0.9.6-distilled (LTXV OpenRail-M license, commercial use
 permitted, ₹0). fp16 + CPU offload for the 4 GB RTX 3050 target (no FP8 —
 Ampere lacks FP8 compute).
+
+Model source (verified against the live Hugging Face API, 2026-09):
+- ``Lightricks/ltxv-2b-0.9.6-distilled`` does NOT resolve (HTTP 401) — it was
+  never a real repo, which was the production blocker this module fixes.
+- The 2B 0.9.6-distilled weights ship ONLY as a single-file safetensors,
+  ``ltxv-2b-0.9.6-distilled-04-25.safetensors`` (6,340,744,028 bytes, HTTP 200
+  verified), inside the public ``Lightricks/LTX-Video`` repo. The
+  ``LTX-Video-2B-0.9.6-{Dev,Distilled}-04-25`` repos are empty license shells
+  (3 files: LICENSE/README/.gitattributes), and the ``0.9.7-distilled``/
+  ``0.9.7-dev`` diffusers-format repos are 13B-only (48-layer transformer,
+  ~24 GB) — unusable on 4 GB VRAM.
+- Diffusers' ``from_single_file`` (available on LTXPipeline and
+  LTXConditionPipeline in the installed diffusers) detects the checkpoint
+  architecture from tensor keys and resolves the matching diffusers-format
+  config repo, so both pipelines load the intended 2B distilled model.
 """
 
 from __future__ import annotations
@@ -39,7 +54,16 @@ from .provider_adapter import (
 from .paths import find_project_root, generation_paths
 
 # The selected backend (Task #3 feasibility decision).
-LTX_MODEL_ID = os.environ.get("DEATHBOUND_LTX_MODEL", "Lightricks/ltxv-2b-0.9.6-distilled")
+#
+# LTX_MODEL_ID is the public repo that HOLDS the checkpoint. The intended
+# model — 2B 0.9.6-distilled — is identified by LTX_CHECKPOINT_FILE below.
+LTX_MODEL_ID = os.environ.get("DEATHBOUND_LTX_MODEL", "Lightricks/LTX-Video")
+LTX_CHECKPOINT_FILE = os.environ.get(
+    "DEATHBOUND_LTX_CHECKPOINT", "ltxv-2b-0.9.6-distilled-04-25.safetensors"
+)
+LTX_SINGLE_FILE_URL = (
+    f"https://huggingface.co/{LTX_MODEL_ID}/resolve/main/{LTX_CHECKPOINT_FILE}"
+)
 
 # 4 GB VRAM target: conservative defaults, divisible by 32 as LTX requires.
 DEFAULT_WIDTH = 512
@@ -148,7 +172,11 @@ class LTXLocalProvider(VideoProvider):
             )
 
         dtype = torch.float16  # NO FP8: RTX 3050 (Ampere) has no FP8 compute.
-        self._pipeline = LTXPipeline.from_pretrained(self.model_id, torch_dtype=dtype)
+        # Single-file load of the verified 2B 0.9.6-distilled checkpoint
+        # (LTX_MODEL_ID has no diffusers model_index.json — from_pretrained
+        # against it would not load the distilled 2B weights).
+        source = os.environ.get("DEATHBOUND_LTX_LOCAL_CHECKPOINT") or LTX_SINGLE_FILE_URL
+        self._pipeline = LTXPipeline.from_single_file(source, torch_dtype=dtype)
         # 4 GB VRAM strategy: keep params on CPU, stream components to GPU.
         self._pipeline.enable_model_cpu_offload()
         try:
@@ -320,7 +348,8 @@ class LTXLocalProvider(VideoProvider):
         from diffusers import LTXPipeline
         import torch
 
-        self._pipeline = LTXPipeline.from_pretrained(self.model_id, torch_dtype=torch.float16)
+        source = os.environ.get("DEATHBOUND_LTX_LOCAL_CHECKPOINT") or LTX_SINGLE_FILE_URL
+        self._pipeline = LTXPipeline.from_single_file(source, torch_dtype=torch.float16)
         self._pipeline.enable_model_cpu_offload()
         try:
             self._pipeline.enable_vae_tiling()
@@ -329,11 +358,13 @@ class LTXLocalProvider(VideoProvider):
         return self._pipeline
 
     def _condition_pipeline(self) -> Any:
+        import torch
         from diffusers import LTXConditionPipeline
 
         if getattr(self, "_condition_pipeline_instance", None) is None:
-            pipeline = LTXConditionPipeline.from_pretrained(
-                self.model_id, torch_dtype=torch.float16
+            source = os.environ.get("DEATHBOUND_LTX_LOCAL_CHECKPOINT") or LTX_SINGLE_FILE_URL
+            pipeline = LTXConditionPipeline.from_single_file(
+                source, torch_dtype=torch.float16
             )
             pipeline.enable_model_cpu_offload()
             self._condition_pipeline_instance = pipeline

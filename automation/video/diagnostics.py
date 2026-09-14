@@ -21,7 +21,7 @@ import shutil
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from .ltx_provider import LTX_MODEL_ID
+from .ltx_provider import LTX_CHECKPOINT_FILE, LTX_MODEL_ID
 from .media import MediaToolkit
 from .paths import find_project_root
 
@@ -88,7 +88,7 @@ def model_cache_dir() -> Optional[Path]:
 
 
 def model_present() -> Dict[str, Any]:
-    """Scan the local HF cache for the selected model. No network."""
+    """Scan the local HF cache for the selected checkpoint. No network."""
     cache = model_cache_dir()
     if cache is None or not cache.exists():
         return {
@@ -96,20 +96,24 @@ def model_present() -> Dict[str, Any]:
             "cache": str(cache) if cache else None,
             "size_gb": 0.0,
             "model_id": LTX_MODEL_ID,
+            "checkpoint": LTX_CHECKPOINT_FILE,
         }
-    needle = LTX_MODEL_ID.split("/")[-1].lower()  # ltxv-2b-0.9.6-distilled
+    # Match the checkpoint file inside the hosting repo's cache folder
+    # (LTX_MODEL_ID hosts ltxv-2b-0.9.6-distilled-04-25.safetensors).
+    needle = LTX_CHECKPOINT_FILE.lower().replace(".safetensors", "")
     total = 0
     found = False
     for path in cache.rglob("*"):
         if path.is_file():
             total += path.stat().st_size
-            if needle in str(path).lower() and path.suffix in (".safetensors", ".bin"):
+            if needle in path.name.lower() and path.suffix in (".safetensors", ".bin"):
                 found = True
     return {
         "present": found,
         "cache": str(cache),
         "size_gb": round(total / 1024**3, 1),
         "model_id": LTX_MODEL_ID,
+        "checkpoint": LTX_CHECKPOINT_FILE,
     }
 
 
@@ -177,8 +181,8 @@ def run_diagnostics(*, min_disk_gb: float = MIN_DISK_GB) -> Dict[str, Any]:
     weights = model_present()
     if not weights["present"]:
         warnings.append(
-            f"model weights not found in cache ({weights['cache']}); they will be "
-            f"downloaded on first generation (~13-15 GB) for {weights['model_id']}"
+            f"checkpoint {weights.get('checkpoint')} not found in cache ({weights['cache']}); "
+            f"it will be downloaded on first generation (~14-17 GB) from {weights['model_id']}"
         )
 
     refs = riven_references()

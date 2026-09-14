@@ -64,7 +64,10 @@ class MachineDiagnosticsTests(unittest.TestCase):
 
     def test_model_scan_is_local_only(self):
         info = model_present()
-        self.assertEqual(info["model_id"], "Lightricks/ltxv-2b-0.9.6-distilled")
+        self.assertEqual(info["model_id"], "Lightricks/LTX-Video")
+        self.assertEqual(
+            info["checkpoint"], "ltxv-2b-0.9.6-distilled-04-25.safetensors"
+        )
         # No network: report is built purely from cache inspection.
         self.assertIsInstance(info["present"], bool)
 
