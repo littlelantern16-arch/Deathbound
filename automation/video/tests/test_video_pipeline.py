@@ -65,7 +65,12 @@ class FlakyProvider(VideoProvider):
     """Fails N times per shot then succeeds; exercises bounded retry."""
 
     provider_id = "test-flaky"
-    capabilities = {**DryRunProvider.capabilities, "polling": False}
+    capabilities = {
+        **DryRunProvider.capabilities,
+        "polling": False,
+        "requires_payment": False,
+        "requires_credentials": False,
+    }
 
     def __init__(self, fail_times: int = 1) -> None:
         self.fail_times = fail_times
@@ -575,6 +580,11 @@ class ResumeBehaviorTest(unittest.TestCase):
                 # A provider that succeeds for shot 1 but fails for shot 2.
                 class Shot2Fails(VideoProvider):
                     provider_id = "test-shot2-fails"
+                    capabilities = {
+                        **DryRunProvider.capabilities,
+                        "requires_payment": False,
+                        "requires_credentials": False,
+                    }
 
                     def __init__(self) -> None:
                         self.attempts = {}

@@ -6,6 +6,11 @@ __pycache__/
 venv/
 env/
 
+# Video pipeline: regenerable runtime outputs (dry-run artifacts, reports,
+# state) and the reference catalog are rebuilt by the tools that use them.
+production/generation/
+assets/characters/*/references/references_catalog.json
+
 # Secrets
 .env
 .env.*

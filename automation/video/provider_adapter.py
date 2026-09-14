@@ -177,9 +177,21 @@ class DryRunProvider(VideoProvider):
     capabilities = {
         "text_to_video": True,
         "image_to_video": True,
+        "reference_images": True,
         "reference_image_conditioning": True,
         "previous_frame_conditioning": True,
-        "first_last_frame_conditioning": True,
+        "first_frame_conditioning": True,
+        "last_frame_conditioning": True,
+        "video_extension": False,
+        "seed_control": True,
+        "negative_prompt": True,
+        "width_height_control": True,
+        "fps_control": True,
+        "duration_control": True,
+        "local_execution": True,
+        "remote_execution": False,
+        "requires_credentials": False,
+        "requires_payment": False,
         "polling": False,
     }
 
@@ -260,7 +272,7 @@ class PollingDryRunProvider(DryRunProvider):
     capabilities = {
         **DryRunProvider.capabilities,
         "polling": True,
-    }
+    }  # inherits requires_payment=False / requires_credentials=False
 
     def generate(self, request: GenerationRequest) -> GenerationResult:
         job_id = f"job-{request.shot_id}"

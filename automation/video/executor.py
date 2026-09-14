@@ -22,8 +22,10 @@ from copy import deepcopy
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
+from .capabilities import PRODUCTION_COST_POLICY, PolicyViolation, ProviderPolicy
 from .continuity import ContinuityError, TemporalContinuityManager, utc_now
 from .manifest import GenerationManifestManager, ManifestError
+from .media import MediaError, MediaToolkit
 from .paths import canonical_json, episode_paths, find_project_root, generation_paths, load_json, write_json
 from .provider_adapter import (
     GenerationRequest,
@@ -97,6 +99,8 @@ class EpisodeExecutor:
         self.bank = CharacterReferenceBank(self.project_root, episode)
         self.manifests = GenerationManifestManager(self.project_root, output_root, episode)
         self.retry_policy = RetryPolicy(max_attempts=max_attempts, backoff_seconds=0.0)
+        self.toolkit = MediaToolkit(self.project_root)
+        self.policy = ProviderPolicy()
         self.run_state_path = paths["state"] / "run_state.json"
         self.reports_dir = paths["reports"]
 
@@ -192,6 +196,15 @@ class EpisodeExecutor:
 
     def execute(self) -> Dict[str, Any]:
         """Run the connected shot sequence and return a machine-readable report."""
+        # ₹0 gate: refuse providers that violate ZERO_RUPEE_ONLY before any
+        # work happens. There is no silent paid fallback.
+        try:
+            self.policy_report = self.policy.ensure_allowed(self.provider)
+        except PolicyViolation as exc:
+            raise EpisodeExecutorError(
+                f"production-cost policy gate ({PRODUCTION_COST_POLICY}): {exc}"
+            ) from exc
+
         run_state = self._load_run_state()
         run_state.setdefault("shots", {})
         self.continuity.chain.setdefault("links", {})
@@ -325,11 +338,7 @@ class EpisodeExecutor:
         def attempt() -> Dict[str, Any]:
             timestamps["generation_started_utc"] = _now()
             result = self.provider.generate(request)
-            final_frame = self.continuity.extract_final_frame(
-                shot_id,
-                result.output_artifact,
-                simulated=bool(result.output_artifact.get("simulated")),
-            )
+            final_frame = self._finalize_artifact(shot_id, spec, result)
             timestamps["generation_finished_utc"] = _now()
             return {"result": result, "final_frame": final_frame}
 
@@ -443,6 +452,55 @@ class EpisodeExecutor:
             "retry_count": retry_outcome.retry_count,
         }
 
+    def _finalize_artifact(
+        self,
+        shot_id: str,
+        spec: Dict[str, Any],
+        result: Any,
+    ) -> Dict[str, Any]:
+        """Validate + extract the final frame from a real clip, or simulate.
+
+        Real path (simulated=false): validate the MP4 with ffprobe, then
+        extract the actual last frame to PNG and register it. Simulated
+        behavior remains exclusive to the dry-run providers/tests.
+        """
+        output_artifact = result.output_artifact
+        simulated = bool(output_artifact.get("simulated"))
+        if simulated:
+            return self.continuity.extract_final_frame(
+                shot_id, output_artifact, simulated=True
+            )
+
+        # ---- Real media path -------------------------------------------
+        artifact_path = output_artifact.get("path")
+        if not artifact_path or not str(artifact_path).lower().endswith((".mp4", ".mov", ".webm", ".mkv")):
+            raise MediaError(
+                f"real provider returned no usable video path for {shot_id}: {artifact_path!r}"
+            )
+        gen_root = generation_paths(self.project_root, self.output_root)["root"]
+        clip_path = gen_root / artifact_path
+        self.toolkit.validate_media(
+            clip_path,
+            expect_duration=float(spec["duration_seconds"]),
+            expect_fps=24,
+            expect_resolution="1280x720",
+            tolerance=1.0,
+        )
+        frame_path = gen_root / "artifacts" / shot_id / "final_frame.png"
+        info = self.toolkit.extract_last_frame(clip_path, frame_path)
+        return {
+            "artifact_id": f"finalframe-{shot_id}",
+            "kind": "frame",
+            "path": f"artifacts/{shot_id}/final_frame.png",
+            "simulated": False,
+            "derived_from": output_artifact.get("artifact_id"),
+            "sha256": info["sha256"],
+            "digest": info["sha256"][:16],
+            "size_bytes": info["size_bytes"],
+            "source_video": info["source_video"],
+            "extracted_utc": utc_now(),
+        }
+
     def _failure_report(
         self,
         shot_id: str,
@@ -533,6 +591,8 @@ class EpisodeExecutor:
         return {
             "schema_version": "1.0",
             "kind": "DEATHBOUND_GENERATION_RUN_REPORT",
+            "production_cost_policy": PRODUCTION_COST_POLICY,
+            "policy_gate": "passed",
             "episode": self.episode,
             "run_id": self.run_id,
             "mode": "dry_run" if all(
