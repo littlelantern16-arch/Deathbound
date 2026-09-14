@@ -30,6 +30,11 @@ from .executor import EpisodeExecutor
 from .preflight import Preflight
 from .provider_adapter import registered_providers
 
+try:  # register bundled local providers (ltx-local, ...); heavy imports lazy
+    from . import providers as _providers  # noqa: F401
+except Exception:  # pragma: no cover - optional component
+    pass
+
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(

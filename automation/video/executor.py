@@ -113,6 +113,10 @@ class EpisodeExecutor:
     @property
     def provider(self) -> VideoProvider:
         if self._provider is None:
+            try:  # register bundled local providers (ltx-local, ...)
+                from . import providers as _providers  # noqa: F401
+            except Exception:
+                pass
             self._provider = get_provider(self.provider_id)
             # Providers that write artifacts locally must honor this run's
             # output root, so test/temp runs never leak into the default
