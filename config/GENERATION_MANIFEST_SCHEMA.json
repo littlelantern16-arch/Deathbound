@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "name": "DEATHBOUND_GENERATION_MANIFEST",
+  "status": "production_ready_blueprint",
+  "purpose": "Machine-readable record of every visual generation attempt in the Deathbound temporal continuity pipeline. Extends the existing Deathbound production architecture; it does not replace any existing schema.",
+
+  "governance": {
+    "governing_specification": "config/DEATHBOUND_MASTER_SPEC.md",
+    "governing_shot_architecture": "projects/EP001/03_shots/EP001_production_shots.json",
+    "governing_sequence_schema": "config/SHOT_SEQUENCE_INTEGRATION_SCHEMA.json",
+    "living_story_bible_remains_authoritative": true,
+    "invents_no_new_canon": true,
+    "provider_neutral": true
+  },
+
+  "manifest_contract": {
+    "required_fields": [
+      "manifest_version",
+      "episode",
+      "scene_id",
+      "shot_id",
+      "run_id",
+      "input_visual_state",
+      "previous_shot",
+      "previous_final_frame",
+      "character_references",
+      "prompt",
+      "provider",
+      "model",
+      "generation_parameters",
+      "output_artifact",
+      "final_frame_artifact",
+      "validation_result",
+      "retry_count",
+      "timestamps",
+      "errors"
+    ]
+  },
+
+  "field_rules": {
+    "shot_id": "Must exist in the episode production shot list.",
+    "input_visual_state": "Full provider-neutral visual state object from the Visual State Manager for this shot.",
+    "previous_shot": "Null only for shots whose continuity.inherits_previous_shot_state is false; otherwise the previous_shot_id from the shot specification.",
+    "previous_final_frame": "Artifact reference to the previous connected shot's extracted final frame; null only when previous_shot is null. Simulated artifacts must carry simulated: true.",
+    "character_references": "Reference-bank selections for every character in the shot, each carrying reference_id, kind, source and simulated flag.",
+    "prompt": "Deterministic prompt assembled from the visual state and canonical identity; no provider-specific syntax.",
+    "provider": "Provider identifier registered through the VideoGeneratorAdapter; never hard-coded.",
+    "model": "Model identifier as reported by the selected provider; null when a provider has no model concept.",
+    "generation_parameters": "Provider-facing parameters actually sent (or simulated), including duration, fps, resolution and conditioning flags.",
+    "output_artifact": "Generated clip artifact reference. simulated: true for dry-run placeholders; never claimed as real media.",
+    "final_frame_artifact": "Extracted last frame artifact registered as the next shot's continuity state; simulated: true in dry-run.",
+    "validation_result": "Structured QA result: valid flag, checks list with check name/status/detail.",
+    "retry_count": "Number of regeneration attempts performed after the initial attempt (0 = first attempt succeeded).",
+    "timestamps": "created_utc, generation_started_utc, generation_finished_utc (ISO-8601, UTC).",
+    "errors": "List of accumulated provider/validation errors across attempts; empty when the attempt chain succeeded."
+  },
+
+  "artifact_reference": {
+    "required_fields": ["artifact_id", "kind", "path", "simulated"],
+    "kinds": ["video_clip", "frame", "reference_image"],
+    "simulated_semantics": "simulated=true means the artifact is a deterministic dry-run placeholder (JSON stub or locally synthesized test media) and must never be presented as real generated video."
+  },
+
+  "validation_checks": [
+    "required_references_present",
+    "continuity_chain_intact",
+    "previous_final_frame_present",
+    "shot_transition_valid",
+    "character_state_present",
+    "provider_succeeded",
+    "manifest_fields_complete",
+    "final_frame_extracted"
+  ]
+}
