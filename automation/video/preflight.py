@@ -67,6 +67,16 @@ class Preflight:
             provider_report = {"provider_id": self.provider_id, "error": str(exc)}
             errors.append(f"provider unavailable: {exc}")
 
+        # --- Machine diagnostics (GPU/disk/torch/VRAM/model/references) ---
+        # Real-generation readiness only; dry-run must not depend on hardware.
+        try:
+            from .diagnostics import run_diagnostics
+
+            machine = run_diagnostics()
+        except Exception as exc:  # diagnostics never raises in normal use
+            machine = {"error": str(exc), "ready_for_smoke_test": False,
+                       "blocking_errors": [f"diagnostics failure: {exc}"]}
+
         # --- FFmpeg ---------------------------------------------------
         ffmpeg = self.toolkit.resolve_ffmpeg()
         ffprobe = self.toolkit.resolve_ffprobe()
@@ -159,6 +169,7 @@ class Preflight:
             "mode": mode,
             "provider": provider_report,
             "production_cost_policy": "ZERO_RUPEE_ONLY",
+            "machine_diagnostics": machine,
             "ffmpeg": ffmpeg_status,
             "reference_bank": reference_status,
             "required_shot_inputs": shots,
@@ -170,6 +181,7 @@ class Preflight:
                 and ffmpeg_status["available"]
                 and mode == "real_provider"
                 and not provider_report.get("capability_errors")
+                and bool(machine.get("ready_for_smoke_test"))
             ),
             "blocking_errors": errors,
             "warnings": warnings,
