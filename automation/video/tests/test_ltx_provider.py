@@ -10,7 +10,9 @@ machine and by the provider acceptance suite.
 
 from __future__ import annotations
 
+import os
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -36,6 +38,7 @@ from automation.video.ltx_provider import (  # noqa: E402
     LTX_MODEL_ID,
     LTX_SINGLE_FILE_URL,
     LTXLocalProvider,
+    resolve_ltx_checkpoint_source,
 )
 from automation.video.provider_adapter import (  # noqa: E402
     GenerationRequest,
@@ -241,6 +244,83 @@ class LTXModelSourceTest(unittest.TestCase):
         self.assertEqual((DEFAULT_WIDTH, DEFAULT_HEIGHT), (512, 320))
         self.assertEqual(DEFAULT_FPS, 24)
         self.assertEqual(DEFAULT_STEPS, 8)
+
+
+class LTXSingleFileSourceTest(unittest.TestCase):
+    """Regression tests for the RTX 3050 runtime bug.
+
+    Diffusers 0.40.0's ``_extract_repo_id_and_weights_name`` strips the Hub
+    host prefix and matches an optional ``blob/main/`` segment but NOT
+    ``resolve/main/``; a /resolve/main/ link produced
+    ``.../resolve/main/resolve/main/<file>`` -> HTTP 404. The provider must
+    therefore use the documented /blob/main/ link (or a local file path).
+    """
+
+    def setUp(self) -> None:
+        self._old = os.environ.pop("DEATHBOUND_LTX_LOCAL_CHECKPOINT", None)
+
+    def tearDown(self) -> None:
+        if self._old is not None:
+            os.environ["DEATHBOUND_LTX_LOCAL_CHECKPOINT"] = self._old
+        else:
+            os.environ.pop("DEATHBOUND_LTX_LOCAL_CHECKPOINT", None)
+
+    def test_no_resolve_main_in_hub_source(self) -> None:
+        """The doubled-/resolve/main/ bug must stay impossible."""
+        self.assertIn("/blob/main/", LTX_SINGLE_FILE_URL)
+        self.assertNotIn("/resolve/main/", LTX_SINGLE_FILE_URL)
+
+    def test_blob_link_parses_to_repo_and_filename(self) -> None:
+        """Functional guard using diffusers' own 0.40.0 parser (skips when
+        diffusers is not installed, e.g. the repo test environment)."""
+        try:
+            from diffusers.loaders.single_file_utils import (
+                _extract_repo_id_and_weights_name,
+            )
+        except ImportError:
+            self.skipTest("diffusers not installed in this environment")
+        repo_id, weights_name = _extract_repo_id_and_weights_name(LTX_SINGLE_FILE_URL)
+        self.assertEqual(repo_id, LTX_MODEL_ID)
+        self.assertEqual(weights_name, LTX_CHECKPOINT_FILE)
+        self.assertFalse(weights_name.startswith("resolve/"))
+
+    def test_default_source_is_documented_blob_link(self) -> None:
+        source = resolve_ltx_checkpoint_source()
+        self.assertEqual(source, LTX_SINGLE_FILE_URL)
+        self.assertIn(LTX_MODEL_ID, source)
+        self.assertTrue(source.endswith(LTX_CHECKPOINT_FILE))
+
+    def test_explicit_local_checkpoint_path_is_accepted(self) -> None:
+        with tempfile.NamedTemporaryFile(suffix=".safetensors", delete=False) as handle:
+            local_path = handle.name
+        try:
+            os.environ["DEATHBOUND_LTX_LOCAL_CHECKPOINT"] = local_path
+            source = resolve_ltx_checkpoint_source()
+            self.assertEqual(os.path.abspath(source), os.path.abspath(local_path))
+        finally:
+            os.unlink(local_path)
+
+    def test_windows_style_local_path_is_accepted(self) -> None:
+        """Windows paths (backslashes, drive letters) must pass through
+        untouched — they hit diffusers' os.path.isfile branch, not URL parsing."""
+        windows_path = "D:\\Deathbound\\cache\\ltxv-2b-0.9.6-distilled-04-25.safetensors"
+        os.environ["DEATHBOUND_LTX_LOCAL_CHECKPOINT"] = windows_path
+        try:
+            if os.name == "nt":
+                self.assertEqual(resolve_ltx_checkpoint_source(), windows_path)
+            else:
+                # On POSIX the file cannot exist, so the honest error fires.
+                with self.assertRaises(Exception) as ctx:
+                    resolve_ltx_checkpoint_source()
+                self.assertIn("does not exist", str(ctx.exception))
+        finally:
+            os.environ.pop("DEATHBOUND_LTX_LOCAL_CHECKPOINT", None)
+
+    def test_declared_but_missing_local_path_raises_no_silent_fallback(self) -> None:
+        os.environ["DEATHBOUND_LTX_LOCAL_CHECKPOINT"] = "Z:/definitely/missing.safetensors"
+        with self.assertRaises(Exception) as ctx:
+            resolve_ltx_checkpoint_source()
+        self.assertIn("DEATHBOUND_LTX_LOCAL_CHECKPOINT", str(ctx.exception))
 
 
 if __name__ == "__main__":

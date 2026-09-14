@@ -48,7 +48,18 @@ Free disk needed: **≥ 20 GB**. Weights are auto-downloaded on first
 `ensure_loaded()`; or pre-fetch with:
 
 ```powershell
-D:\Deathbound\tools\ltx-env\Scripts\python -c "from diffusers import LTXPipeline; import torch; LTXPipeline.from_single_file('https://huggingface.co/Lightricks/LTX-Video/resolve/main/ltxv-2b-0.9.6-distilled-04-25.safetensors', torch_dtype=torch.float16); print('weights cached')"
+# IMPORTANT: diffusers 0.40.0 from_single_file() requires the /blob/main/
+# link form (a /resolve/main/ link builds a doubled URL and 404s).
+D:\Deathbound\tools\ltx-env\Scripts\python -c "from diffusers import LTXPipeline; import torch; LTXPipeline.from_single_file('https://huggingface.co/Lightricks/LTX-Video/blob/main/ltxv-2b-0.9.6-distilled-04-25.safetensors', torch_dtype=torch.float16); print('weights cached')"
+```
+
+Optional (recommended after the first download): locate the cached file and
+pin it for every later run via an explicit local path, which bypasses Hub URL
+parsing entirely:
+
+```powershell
+copy-item (gci D:\Deathbound\cache\huggingface -Recurse -Filter ltxv-2b-0.9.6-distilled-04-25.safetensors | select -First 1).FullName D:\Deathbound\cache\ltxv-2b-0.9.6-distilled-04-25.safetensors
+setx DEATHBOUND_LTX_LOCAL_CHECKPOINT "D:\Deathbound\cache\ltxv-2b-0.9.6-distilled-04-25.safetensors"
 ```
 
 Do NOT download any other checkpoint. Weights are gitignored

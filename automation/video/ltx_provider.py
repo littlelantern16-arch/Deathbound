@@ -61,9 +61,41 @@ LTX_MODEL_ID = os.environ.get("DEATHBOUND_LTX_MODEL", "Lightricks/LTX-Video")
 LTX_CHECKPOINT_FILE = os.environ.get(
     "DEATHBOUND_LTX_CHECKPOINT", "ltxv-2b-0.9.6-distilled-04-25.safetensors"
 )
+# Diffusers 0.40.0 `from_single_file()` accepts a Hub link ONLY in the
+# documented /blob/main/ form. Verified against the installed 0.40.0 source
+# (loaders/single_file_utils.py): `_extract_repo_id_and_weights_name` strips
+# the host prefix and matches an optional `blob/main/` segment but NOT
+# `resolve/main/`, so a /resolve/main/ link yields
+# weights_name="resolve/main/<file>" and hf_hub_download builds
+# .../resolve/main/resolve/main/<file> -> HTTP 404 (the RTX 3050 runtime bug).
+# A plain local file path bypasses URL parsing entirely (os.path.isfile branch
+# is checked first) and is therefore the preferred, Windows-safe source.
 LTX_SINGLE_FILE_URL = (
-    f"https://huggingface.co/{LTX_MODEL_ID}/resolve/main/{LTX_CHECKPOINT_FILE}"
+    f"https://huggingface.co/{LTX_MODEL_ID}/blob/main/{LTX_CHECKPOINT_FILE}"
 )
+
+
+def resolve_ltx_checkpoint_source() -> str:
+    """Checkpoint source for ``from_single_file()``.
+
+    Priority:
+    1. ``DEATHBOUND_LTX_LOCAL_CHECKPOINT`` — path to the already-downloaded
+       ``.safetensors`` file (no Hub access for the weights). A declared but
+       missing path raises instead of silently falling back to a ~6 GB
+       re-download.
+    2. The documented Hub ``/blob/main/`` link (diffusers resolves, caches,
+       and reuses it — Xet-backed files included).
+    """
+    local = os.environ.get("DEATHBOUND_LTX_LOCAL_CHECKPOINT")
+    if local:
+        if os.path.isfile(local):
+            return local
+        raise LTXNotAvailableError(
+            "DEATHBOUND_LTX_LOCAL_CHECKPOINT is set but the file does not "
+            f"exist: {local}. Fix the path or unset the variable to download "
+            "the checkpoint from the Hub."
+        )
+    return LTX_SINGLE_FILE_URL
 
 # 4 GB VRAM target: conservative defaults, divisible by 32 as LTX requires.
 DEFAULT_WIDTH = 512
@@ -173,9 +205,8 @@ class LTXLocalProvider(VideoProvider):
 
         dtype = torch.float16  # NO FP8: RTX 3050 (Ampere) has no FP8 compute.
         # Single-file load of the verified 2B 0.9.6-distilled checkpoint
-        # (LTX_MODEL_ID has no diffusers model_index.json — from_pretrained
-        # against it would not load the distilled 2B weights).
-        source = os.environ.get("DEATHBOUND_LTX_LOCAL_CHECKPOINT") or LTX_SINGLE_FILE_URL
+        # (local path when available, else the documented Hub blob link).
+        source = resolve_ltx_checkpoint_source()
         self._pipeline = LTXPipeline.from_single_file(source, torch_dtype=dtype)
         # 4 GB VRAM strategy: keep params on CPU, stream components to GPU.
         self._pipeline.enable_model_cpu_offload()
@@ -348,7 +379,7 @@ class LTXLocalProvider(VideoProvider):
         from diffusers import LTXPipeline
         import torch
 
-        source = os.environ.get("DEATHBOUND_LTX_LOCAL_CHECKPOINT") or LTX_SINGLE_FILE_URL
+        source = resolve_ltx_checkpoint_source()
         self._pipeline = LTXPipeline.from_single_file(source, torch_dtype=torch.float16)
         self._pipeline.enable_model_cpu_offload()
         try:
@@ -362,7 +393,7 @@ class LTXLocalProvider(VideoProvider):
         from diffusers import LTXConditionPipeline
 
         if getattr(self, "_condition_pipeline_instance", None) is None:
-            source = os.environ.get("DEATHBOUND_LTX_LOCAL_CHECKPOINT") or LTX_SINGLE_FILE_URL
+            source = resolve_ltx_checkpoint_source()
             pipeline = LTXConditionPipeline.from_single_file(
                 source, torch_dtype=torch.float16
             )
