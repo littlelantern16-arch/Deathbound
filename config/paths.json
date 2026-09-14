@@ -1,0 +1,16 @@
+{
+  "projectRoot": "D:\\Deathbound",
+  "models": "D:\\Deathbound\\models",
+  "assets": "D:\\Deathbound\\assets",
+  "cache": "D:\\Deathbound\\cache",
+  "renders": "D:\\Deathbound\\renders",
+  "output": "D:\\Deathbound\\output",
+  "freeLLMAPI": "C:\\freellmapi-0.9.8\\freellmapi-0.9.8",
+  "comfyUI": "C:\\ComfyUI",
+  "ffmpeg": "D:\\Deathbound\\tools\\ffmpeg\\bin",
+  "blender": "D:\\Deathbound\\tools\\blender\\blender.exe",
+  "tts": "D:\\Deathbound\\tools\\tts",
+  "lipSync": "D:\\Deathbound\\tools\\lip_sync",
+  "n8n": "D:\\Deathbound\\automation\\n8n",
+  "logs": "D:\\Deathbound\\logs"
+}

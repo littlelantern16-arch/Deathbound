@@ -1,0 +1,56 @@
+﻿{
+  "schema_version": "1.0",
+  "project": "DEATHBOUND",
+  "production_engine": {
+    "primary": "Blender",
+    "version_target": "4.5.13",
+    "animation_mode": "2D_2.5D_rigged",
+    "render_engine": "EEVEE"
+  },
+
+  "hardware_target": {
+    "gpu": "RTX 3050 Laptop 4GB",
+    "cpu": "Intel i7-12700H",
+    "ram_gb": 16,
+    "optimization_required": true
+  },
+
+  "production_principles": [
+    "Real character motion is mandatory.",
+    "Camera movement cannot substitute for character animation.",
+    "Static artwork cannot substitute for animated shots.",
+    "Riven identity must remain canonical.",
+    "Shot JSON is authoritative for shot behavior.",
+    "Living Story Bible remains authoritative for story state.",
+    "Blender scenes consume validated shot specifications.",
+    "Final rendering is performed shot-by-shot.",
+    "Heavy generative video is not a production dependency."
+  ],
+
+  "render_policy": {
+    "preview_engine": "EEVEE",
+    "final_engine": "EEVEE",
+    "resolution_preview": "1280x720",
+    "resolution_final": "1920x1080",
+    "fps": 24,
+    "samples_preview": 8,
+    "samples_final": 16,
+    "transparent_background": false
+  },
+
+  "asset_policy": {
+    "character_assets": "rigged",
+    "environment_assets": "modular",
+    "props": "tracked",
+    "effects": "procedural_or_lightweight",
+    "image_generation": "reference_only"
+  },
+
+  "qa_policy": {
+    "validate_before_blender": true,
+    "validate_after_scene_generation": true,
+    "preview_before_final": true,
+    "continuity_qa_required": true,
+    "post_render_qa_required": true
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "schema_version": "0.1.0",
+  "episode": "EP001",
+  "episode_id": "YR-001",
+  "title": "The Billionaire Had 10 Minutes Left",
+  "status": "production_input",
+  "temporary_visuals": true,
+  "visual_fidelity_deferred": true,
+  "runtime_target_seconds": 540,
+  "fps": 24,
+  "resolution": "1280x720",
+  "scenes": [
+    {
+      "scene_id": "S01",
+      "title": "11:49 PM",
+      "purpose": "Hook",
+      "location": "loc-daniel-bedroom",
+      "characters": [
+        "riven"
+      ],
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "duration": 45,
+      "narration": [
+        "At 11:49 PM, Daniel Cross was worth fourteen point seven billion dollars.",
+        "At 11:49 PM, he thought he had everything money could buy.",
+        "He was wrong.",
+        "Because the Ledger had already written his name down."
+      ],
+      "dialogue": [],
+      "supernatural": true,
+      "action": false
+    },
+    {
+      "scene_id": "S02",
+      "title": "The Appointment",
+      "purpose": "Riven arrives",
+      "location": "loc-daniel-bedroom",
+      "characters": [
+        "riven"
+      ],
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "duration": 50,
+      "narration": [
+        "Riven had collected thousands of souls.",
+        "He never cared how rich they were.",
+        "Death did not negotiate with bank accounts.",
+        "But tonight, the Ledger felt different."
+      ],
+      "dialogue": [
+        "Riven: Ten minutes.",
+        "Daniel: Who are you?",
+        "Riven: Someone who already knows how this ends."
+      ],
+      "supernatural": true,
+      "action": true
+    },
+    {
+      "scene_id": "S03",
+      "title": "The Clock",
+      "purpose": "Rising action",
+      "location": "loc-daniel-bedroom",
+      "characters": [
+        "riven"
+      ],
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "duration": 55,
+      "narration": [
+        "Daniel stared at the clock.",
+        "Ten minutes is a long time when you are waiting for something.",
+        "It is a very short time when you finally understand what you wasted.",
+        "For the first time in years, Daniel stopped thinking about money."
+      ],
+      "dialogue": [
+        "Daniel: Ten minutes until what?",
+        "Riven: Until the part you cannot buy."
+      ],
+      "supernatural": true,
+      "action": false
+    },
+    {
+      "scene_id": "S04",
+      "title": "The Call",
+      "purpose": "Human connection",
+      "location": "loc-daniel-bedroom",
+      "characters": [
+        "riven"
+      ],
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "duration": 60,
+      "narration": [
+        "Daniel opened his phone.",
+        "There was one name he had not called in three years.",
+        "His daughter.",
+        "He had sent money instead of apologies so many times that money had started to feel like an apology."
+      ],
+      "dialogue": [
+        "Daniel: I know it is late.",
+        "Daniel: I just... wanted to hear your voice.",
+        "Daughter: Dad? Is everything okay?"
+      ],
+      "supernatural": false,
+      "action": true
+    },
+    {
+      "scene_id": "S05",
+      "title": "What Money Couldn't Fix",
+      "purpose": "Conflict",
+      "location": "loc-daniel-bedroom",
+      "characters": [
+        "riven"
+      ],
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "duration": 55,
+      "narration": [
+        "Daniel tried to explain.",
+        "Not the company.",
+        "Not the billions.",
+        "Just the years.",
+        "Riven watched without interrupting.",
+        "He had seen people beg for more time before.",
+        "He had rarely seen anyone use it honestly."
+      ],
+      "dialogue": [
+        "Daniel: I thought giving you everything would make up for not being there.",
+        "Daughter: I did not need everything.",
+        "Daughter: I needed you."
+      ],
+      "supernatural": false,
+      "action": false
+    },
+    {
+      "scene_id": "S06",
+      "title": "The Ledger Changes",
+      "purpose": "Supernatural mystery",
+      "location": "loc-daniel-bedroom",
+      "characters": [
+        "riven"
+      ],
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "duration": 50,
+      "narration": [
+        "Then the Ledger moved.",
+        "Riven looked down.",
+        "The time beside Daniel's name flickered.",
+        "That was impossible.",
+        "An appointed death was not supposed to change because a man finally said what he should have said years ago."
+      ],
+      "dialogue": [
+        "Riven: No.",
+        "Riven: That is not how this works."
+      ],
+      "supernatural": true,
+      "action": true
+    },
+    {
+      "scene_id": "S07",
+      "title": "The Question",
+      "purpose": "Comeback",
+      "location": "loc-daniel-bedroom",
+      "characters": [
+        "riven"
+      ],
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "duration": 50,
+      "narration": [
+        "Riven had a choice he was never supposed to have.",
+        "He could close the Ledger.",
+        "He could collect Daniel's soul.",
+        "Or he could find out why the entry had changed."
+      ],
+      "dialogue": [
+        "Daniel: Am I dying?",
+        "Riven: You were.",
+        "Daniel: And now?",
+        "Riven: Now I have a question."
+      ],
+      "supernatural": true,
+      "action": false
+    },
+    {
+      "scene_id": "S08",
+      "title": "One More Minute",
+      "purpose": "Rising action",
+      "location": "loc-daniel-bedroom",
+      "characters": [
+        "riven"
+      ],
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "duration": 55,
+      "narration": [
+        "Riven gave Daniel one more minute.",
+        "Not because Daniel was rich.",
+        "Not because Riven was merciful.",
+        "Because something had altered the Ledger.",
+        "And Riven needed to know who\u2014or what\u2014was behind it."
+      ],
+      "dialogue": [
+        "Riven: You get one more minute.",
+        "Daniel: Why?",
+        "Riven: Because someone changed your death.",
+        "Daniel: Who?",
+        "Riven: I intend to find out."
+      ],
+      "supernatural": true,
+      "action": true
+    },
+    {
+      "scene_id": "S09",
+      "title": "11:59 PM",
+      "purpose": "Payoff",
+      "location": "loc-daniel-bedroom",
+      "characters": [
+        "riven"
+      ],
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "duration": 50,
+      "narration": [
+        "At 11:59 PM, Daniel's phone was still in his hand.",
+        "His daughter was still on the line.",
+        "And the Ledger was still open.",
+        "Riven turned one final page.",
+        "There was no new name.",
+        "Only a blank line."
+      ],
+      "dialogue": [],
+      "supernatural": true,
+      "action": false
+    },
+    {
+      "scene_id": "S10",
+      "title": "The Time You Wasted",
+      "purpose": "Ending hook",
+      "location": "loc-daniel-bedroom",
+      "characters": [
+        "riven"
+      ],
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "duration": 60,
+      "narration": [
+        "Riven closed the Ledger.",
+        "Daniel had been given ten minutes.",
+        "Maybe they had changed his fate.",
+        "Maybe they had only delayed it.",
+        "Riven did not know yet.",
+        "But he knew one thing.",
+        "Ten minutes is not the time you were given.",
+        "It is the time you wasted."
+      ],
+      "dialogue": [
+        "Riven: Ten minutes isn't the time you were given.",
+        "Riven: It's the time you wasted."
+      ],
+      "supernatural": true,
+      "action": false
+    }
+  ]
+}

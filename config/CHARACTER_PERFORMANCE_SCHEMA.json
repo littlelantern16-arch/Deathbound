@@ -1,0 +1,287 @@
+﻿{
+  "schema_version": "1.0.0",
+  "system": "Deathbound Character Performance System",
+
+  "purpose": "Define animation-ready character performance states and enforce continuity before animation production.",
+
+  "hardware_target": {
+    "gpu": "RTX 3050 Laptop 4GB",
+    "cpu": "i7-12700H",
+    "ram_gb": 16
+  },
+
+  "performance_principles": [
+    "Animation first; slideshow behavior is forbidden.",
+    "Every meaningful character movement must have a narrative or physical cause.",
+    "Facial performance must support emotional state.",
+    "Body performance must support narrative intent.",
+    "Gaze direction must remain continuous unless changed by an event or intentional performance.",
+    "Dialogue performance must be synchronized with speech.",
+    "Performance intensity must match the shot tier.",
+    "Character identity and physical proportions are immutable.",
+    "Temporary physical changes require causal events.",
+    "Performance state must be reconstructable from previous state plus transitions."
+  ],
+
+  "motion_tiers": {
+    "hero": {
+      "description": "High-detail performance for emotionally or narratively critical shots.",
+      "body_motion": "full",
+      "facial_motion": "high",
+      "gaze": "explicit",
+      "gesture": "explicit",
+      "lip_sync": "required",
+      "camera_interaction": "allowed",
+      "environment_interaction": "allowed"
+    },
+    "standard": {
+      "description": "Normal character performance for dialogue and story progression.",
+      "body_motion": "moderate",
+      "facial_motion": "medium",
+      "gaze": "explicit",
+      "gesture": "explicit_when_required",
+      "lip_sync": "required_for_dialogue",
+      "camera_interaction": "allowed",
+      "environment_interaction": "allowed"
+    },
+    "atmospheric": {
+      "description": "Low-complexity performance for establishing or transitional shots.",
+      "body_motion": "limited",
+      "facial_motion": "subtle",
+      "gaze": "explicit_when_character_visible",
+      "gesture": "optional",
+      "lip_sync": "not_required_without_dialogue",
+      "camera_interaction": "limited",
+      "environment_interaction": "optional"
+    }
+  },
+
+  "body_state": {
+    "posture": [
+      "standing",
+      "sitting",
+      "crouching",
+      "leaning",
+      "kneeling",
+      "walking",
+      "running",
+      "lying",
+      "falling",
+      "floating",
+      "custom"
+    ],
+    "movement": [
+      "idle",
+      "walk",
+      "run",
+      "turn",
+      "step",
+      "reach",
+      "raise_hand",
+      "lower_hand",
+      "point",
+      "gesture",
+      "interact",
+      "sit_down",
+      "stand_up",
+      "custom"
+    ],
+    "movement_intensity": [
+      "none",
+      "subtle",
+      "low",
+      "medium",
+      "high",
+      "extreme"
+    ]
+  },
+
+  "facial_state": {
+    "expression": [
+      "neutral",
+      "curious",
+      "calm",
+      "concerned",
+      "confused",
+      "sad",
+      "angry",
+      "afraid",
+      "surprised",
+      "amused",
+      "sarcastic",
+      "compassionate",
+      "conflicted",
+      "determined",
+      "custom"
+    ],
+    "eyes": [
+      "normal",
+      "focused",
+      "distracted",
+      "downcast",
+      "wide",
+      "narrowed",
+      "glowing",
+      "custom"
+    ],
+    "brows": [
+      "neutral",
+      "raised",
+      "furrowed",
+      "relaxed",
+      "asymmetric",
+      "custom"
+    ],
+    "mouth": [
+      "closed",
+      "speaking",
+      "slight_smile",
+      "smile",
+      "frown",
+      "open",
+      "custom"
+    ]
+  },
+
+  "gaze_state": {
+    "target_type": [
+      "camera",
+      "character",
+      "object",
+      "environment",
+      "ground",
+      "sky",
+      "offscreen",
+      "custom"
+    ],
+    "direction": [
+      "forward",
+      "left",
+      "right",
+      "up",
+      "down",
+      "custom"
+    ],
+    "attention": [
+      "passive",
+      "focused",
+      "alert",
+      "distracted",
+      "searching",
+      "locked"
+    ]
+  },
+
+  "dialogue_performance": {
+    "required_fields": [
+      "dialogue_id",
+      "speaker",
+      "text_reference",
+      "voice_reference",
+      "start_time",
+      "end_time",
+      "emotion",
+      "intensity",
+      "lip_sync_required"
+    ],
+    "delivery_intensity": [
+      "whisper",
+      "quiet",
+      "normal",
+      "firm",
+      "intense",
+      "shout"
+    ],
+    "lip_sync_policy": {
+      "dialogue_present": "required",
+      "dialogue_absent": "forbidden",
+      "timing_must_match_audio": true
+    }
+  },
+
+  "performance_state": {
+    "required_fields": [
+      "character_id",
+      "timestamp",
+      "shot_id",
+      "body",
+      "face",
+      "gaze",
+      "dialogue",
+      "emotion",
+      "intensity",
+      "physical_condition",
+      "continuity",
+      "causal_event_ids"
+    ]
+  },
+
+  "transition_rules": [
+    {
+      "from": "standing",
+      "to": "walking",
+      "requires": "movement_transition_or_causal_event"
+    },
+    {
+      "from": "sitting",
+      "to": "standing",
+      "requires": "stand_up_transition_or_causal_event"
+    },
+    {
+      "from": "walking",
+      "to": "running",
+      "requires": "acceleration_transition_or_causal_event"
+    },
+    {
+      "from": "normal",
+      "to": "glowing",
+      "requires": "supernatural_causal_event"
+    },
+    {
+      "from": "neutral",
+      "to": "extreme_emotion",
+      "requires": "emotional_transition_or_causal_event"
+    },
+    {
+      "from": "speaking",
+      "to": "silent",
+      "requires": "dialogue_end_or_transition"
+    }
+  ],
+
+  "continuity_rules": {
+    "character_identity_immutable": true,
+    "body_proportions_immutable": true,
+    "clothing_requires_cause_to_change": true,
+    "physical_condition_requires_cause_to_change": true,
+    "gaze_changes_must_be_explicit": true,
+    "emotion_changes_must_be_explicit": true,
+    "supernatural_visual_changes_require_cause": true,
+    "dialogue_requires_lip_sync": true,
+    "performance_state_must_be_reconstructable": true
+  },
+
+  "forbidden_performance": [
+    "random_pose changes",
+    "teleporting between body states",
+    "unexplained emotional jumps",
+    "unexplained eye glow",
+    "unexplained physical injuries",
+    "unexplained clothing changes",
+    "dialogue without mouth performance",
+    "mouth movement without dialogue",
+    "gaze discontinuity without cause",
+    "character identity drift",
+    "motion that contradicts story state"
+  ],
+
+  "provenance": {
+    "invented_canon": false,
+    "derived_from": [
+      "Deathbound Master Specification",
+      "Animation Architecture",
+      "Riven Canon",
+      "Living Story Bible"
+    ]
+  }
+}

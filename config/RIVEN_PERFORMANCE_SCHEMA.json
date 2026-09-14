@@ -1,0 +1,361 @@
+{
+  "schema_version": "1.0.0",
+  "character_id": "riven",
+  "system": "unified_performance",
+  "purpose": "Provide a single coherent performance contract integrating body motion, facial animation, emotion, gaze, dialogue, and causal state before animation.",
+  "source_systems": {
+    "character_canon": "D:\\Deathbound\\assets\\characters\\Riven\\RIVEN_CANON.json",
+    "body_motion": "D:\\Deathbound\\config\\BODY_MOTION_SCHEMA.json",
+    "facial_animation": "D:\\Deathbound\\config\\FACIAL_ANIMATION_SCHEMA.json",
+    "episode_state": "D:\\Deathbound\\projects\\EP001\\characters\\riven.json",
+    "event_history": "D:\\Deathbound\\projects\\EP001\\characters\\riven_event_history.json"
+  },
+  "performance_state": {
+    "required_fields": [
+      "performance_id",
+      "shot_id",
+      "scene_id",
+      "motion_tier",
+      "emotion",
+      "body",
+      "facial",
+      "gaze",
+      "dialogue",
+      "performance_intent",
+      "causal_event_ids",
+      "continuity"
+    ]
+  },
+  "performance_intent": {
+    "allowed_intents": [
+      "observe",
+      "listen",
+      "speak",
+      "question",
+      "explain",
+      "comfort",
+      "threaten",
+      "warn",
+      "react",
+      "hesitate",
+      "decide",
+      "protect",
+      "investigate",
+      "supernatural_activation",
+      "supernatural_intervention",
+      "grieve",
+      "celebrate",
+      "sarcastic_response"
+    ]
+  },
+  "emotion_alignment": {
+    "neutral": {
+      "compatible_intents": [
+        "observe",
+        "listen",
+        "investigate",
+        "explain"
+      ],
+      "body_profiles": [
+        "balanced_posture",
+        "minimal_gesture",
+        "controlled_movement"
+      ]
+    },
+    "curious": {
+      "compatible_intents": [
+        "observe",
+        "question",
+        "investigate",
+        "listen"
+      ],
+      "body_profiles": [
+        "slight_forward_lean",
+        "head_tilt",
+        "subtle_reaching"
+      ]
+    },
+    "concerned": {
+      "compatible_intents": [
+        "listen",
+        "comfort",
+        "warn",
+        "protect",
+        "react"
+      ],
+      "body_profiles": [
+        "reduced_movement",
+        "protective_posture",
+        "weight_shift"
+      ]
+    },
+    "afraid": {
+      "compatible_intents": [
+        "react",
+        "warn",
+        "protect",
+        "hesitate"
+      ],
+      "body_profiles": [
+        "defensive_posture",
+        "backward_weight_shift",
+        "hesitation"
+      ]
+    },
+    "angry": {
+      "compatible_intents": [
+        "threaten",
+        "warn",
+        "react",
+        "protect"
+      ],
+      "body_profiles": [
+        "firm_posture",
+        "controlled_forward_weight",
+        "strong_gesture"
+      ]
+    },
+    "sad": {
+      "compatible_intents": [
+        "grieve",
+        "listen",
+        "comfort",
+        "react"
+      ],
+      "body_profiles": [
+        "reduced_posture",
+        "downward_head_orientation",
+        "slow_movement"
+      ]
+    },
+    "compassionate": {
+      "compatible_intents": [
+        "comfort",
+        "protect",
+        "listen",
+        "grieve"
+      ],
+      "body_profiles": [
+        "open_posture",
+        "gentle_gesture",
+        "forward_attention"
+      ]
+    },
+    "conflicted": {
+      "compatible_intents": [
+        "hesitate",
+        "decide",
+        "react",
+        "protect",
+        "supernatural_intervention"
+      ],
+      "body_profiles": [
+        "hesitation",
+        "weight_shift",
+        "incomplete_gesture"
+      ]
+    },
+    "determined": {
+      "compatible_intents": [
+        "decide",
+        "protect",
+        "warn",
+        "supernatural_intervention",
+        "supernatural_activation"
+      ],
+      "body_profiles": [
+        "stable_posture",
+        "forward_weight",
+        "deliberate_movement"
+      ]
+    },
+    "sarcastic": {
+      "compatible_intents": [
+        "sarcastic_response",
+        "question",
+        "explain",
+        "react"
+      ],
+      "body_profiles": [
+        "relaxed_posture",
+        "controlled_gesture",
+        "subtle_lean"
+      ]
+    },
+    "surprised": {
+      "compatible_intents": [
+        "react",
+        "observe",
+        "listen",
+        "warn"
+      ],
+      "body_profiles": [
+        "defensive_posture",
+        "head_tilt",
+        "weight_shift"
+      ]
+    }
+  },
+  "cross_system_contract": {
+    "rules": [
+      "Body and facial emotion must agree unless a deliberate conflicted performance is explicitly authored.",
+      "Gaze must support the active performance intent.",
+      "Dialogue state must agree with mouth and speech performance.",
+      "Body performance must agree with dialogue intent.",
+      "Supernatural facial activation requires supernatural causal state.",
+      "Supernatural body activation requires supernatural causal state.",
+      "Causal events must belong to the active scene or explicitly inherited state.",
+      "A performance cannot silently alter canonical identity.",
+      "A performance cannot silently alter clothing or body structure.",
+      "A performance state must inherit continuity from the previous shot unless an explicit transition exists."
+    ]
+  },
+  "gaze_contract": {
+    "intent_targets": {
+      "observe": [
+        "subject",
+        "environment"
+      ],
+      "listen": [
+        "speaker",
+        "subject"
+      ],
+      "speak": [
+        "listener",
+        "subject"
+      ],
+      "question": [
+        "listener",
+        "subject"
+      ],
+      "comfort": [
+        "subject",
+        "listener"
+      ],
+      "threaten": [
+        "subject",
+        "listener"
+      ],
+      "warn": [
+        "subject",
+        "environment"
+      ],
+      "investigate": [
+        "object",
+        "environment",
+        "subject"
+      ],
+      "react": [
+        "subject",
+        "environment"
+      ],
+      "supernatural_activation": [
+        "subject",
+        "environment"
+      ],
+      "supernatural_intervention": [
+        "subject",
+        "environment"
+      ]
+    }
+  },
+  "dialogue_contract": {
+    "when_active": {
+      "required": [
+        "dialogue_id",
+        "voice_reference",
+        "lip_sync_required",
+        "body_performance",
+        "facial_performance"
+      ]
+    },
+    "when_inactive": {
+      "rules": [
+        "Mouth must not enter speaking state.",
+        "Lip-sync must not be active.",
+        "Speech-specific body performance must not be active."
+      ]
+    }
+  },
+  "supernatural_contract": {
+    "activation_intents": [
+      "supernatural_activation",
+      "supernatural_intervention"
+    ],
+    "requires": [
+      "causal_event_id",
+      "visual_effect_state",
+      "facial_integration",
+      "body_integration",
+      "environmental_response"
+    ],
+    "forbidden": [
+      "unexplained_eye_glow",
+      "unexplained_body_empowerment",
+      "unexplained_teleportation",
+      "unexplained_physics_break"
+    ]
+  },
+  "continuity": {
+    "required_locks": [
+      "identity_locked",
+      "body_locked",
+      "face_locked",
+      "clothing_locked",
+      "emotion_locked",
+      "gaze_locked",
+      "dialogue_locked",
+      "causality_locked"
+    ],
+    "rules": [
+      "Canonical identity remains immutable.",
+      "Body state cannot contradict the previous shot without a transition.",
+      "Facial state cannot contradict the previous shot without a transition.",
+      "Emotion changes require narrative justification.",
+      "Gaze changes must remain spatially coherent.",
+      "Dialogue state must persist for the duration of active speech.",
+      "Clothing remains continuous.",
+      "Causal state remains traceable."
+    ]
+  },
+  "shot_contract": {
+    "required": [
+      "performance_id",
+      "shot_id",
+      "scene_id",
+      "motion_tier",
+      "emotion",
+      "body",
+      "facial",
+      "gaze",
+      "dialogue",
+      "performance_intent",
+      "causal_event_ids",
+      "continuity"
+    ],
+    "rule": "No performance may enter the animation pipeline until every required subsystem agrees."
+  },
+  "quality_gates": [
+    "identity_consistency",
+    "body_emotion_alignment",
+    "facial_emotion_alignment",
+    "gaze_intent_alignment",
+    "dialogue_body_alignment",
+    "dialogue_facial_alignment",
+    "causal_alignment",
+    "supernatural_alignment",
+    "shot_continuity",
+    "clothing_continuity",
+    "state_integrity",
+    "slideshow_rejection"
+  ],
+  "canonical_protection": {
+    "immutable": true,
+    "canonical_file": "D:\\Deathbound\\assets\\characters\\Riven\\RIVEN_CANON.json",
+    "rule": "Unified performance may animate Riven but cannot redefine Riven."
+  },
+  "provenance": {
+    "invented_canon": false,
+    "status": "architecture_only"
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "schema_version": "1.0.0",
+  "character_id": "riven",
+  "system": "body_motion",
+  "purpose": "Define physically coherent, causally controlled body motion for Riven while preserving canonical identity and continuity.",
+  "motion_tiers": {
+    "hero": {
+      "description": "High-detail performance for narrative-critical shots.",
+      "requires": [
+        "full_body_performance",
+        "facial_integration",
+        "hand_gesture_detail",
+        "weight_shift",
+        "camera_aware_blocking",
+        "causal_state_alignment"
+      ]
+    },
+    "standard": {
+      "description": "Normal character performance for dialogue and story progression.",
+      "requires": [
+        "body_motion",
+        "pose_continuity",
+        "weight_shift",
+        "gesture_or_action",
+        "state_alignment"
+      ]
+    },
+    "atmospheric": {
+      "description": "Minimal but intentional motion for non-performance shots.",
+      "requires": [
+        "micro_movement",
+        "breathing_or_weight_shift",
+        "environmental_interaction",
+        "continuity"
+      ]
+    }
+  },
+  "body_state": {
+    "required_fields": [
+      "posture",
+      "locomotion",
+      "orientation",
+      "head_orientation",
+      "arms",
+      "hands",
+      "legs",
+      "feet",
+      "weight_distribution",
+      "movement_phase",
+      "physical_condition"
+    ],
+    "posture_states": [
+      "standing",
+      "sitting",
+      "crouching",
+      "kneeling",
+      "leaning",
+      "walking",
+      "running",
+      "falling",
+      "rising",
+      "lying"
+    ],
+    "locomotion_states": [
+      "stationary",
+      "walking",
+      "running",
+      "turning",
+      "stopping",
+      "starting",
+      "falling",
+      "recovering"
+    ],
+    "orientation_states": [
+      "front",
+      "three_quarter_left",
+      "three_quarter_right",
+      "profile_left",
+      "profile_right",
+      "back"
+    ],
+    "head_orientation_states": [
+      "forward",
+      "up",
+      "down",
+      "left",
+      "right",
+      "three_quarter_left",
+      "three_quarter_right"
+    ],
+    "weight_distribution_states": [
+      "balanced",
+      "left",
+      "right",
+      "forward",
+      "backward",
+      "airborne"
+    ],
+    "movement_phase_states": [
+      "idle",
+      "anticipation",
+      "action",
+      "follow_through",
+      "recovery"
+    ],
+    "physical_condition_states": [
+      "normal",
+      "tired",
+      "injured",
+      "restrained",
+      "unstable",
+      "supernaturally_empowered"
+    ]
+  },
+  "gesture_system": {
+    "gesture_states": [
+      "none",
+      "point",
+      "wave",
+      "beckon",
+      "open_hand",
+      "closed_fist",
+      "hand_to_chest",
+      "arms_crossed",
+      "hands_in_pockets",
+      "shrug",
+      "reach",
+      "defensive",
+      "protective"
+    ],
+    "gesture_rules": [
+      "Gesture must be compatible with body posture.",
+      "Gesture changes must have narrative or performance justification.",
+      "Hands cannot occupy contradictory states simultaneously.",
+      "Hero gestures require deliberate anticipation and follow-through.",
+      "Dialogue gestures must remain synchronized with performance intent."
+    ]
+  },
+  "movement_physics": {
+    "requirements": [
+      "preserve_weight",
+      "preserve_balance",
+      "respect_ground_contact",
+      "respect_momentum",
+      "respect_body_orientation",
+      "respect_environment",
+      "avoid_instant_teleportation",
+      "avoid_unmotivated_pose_changes"
+    ],
+    "transition_rules": [
+      "Standing to walking requires locomotion transition.",
+      "Walking to running requires acceleration phase.",
+      "Running to stationary requires deceleration or explicit supernatural cause.",
+      "Sitting to standing requires rise transition.",
+      "Standing to crouching requires explicit transition.",
+      "Airborne states require physical or supernatural cause.",
+      "Falling requires loss-of-balance, external force, or explicit supernatural cause.",
+      "Recovery follows falling unless another causal event changes the state."
+    ]
+  },
+  "environment_interaction": {
+    "required": [
+      "ground_contact",
+      "surface_awareness",
+      "prop_interaction_awareness",
+      "collision_awareness",
+      "spatial_awareness"
+    ],
+    "rules": [
+      "Feet must respect the active ground plane.",
+      "Hands must not pass through required physical props.",
+      "Body movement must respect available space.",
+      "Interactions with props require a prop reference.",
+      "Environmental contact must be visually plausible."
+    ]
+  },
+  "clothing_continuity": {
+    "canonical_reference": "D:\\Deathbound\\assets\\characters\\Riven\\RIVEN_CANON.json",
+    "locked": true,
+    "rules": [
+      "Canonical clothing cannot change without explicit story cause.",
+      "Clothing remains attached to the correct body regions.",
+      "Coat movement follows body movement.",
+      "Clothing cannot disappear between shots.",
+      "Accessories cannot teleport or duplicate.",
+      "Temporary clothing damage requires causal event."
+    ]
+  },
+  "supernatural_motion": {
+    "enabled": true,
+    "allowed_states": [
+      "supernaturally_empowered"
+    ],
+    "requirements": [
+      "explicit_causal_event",
+      "visual_consistency",
+      "state_transition",
+      "environmental_response",
+      "facial_system_integration"
+    ],
+    "forbidden": [
+      "unexplained_teleportation",
+      "instant_position_change_without_cause",
+      "unmotivated_physics_break",
+      "identity_change",
+      "body_proportion_change"
+    ]
+  },
+  "dialogue_integration": {
+    "active_dialogue_requires_body_performance": true,
+    "allowed_performance": [
+      "subtle_idle",
+      "hand_gesture",
+      "head_movement",
+      "weight_shift",
+      "walking_dialogue",
+      "turning_dialogue",
+      "emotional_reaction"
+    ],
+    "rules": [
+      "Body performance must support the emotional state.",
+      "Body performance cannot contradict dialogue intent.",
+      "Lip-sync is controlled by the facial animation system.",
+      "Body motion and facial motion must share the same performance state."
+    ]
+  },
+  "emotional_motion": {
+    "mapping": {
+      "neutral": [
+        "balanced_posture",
+        "minimal_gesture",
+        "controlled_movement"
+      ],
+      "curious": [
+        "slight_forward_lean",
+        "head_tilt",
+        "subtle_reaching"
+      ],
+      "concerned": [
+        "reduced_movement",
+        "protective_posture",
+        "weight_shift"
+      ],
+      "afraid": [
+        "defensive_posture",
+        "backward_weight_shift",
+        "hesitation"
+      ],
+      "angry": [
+        "firm_posture",
+        "controlled_forward_weight",
+        "strong_gesture"
+      ],
+      "sad": [
+        "reduced_posture",
+        "downward_head_orientation",
+        "slow_movement"
+      ],
+      "compassionate": [
+        "open_posture",
+        "gentle_gesture",
+        "forward_attention"
+      ],
+      "conflicted": [
+        "hesitation",
+        "weight_shift",
+        "incomplete_gesture"
+      ],
+      "determined": [
+        "stable_posture",
+        "forward_weight",
+        "deliberate_movement"
+      ],
+      "sarcastic": [
+        "relaxed_posture",
+        "controlled_gesture",
+        "subtle_lean"
+      ]
+    },
+    "neutral": [
+      "balanced_posture",
+      "minimal_gesture",
+      "controlled_movement"
+    ]
+  },
+  "continuity_contract": {
+    "required_locks": [
+      "identity_locked",
+      "body_structure_locked",
+      "proportion_locked",
+      "clothing_locked",
+      "position_continuity_locked",
+      "orientation_continuity_locked",
+      "physical_condition_locked"
+    ],
+    "rules": [
+      "Canonical identity is immutable.",
+      "Body proportions cannot change between shots without explicit transformation canon.",
+      "Position changes require movement or scene transition.",
+      "Orientation changes require physical or narrative transition.",
+      "Physical condition changes require causal events.",
+      "Clothing continuity remains locked.",
+      "Body state must inherit from the previous shot unless an explicit transition occurs."
+    ]
+  },
+  "state_transition_contract": {
+    "required_fields": [
+      "previous_state",
+      "next_state",
+      "transition_type",
+      "causal_event_ids",
+      "duration_seconds",
+      "movement_phase"
+    ],
+    "transition_types": [
+      "idle",
+      "walk",
+      "run",
+      "turn",
+      "stop",
+      "start",
+      "sit",
+      "stand",
+      "crouch",
+      "kneel",
+      "fall",
+      "recover",
+      "gesture",
+      "supernatural"
+    ],
+    "rules": [
+      "Every non-trivial body state change requires a valid transition.",
+      "Every causally significant transition requires an event reference.",
+      "Impossible transitions must be rejected.",
+      "Zero-duration physical transitions must be rejected unless explicitly classified as instantaneous supernatural motion.",
+      "Transition duration must be positive.",
+      "State changes cannot mutate canonical identity."
+    ]
+  },
+  "slideshow_rejection": {
+    "reject_if": [
+      "body_pose_remains_identical_during_required_performance",
+      "dialogue_has_no_body_performance_when_required",
+      "movement_is_only_camera_zoom",
+      "character_teleports_between_positions",
+      "gesture_changes_without_transition",
+      "walking_has_no_locomotion_phase",
+      "falling_has_no_cause",
+      "environment_interaction_is_ignored",
+      "clothing_breaks_continuity"
+    ]
+  },
+  "qa_requirements": [
+    "body_state_valid",
+    "transition_valid",
+    "causal_reference_valid",
+    "physical_continuity_valid",
+    "position_continuity_valid",
+    "orientation_continuity_valid",
+    "clothing_continuity_valid",
+    "environment_interaction_valid",
+    "emotion_motion_alignment_valid",
+    "dialogue_motion_alignment_valid",
+    "supernatural_causality_valid",
+    "slideshow_rejection_valid"
+  ],
+  "canonical_protection": {
+    "canonical_file": "D:\\Deathbound\\assets\\characters\\Riven\\RIVEN_CANON.json",
+    "immutable_fields": [
+      "identity",
+      "age",
+      "body",
+      "face",
+      "hair",
+      "eyes",
+      "clothing",
+      "accessories",
+      "default_weapons"
+    ],
+    "rule": "Body motion may animate the character but may never redefine the character."
+  },
+  "provenance": {
+    "invented_canon": false,
+    "canonical_source": "D:\\Deathbound\\assets\\characters\\Riven\\RIVEN_CANON.json",
+    "status": "architecture_only"
+  }
+}

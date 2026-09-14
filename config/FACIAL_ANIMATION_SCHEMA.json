@@ -1,0 +1,375 @@
+﻿{
+  "schema_version": "1.0.0",
+  "system": "Deathbound Facial Animation System",
+
+  "purpose": "Define deterministic, continuity-safe facial performance for Riven.",
+
+  "character_id": "riven",
+
+  "source_of_truth": {
+    "canon": "D:\\Deathbound\\assets\\characters\\Riven\\RIVEN_CANON.json",
+    "performance": "D:\\Deathbound\\config\\CHARACTER_PERFORMANCE_SCHEMA.json",
+    "rig": "D:\\Deathbound\\config\\RIVEN_RIG_ARCHITECTURE.json"
+  },
+
+  "principles": [
+    "Facial animation must communicate the character's emotional state.",
+    "Emotion and visible expression are related but distinct states.",
+    "Every supernatural facial change requires a causal event.",
+    "Gaze must remain continuous unless intentionally changed.",
+    "Dialogue must drive mouth performance.",
+    "Mouth movement without dialogue is forbidden.",
+    "Active dialogue without lip-sync is forbidden.",
+    "Blinking must remain natural and must not alter identity.",
+    "Micro-expressions must support rather than contradict the primary emotion.",
+    "Facial performance must remain continuous between adjacent shots.",
+    "Facial controls must never modify canonical identity.",
+    "No facial state may silently change the canonical Riven definition."
+  ],
+
+  "emotion_profiles": {
+    "neutral": {
+      "expression": "neutral",
+      "eye_state": "normal",
+      "brow_state": "neutral",
+      "mouth_state": "closed",
+      "intensity": "subtle"
+    },
+
+    "curious": {
+      "expression": "curious",
+      "eye_state": "focused",
+      "brow_state": "raised",
+      "mouth_state": "closed",
+      "intensity": "low"
+    },
+
+    "calm": {
+      "expression": "calm",
+      "eye_state": "focused",
+      "brow_state": "relaxed",
+      "mouth_state": "closed",
+      "intensity": "subtle"
+    },
+
+    "concerned": {
+      "expression": "concerned",
+      "eye_state": "focused",
+      "brow_state": "furrowed",
+      "mouth_state": "closed",
+      "intensity": "medium"
+    },
+
+    "confused": {
+      "expression": "confused",
+      "eye_state": "focused",
+      "brow_state": "asymmetric",
+      "mouth_state": "closed",
+      "intensity": "medium"
+    },
+
+    "sad": {
+      "expression": "sad",
+      "eye_state": "downcast",
+      "brow_state": "relaxed",
+      "mouth_state": "frown",
+      "intensity": "medium"
+    },
+
+    "angry": {
+      "expression": "angry",
+      "eye_state": "narrowed",
+      "brow_state": "furrowed",
+      "mouth_state": "closed",
+      "intensity": "high"
+    },
+
+    "afraid": {
+      "expression": "afraid",
+      "eye_state": "wide",
+      "brow_state": "raised",
+      "mouth_state": "open",
+      "intensity": "high"
+    },
+
+    "surprised": {
+      "expression": "surprised",
+      "eye_state": "wide",
+      "brow_state": "raised",
+      "mouth_state": "open",
+      "intensity": "medium"
+    },
+
+    "amused": {
+      "expression": "amused",
+      "eye_state": "focused",
+      "brow_state": "relaxed",
+      "mouth_state": "slight_smile",
+      "intensity": "medium"
+    },
+
+    "sarcastic": {
+      "expression": "sarcastic",
+      "eye_state": "narrowed",
+      "brow_state": "asymmetric",
+      "mouth_state": "slight_smile",
+      "intensity": "medium"
+    },
+
+    "compassionate": {
+      "expression": "compassionate",
+      "eye_state": "focused",
+      "brow_state": "relaxed",
+      "mouth_state": "slight_smile",
+      "intensity": "medium"
+    },
+
+    "conflicted": {
+      "expression": "conflicted",
+      "eye_state": "focused",
+      "brow_state": "asymmetric",
+      "mouth_state": "closed",
+      "intensity": "high"
+    },
+
+    "determined": {
+      "expression": "determined",
+      "eye_state": "focused",
+      "brow_state": "furrowed",
+      "mouth_state": "closed",
+      "intensity": "high"
+    }
+  },
+
+  "eye_system": {
+    "controls": [
+      "eye_direction",
+      "eye.L",
+      "eye.R"
+    ],
+
+    "states": [
+      "normal",
+      "focused",
+      "distracted",
+      "downcast",
+      "wide",
+      "narrowed",
+      "glowing"
+    ],
+
+    "blink": {
+      "enabled": true,
+      "required_for_visible_character": true,
+      "natural_variation_required": true,
+      "identity_impact": "none"
+    },
+
+    "supernatural_glow": {
+      "enabled": true,
+      "requires_causal_event": true,
+      "default": false,
+      "canonical_identity_change": false
+    }
+  },
+
+  "brow_system": {
+    "controls": [
+      "brow.L",
+      "brow.R"
+    ],
+
+    "states": [
+      "neutral",
+      "raised",
+      "furrowed",
+      "relaxed",
+      "asymmetric"
+    ],
+
+    "independent_control": true,
+    "identity_safe": true
+  },
+
+  "mouth_system": {
+    "controls": [
+      "mouth_open",
+      "mouth_width",
+      "mouth_shape",
+      "expression_intensity"
+    ],
+
+    "states": [
+      "closed",
+      "speaking",
+      "slight_smile",
+      "smile",
+      "frown",
+      "open"
+    ],
+
+    "dialogue_contract": {
+      "speaking_requires_active_dialogue": true,
+      "active_dialogue_requires_speaking_state": true,
+      "active_dialogue_requires_lip_sync": true,
+      "mouth_animation_without_dialogue": false
+    }
+  },
+
+  "lip_sync": {
+    "required_when_dialogue_present": true,
+
+    "input": {
+      "audio_reference": true,
+      "dialogue_id": true,
+      "start_time": true,
+      "end_time": true
+    },
+
+    "output": {
+      "mouth_timing": true,
+      "phoneme_or_viseme_timing": true,
+      "dialogue_alignment": true
+    },
+
+    "timing_tolerance_ms": 80,
+
+    "forbidden": [
+      "dialogue audio without mouth performance",
+      "mouth performance without dialogue",
+      "lip sync detached from dialogue timing"
+    ]
+  },
+
+  "micro_expressions": {
+    "enabled": true,
+
+    "allowed": [
+      "brief_eye_widen",
+      "brief_eye_narrow",
+      "brief_brow_raise",
+      "brief_brow_furrow",
+      "brief_half_smile",
+      "brief_frown",
+      "brief_gaze_shift"
+    ],
+
+    "rules": [
+      "Must not contradict primary emotion.",
+      "Must have a performance purpose.",
+      "Must not alter canonical identity.",
+      "Must not replace the primary facial expression."
+    ]
+  },
+
+  "gaze_system": {
+    "targets": [
+      "camera",
+      "character",
+      "object",
+      "environment",
+      "ground",
+      "sky",
+      "offscreen"
+    ],
+
+    "attention_states": [
+      "passive",
+      "focused",
+      "alert",
+      "distracted",
+      "searching",
+      "locked"
+    ],
+
+    "direction_changes": {
+      "must_be_explicit": true,
+      "must_preserve_continuity": true
+    }
+  },
+
+  "performance_intensity": {
+    "levels": [
+      "subtle",
+      "low",
+      "medium",
+      "high",
+      "extreme"
+    ],
+
+    "rules": [
+      "Intensity must match the emotional importance of the shot.",
+      "Hero shots may use high or extreme intensity.",
+      "Atmospheric shots should normally remain subtle or low.",
+      "Intensity must not change canonical facial structure."
+    ]
+  },
+
+  "facial_state": {
+    "required_fields": [
+      "character_id",
+      "shot_id",
+      "timestamp",
+      "emotion",
+      "expression",
+      "eyes",
+      "brows",
+      "mouth",
+      "gaze",
+      "blink",
+      "dialogue",
+      "intensity",
+      "micro_expression",
+      "causal_event_ids"
+    ]
+  },
+
+  "continuity": {
+    "identity_locked": true,
+    "face_structure_locked": true,
+    "eye_identity_locked": true,
+    "hair_identity_locked": true,
+    "expression_transition_required": true,
+    "gaze_transition_required": true,
+    "dialogue_transition_required": true,
+    "supernatural_transition_required": true
+  },
+
+  "forbidden_states": [
+    "identity_mutation",
+    "face_structure_mutation",
+    "unexplained_eye_glow",
+    "mouth_speaking_without_dialogue",
+    "dialogue_without_lip_sync",
+    "gaze_teleport",
+    "emotion_contradiction",
+    "random_expression",
+    "random_blink_state",
+    "unexplained_micro_expression"
+  ],
+
+  "qa_requirements": {
+    "emotion_expression_match": true,
+    "eye_state_valid": true,
+    "brow_state_valid": true,
+    "mouth_state_valid": true,
+    "dialogue_mouth_consistency": true,
+    "lip_sync_requirement": true,
+    "gaze_continuity": true,
+    "blink_validity": true,
+    "micro_expression_validity": true,
+    "causal_event_protection": true,
+    "identity_protection": true,
+    "continuity_lock": true
+  },
+
+  "provenance": {
+    "invented_canon": false,
+    "derived_from": [
+      "RIVEN_CANON.json",
+      "CHARACTER_PERFORMANCE_SCHEMA.json",
+      "RIVEN_RIG_ARCHITECTURE.json",
+      "DEATHBOUND_MASTER_SPEC.md"
+    ]
+  }
+}

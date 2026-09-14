@@ -1,0 +1,1 @@
+Deathbound Compositor V2.1 patch. From D:\Deathbound run: PATCH_V2_1.bat. Then rerun the 3-shot command. Existing generated masters are reused; only the failed close cutout will be rebuilt if its file is deleted.

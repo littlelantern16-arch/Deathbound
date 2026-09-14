@@ -1,0 +1,74 @@
+﻿{
+  "schema_version": "1.0",
+  "status": "production_ready",
+  "purpose": "Detect repetitive, mechanical, or template-driven camera composition patterns across cinematic sequences while allowing deliberate visual motifs.",
+
+  "signature_fields": [
+    "shot_type",
+    "movement",
+    "subject_priority",
+    "framing_intent",
+    "visual_focus",
+    "depth_strategy"
+  ],
+
+  "repetition_rules": {
+    "identical_full_signature_limit": 2,
+    "identical_camera_signature_limit": 3,
+    "identical_composition_signature_limit": 3,
+    "identical_framing_intent_limit": 4,
+    "identical_visual_focus_limit": 4
+  },
+
+  "template_patterns": {
+    "monotonic_shot_progression": {
+      "minimum_length": 4,
+      "forbidden": true
+    },
+    "same_movement_every_shot": {
+      "minimum_length": 4,
+      "forbidden": true
+    },
+    "same_shot_type_every_shot": {
+      "minimum_length": 4,
+      "forbidden": true
+    },
+    "camera_movement_cycle": {
+      "minimum_cycle_length": 3,
+      "minimum_repetitions": 2,
+      "forbidden": true
+    },
+    "composition_cycle": {
+      "minimum_cycle_length": 3,
+      "minimum_repetitions": 2,
+      "forbidden": true
+    }
+  },
+
+  "allowed_motifs": {
+    "enabled": true,
+    "requires_intent": true,
+    "intent_field": "visual_motif",
+    "maximum_consecutive_motif_shots": 3
+  },
+
+  "diversity_rules": {
+    "minimum_unique_camera_signatures_for_6_shots": 3,
+    "minimum_unique_composition_signatures_for_6_shots": 3,
+    "minimum_unique_camera_signatures_for_8_shots": 4,
+    "minimum_unique_composition_signatures_for_8_shots": 4
+  },
+
+  "quality_gates": [
+    "signature_valid",
+    "full_signature_repetition_valid",
+    "camera_repetition_valid",
+    "composition_repetition_valid",
+    "movement_diversity_valid",
+    "shot_type_diversity_valid",
+    "monotonic_pattern_rejected",
+    "camera_cycle_rejected",
+    "composition_cycle_rejected",
+    "intentional_motif_protected"
+  ]
+}

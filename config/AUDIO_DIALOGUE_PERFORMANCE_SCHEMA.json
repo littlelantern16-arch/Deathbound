@@ -1,0 +1,87 @@
+﻿{
+  "schema_version": "1.0",
+  "name": "DEATHBOUND_AUDIO_DIALOGUE_PERFORMANCE",
+  "status": "production_ready_blueprint",
+  "purpose": "Validate dialogue, voice timing, speech performance, pauses, emphasis, lip synchronization, and audio continuity as causal components of character performance.",
+  "dialogue": {
+    "required": [
+      "dialogue_id",
+      "speaker",
+      "text",
+      "start_time",
+      "end_time"
+    ],
+    "minimum_duration_seconds": 0.1,
+    "start_must_be_less_than_end": true,
+    "speaker_required": true,
+    "text_required": true
+  },
+  "voice": {
+    "required": [
+      "voice_id",
+      "language",
+      "speaking_rate",
+      "pitch",
+      "emotion"
+    ],
+    "language": "en-US",
+    "speaking_rate_min": 0.5,
+    "speaking_rate_max": 2.0,
+    "pitch_min": -12,
+    "pitch_max": 12
+  },
+  "lip_sync": {
+    "required_for_active_dialogue": true,
+    "phoneme_timing_required": true,
+    "mouth_performance_required": true,
+    "dialogue_and_lip_sync_must_overlap": true,
+    "silent_dialogue_rejected": true
+  },
+  "performance": {
+    "speech_requires_character_performance": true,
+    "speech_intents": [
+      "speak",
+      "question",
+      "explain",
+      "warn",
+      "threaten",
+      "comfort",
+      "sarcastic_response"
+    ],
+    "pause_types": [
+      "natural",
+      "dramatic",
+      "hesitation",
+      "breath"
+    ],
+    "emphasis_requires_word_or_phrase": true
+  },
+  "audio_continuity": {
+    "speaker_identity_immutable": true,
+    "voice_identity_immutable": true,
+    "dialogue_overlap_requires_multi_speaker_justification": true,
+    "dialogue_order_must_be_preserved": true,
+    "voice_change_requires_causal_or_scene_change": true
+  },
+  "causality": {
+    "dialogue_requires_speaker": true,
+    "voice_change_requires_cause": true,
+    "non_diegetic_audio_cannot_replace_required_dialogue": true
+  },
+  "slideshow_defense": {
+    "dialogue_without_mouth_performance_rejected": true,
+    "voiceover_over_static_character_rejected_when_speech_performance_required": true,
+    "audio_only_action_rejected": true,
+    "repeated_generic_voice_track_rejected": true
+  },
+  "quality_gates": [
+    "dialogue_validity",
+    "voice_validity",
+    "timing_validity",
+    "lip_sync_validity",
+    "performance_alignment",
+    "audio_continuity",
+    "speaker_continuity",
+    "slideshow_rejection"
+  ]
+}

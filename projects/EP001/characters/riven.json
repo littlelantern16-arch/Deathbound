@@ -1,0 +1,45 @@
+﻿{
+  "schema_version": "1.0.0",
+  "episode": "YR-001",
+
+  "character": {
+    "id": "riven",
+    "canonical_reference": "D:\\Deathbound\\assets\\characters\\Riven\\RIVEN_CANON.json",
+
+    "state": {
+      "scene": null,
+      "shot": null,
+      "location": null,
+
+      "physical": {
+        "condition": "normal",
+        "injuries": [],
+        "clothing": "default",
+        "environmental_effects": []
+      },
+
+      "emotion": {
+        "primary": null,
+        "secondary": null,
+        "intensity": null,
+        "trigger": null,
+        "objective": null,
+        "internal_conflict": null,
+        "external_behavior": null
+      },
+
+      "knowledge": {
+        "knows": [],
+        "does_not_know": [],
+        "suspects": [],
+        "believes": [],
+        "confirmed": [],
+        "misunderstands": []
+      },
+
+      "inventory": [],
+      "relationships": {},
+      "continuity_events": []
+    }
+  }
+}

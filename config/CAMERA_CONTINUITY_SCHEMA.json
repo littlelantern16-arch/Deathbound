@@ -1,0 +1,114 @@
+﻿{
+  "schema_version": "1.0",
+  "status": "production_ready",
+  "purpose": "Validate camera continuity and trajectory across connected cinematic shots while preventing camera teleportation, discontinuous movement, and cuts that disguise continuity failures.",
+
+  "camera_state": {
+    "required_fields": [
+      "position",
+      "target",
+      "shot_type",
+      "movement"
+    ],
+    "position_components": ["x", "y", "z"],
+    "target_components": ["x", "y", "z"]
+  },
+
+  "movement_types": [
+    "static",
+    "push_in",
+    "pull_out",
+    "pan",
+    "tilt",
+    "tracking",
+    "orbit",
+    "handheld",
+    "crane"
+  ],
+
+  "continuity_rules": {
+    "connected_shots_require_state": true,
+    "position_continuity_required": true,
+    "target_continuity_required": true,
+    "movement_transition_required": true,
+    "static_camera_position_must_not_change": true,
+    "intentional_cut_allows_composition_change": true,
+    "intentional_cut_does_not_allow_state_corruption": true
+  },
+
+  "transition_rules": {
+    "static": {
+      "max_position_delta": 0.0,
+      "requires_motion": false
+    },
+    "push_in": {
+      "requires_axis_consistency": true,
+      "max_lateral_deviation": 1.5
+    },
+    "pull_out": {
+      "requires_axis_consistency": true,
+      "max_lateral_deviation": 1.5
+    },
+    "pan": {
+      "requires_position_stability": true,
+      "target_may_change": true
+    },
+    "tilt": {
+      "requires_position_stability": true,
+      "target_may_change": true
+    },
+    "tracking": {
+      "requires_subject_motion": true
+    },
+    "orbit": {
+      "requires_target_stability": true
+    },
+    "handheld": {
+      "allows_small_position_variation": true,
+      "maximum_position_delta": 1.5
+    },
+    "crane": {
+      "requires_vertical_trajectory": true
+    }
+  },
+
+  "trajectory_rules": {
+    "minimum_duration_seconds": 0.25,
+    "maximum_position_delta_per_second": 20.0,
+    "maximum_target_delta_per_second": 20.0,
+    "teleport_threshold": 25.0,
+    "zero_length_movement_forbidden": true,
+    "trajectory_required_for_non_static_movement": true
+  },
+
+  "cut_rules": {
+    "intentional_cut_field": "intentional_cut",
+    "cut_allows": [
+      "shot_type_change",
+      "camera_position_change",
+      "camera_angle_change",
+      "movement_change"
+    ],
+    "cut_forbids": [
+      "missing_camera_state",
+      "invalid_camera_state",
+      "character_teleport",
+      "prop_teleport",
+      "environment_identity_change"
+    ]
+  },
+
+  "quality_gates": [
+    "camera_state_valid",
+    "camera_position_valid",
+    "camera_target_valid",
+    "trajectory_valid",
+    "movement_transition_valid",
+    "position_continuity_valid",
+    "target_continuity_valid",
+    "static_camera_integrity",
+    "teleportation_rejected",
+    "cut_integrity_valid",
+    "spatial_logic_valid"
+  ]
+}

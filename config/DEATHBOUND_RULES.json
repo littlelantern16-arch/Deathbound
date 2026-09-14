@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0",
+  "governingSpecification": "D:\\Deathbound\\config\\DEATHBOUND_MASTER_SPEC.md",
+  "channelIdentity": {
+    "channel": "Deathbound",
+    "handle": "@Deathbound-Stories",
+    "primaryAudience": { "country": "United States", "ageRange": "18-34" },
+    "secondaryAudience": { "ageRange": "18-44" },
+    "language": "Natural American English",
+    "isChildDirected": false,
+    "niche": ["dark cinematic supernatural animated storytelling", "death", "money", "relationships", "psychology", "human nature", "supernatural mystery", "dark comedy/experimentation"],
+    "flagshipIP": { "protagonist": "Riven / Young Reaper", "universe": "The Reaper's Ledger", "tagline": "He collects souls. He studies humans." }
+  },
+  "storyPhilosophy": {
+    "requiredPrinciples": ["OPEN LOOP", "UNIVERSAL RELATABILITY", "COMPLETION COMPULSION"],
+    "narrativeStructure": ["HOOK", "RISING ACTION", "CONFLICT", "COMEBACK", "RISING ACTION", "PAYOFF"],
+    "titlesAndThumbnailsMustCreateCuriosityWithoutMisleading": true
+  },
+  "storyEngines": [
+    { "name": "Death & Money", "targetPercent": 25 },
+    { "name": "Death & Relationships", "targetPercent": 25 },
+    { "name": "Death & Psychology", "targetPercent": 20 },
+    { "name": "Supernatural Mystery", "targetPercent": 20 },
+    { "name": "Dark Comedy / Experimental", "targetPercent": 10 }
+  ],
+  "storyEngineTargetsAreStrategicNotRigidWhenAnalyticsJustifyAdjustment": true,
+  "rejectionRules": {
+    "reject": [
+      "generic AI slideshow concepts", "same plot with different names", "repetitive sad-animal templates", "fake celebrity deaths", "fake real-world tragedies", "stolen Reddit stories without transformation", "reused movie/cartoon footage", "copyright-dependent characters", "children's-content framing", "shock-only gore", "fake true story claims", "mass-produced variations", "endless suffering thumbnails", "30 near-identical Shorts from one video"
+    ],
+    "automatic": [
+      "If it looks like a slideshow: REJECT.", "If character continuity breaks: REJECT.", "If scenes do not logically follow the story: REJECT.", "If the final output is not good enough: DO NOT UPLOAD."
+    ]
+  },
+  "universe": {
+    "characters": {
+      "Riven": ["curious", "compassionate", "insecure", "dark humor", "fears failure", "grows attached to humans", "conflicts with Death's rules"],
+      "Mochi": ["cat that can see Riven", "emotional/comedic wildcard"],
+      "Ash": ["senior Reaper", "Humans die. Reapers don't interfere."],
+      "Mara": ["human bridge between the human world and deeper Death mythology"],
+      "The Keeper": ["authority over Reapers", "not necessarily evil"],
+      "Old Dog": ["recurring emotional character", "must not appear in every animal story"]
+    },
+    "worldRules": [
+      "Reapers cannot freely change appointed deaths.", "Animals can see Reapers.", "Humans normally cannot.", "Reapers can temporarily interfere, but interference creates consequences.", "Souls retain emotional impressions after death.", "Reapers remember every soul they collect.", "Reapers cannot lie to The Keeper.", "Some humans are Ledger anomalies.", "The Ledger may predict deaths.", "Someone or something is altering entries."
+    ]
+  },
+  "rivenVisualIdentity": {
+    "appearanceAge": "19-22", "body": "Slim/lean", "skin": "Pale/slightly desaturated", "hair": "Messy black hair", "eyes": "Dark normally; supernatural glow only when powers activate", "expression": ["calm", "curious", "observant", "slightly sarcastic"],
+    "clothing": ["long charcoal-black hooded coat", "dark fitted shirt", "black trousers", "dark boots", "subtle silver details"],
+    "avoid": ["generic Grim Reaper appearance", "giant scythe as default defining prop"],
+    "artifact": "The Ledger / associated supernatural artifact", "humanWorld": "more natural color and lighting", "supernaturalMoments": "slightly desaturated with controlled supernatural highlights", "ledgerMoments": "distinct visual treatment", "identityStableUnlessNarrativelyExplained": true
+  },
+  "livingStoryBible": {
+    "persistentState": ["character", "environment", "story"],
+    "characterTracks": ["appearance", "clothing", "age/proportions", "facial structure", "emotional state", "location", "pose", "injuries", "possessions", "knowledge", "unknown information", "objectives", "relationships"],
+    "environmentTracks": ["location", "time", "weather", "lighting", "objects", "environmental state"],
+    "storyTracks": ["chronology", "causal chain", "unresolved loops", "world rules", "consequences", "character knowledge", "narrative state"],
+    "pipeline": ["SCRIPT", "SCENE BREAKDOWN", "CHARACTER STATE", "LOCATION STATE", "OBJECT STATE", "EMOTIONAL STATE", "DIRECTOR SHOT PLAN", "VISUAL GENERATION", "ANIMATION", "STATE UPDATE", "NEXT SCENE"]
+  },
+  "animationRequirements": {
+    "mustFeelGenuinelyAnimated": true,
+    "forbidden": ["narrated still images", "slideshow", "simple Ken Burns effect", "repeated zoom/pan", "static character portraits with narration"],
+    "requiredWhereAppropriate": ["moving characters", "facial expressions", "body movement", "gestures", "lip sync", "camera movement", "foreground/background depth", "environmental motion", "lighting changes", "particles/effects", "synchronized SFX/music", "consistent character appearance", "consistent environments", "deliberate cinematography"],
+    "motionTiers": ["HERO ANIMATION", "STANDARD ANIMATION", "ATMOSPHERIC MOTION"],
+    "deadFramesForbiddenToSaveCompute": true
+  },
+  "continuity": {
+    "sameMomentMustPreserve": ["character identity", "clothing", "appearance", "location", "lighting", "props", "emotional state", "spatial relationships", "time", "environmental state"],
+    "disconnectedCharacterInRoomImagesForbidden": true
+  },
+  "slideshowDetector": {
+    "detect": ["excessive static frames", "repeated assets", "long camera-only pans/zooms", "unchanged character pose", "missing character motion during dialogue", "lip-sync mismatch", "repeated transitions", "character identity drift", "background inconsistency", "audio/video synchronization problems", "scenes that feel like narrated artwork"],
+    "action": "REPAIR / REGENERATE; do not upload"
+  },
+  "audio": {
+    "required": ["natural U.S. English", "character-specific voices", "consistent voice identity", "emotional acting", "pacing", "pauses", "breaths", "emphasis", "natural cadence", "lip-sync alignment", "scene-specific SFX", "scene-specific music", "tension", "silence", "emotional progression", "clean mix", "dialogue clarity", "music ducking", "SFX balance", "loudness consistency", "no clipping", "no obvious noise/artifacts"],
+    "qa": ["Voice Quality", "Character Differentiation", "Emotional Performance", "Dialogue Clarity", "Lip Sync", "SFX Sync", "Music Balance", "Dynamic Range", "Loudness Consistency", "Noise/Artifact Detection"]
+  },
+  "contentScoring": {
+    "weights": { "viral": 0.25, "audience": 0.20, "originality": 0.15, "ip": 0.15, "monetization": 0.10, "feasibility": 0.10, "safety": 0.05 },
+    "componentScale": "0-100", "rejectIf": { "viralBelow": 65, "originalityBelow": 60, "ipBelow": 50, "safetyBelow": 85, "repetitionRiskAbove": 65 },
+    "decisions": { "humanReviewAtOrAbove": 78, "priorityProductionAtOrAbove": 88, "experimentRange": [75, 87], "archiveBelow": 75 }
+  },
+  "fatigue": {
+    "weights": { "plotSimilarity": 0.30, "emotionalSimilarity": 0.20, "hookSimilarity": 0.15, "characterSimilarity": 0.15, "settingSimilarity": 0.10, "endingSimilarity": 0.10 },
+    "thresholds": { "safeBelow": 35, "normalRange": [35, 50], "experimentRange": [50, 65], "rejectUnlessStrategicallyJustifiedRange": [65, 75], "automaticRejectAbove": 75 }
+  },
+  "rotation": {
+    "characterRollingWindowVideos": 10,
+    "characterTargets": { "RivenPercent": [70, 100], "MochiAshMaraPercent": [20, 40], "KeeperPercent": [10, 25], "otherCharactersOverlapPercent": 100 },
+    "doNotForceCharactersUnnaturally": true,
+    "emotionalRollingWindowVideos": 8,
+    "singleDominantEmotionMaximumPercent": 30,
+    "emotionOverrideRequiresAnalyticsJustification": true
+  },
+  "contentHealth": {
+    "weights": { "searchDemand": 0.20, "outlierFrequency": 0.20, "newChannelSuccess": 0.15, "viewVelocity": 0.15, "audienceEngagement": 0.10, "competition": 0.05, "monetization": 0.05, "formatFatigue": 0.10 },
+    "interpretation": { "expand": [80, 100], "continue": [65, 79], "experiment": [50, 64], "pivot": [35, 49], "retireBelow": 35 },
+    "opportunityFormula": "Demand × OutlierRate × Growth / (Competition × Fatigue)"
+  },
+  "seoPackaging": {
+    "handles": ["title", "description", "tags", "hashtags", "chapters", "category", "playlist", "thumbnail", "title/thumbnail pairing", "upload metadata", "keyword research", "U.S.-specific search intent", "trend/rising opportunities", "negative keywords/wrong audience avoidance", "SEO QA", "post-publication learning"],
+    "externalToolsAreValidationNotSoleBrain": true,
+    "titleScore": { "curiosity": 25, "clickPotential": 20, "storyAccuracy": 15, "audienceFit": 15, "searchRelevance": 10, "emotionalTension": 10, "clarity": 5 },
+    "reject": ["misleading titles", "clickbait", "keyword stuffing", "generic titles"]
+  },
+  "publishing": {
+    "minimumHoursBetweenUploads": 48,
+    "performanceTriggeredNotRigidCalendar": true,
+    "nextUploadRequires": ["current video sustained decline in views/hour", "at least 48 hours since previous upload", "next video already produced and ready"],
+    "randomHourlyFluctuationsMustNotTriggerPublishing": true
+  },
+  "assetPackaging": {
+    "episodeOutputFiles": ["FinalTitle.mp4", "FinalTitle.jpg", "FinalTitle.json", "FinalTitle.srt", "FinalTitle.txt", "upload_manifest.json"],
+    "masterManifestIsSourceOfTruth": true,
+    "filenameUsesExactFinalTitle": true,
+    "filenameIsNotClaimedAsYoutubeRankingFactor": true,
+    "manifestDefaults": { "category": "Entertainment", "language": "en-US", "audience": "US", "content_type": "long_form", "qa_status": "PENDING", "upload_status": "PENDING" }
+  },
+  "firstEpisode": {
+    "status": "concept pending production-system validation", "workingTitle": "The Billionaire Had 10 Minutes Left", "targetMinutes": [8, 10],
+    "hook": "At 11:49 PM, Daniel Cross was worth $14.7 billion. At 11:50, the Grim Reaper walked into his bedroom.",
+    "core": "Riven gives Daniel ten minutes to decide what his life was worth.", "beats": ["Daniel attempts to use money/bribery.", "Eventually he calls his estranged daughter.", "He admits he only wanted to hear her voice.", "Riven may spare him."],
+    "closingMessage": "10 minutes isn't the time you were given. It's the time you wasted.", "possibleLoreTease": "Riven notices a Ledger anomaly.", "thumbnail": { "concept": "Riven + terrified billionaire + 10:00 + luxury bedroom/dark atmosphere", "text": "10 MINUTES" }
+  },
+  "zeroCostPolicy": { "targetRecurringCost": 0, "prioritize": ["local GPU", "open-source software", "GitHub projects", "Python", "self-hosted n8n", "ComfyUI", "Blender", "FFmpeg", "local TTS", "local LLMs where practical", "YouTube Data API", "free/connected tools without mandatory recurring cost"], "paidMandatoryDependencyRequiresExplicitApproval": true },
+  "toolAgnosticArchitecture": { "toolsServeSystem": true, "strategyMustNotDependOnOneVideoGenerationProduct": true, "unavailableToolMustBeReplaceableWithoutChangingStrategy": true },
+  "productionPipeline": ["MASTER IDEA", "CONTENT SCORING", "FATIGUE CHECK", "STORY ENGINE", "SCRIPT", "LIVING STORY BIBLE", "SCENE BREAKDOWN", "SHOT PLAN", "CHARACTER/ENVIRONMENT/PROP STATE", "VISUAL PRODUCTION", "ACTUAL ANIMATION", "VOICE ACTING", "LIP SYNC", "SFX/MUSIC", "COMPOSITING", "SUBTITLES", "QA", "SEO/PACKAGING", "UPLOAD", "ANALYTICS", "LEARNING LOOP", "NEXT IDEA"],
+  "implementationPhases": ["Foundation / storage / core tools", "Local AI + tool architecture audit", "Persistent character system", "Living Story Bible + state engine", "Actual animation / rigging / shot production", "Voice acting + lip sync", "Cinematic audio", "Editing / compositing / rendering", "SEO / thumbnails / upload package", "n8n orchestration", "Automated QA", "Analytics + views/hour publishing trigger"],
+  "qaGate": ["Is the story good enough?", "Is the hook strong enough?", "Is the open loop resolved satisfactorily?", "Is the character continuity intact?", "Is the emotional continuity intact?", "Does the animation genuinely look animated?", "Does the video feel like a show rather than AI-generated artwork?", "Is lip sync correct?", "Is audio professional?", "Are SFX synchronized?", "Is the pacing strong?", "Is the title accurate?", "Does thumbnail/title create a valid open loop?", "Is SEO acceptable?", "Does it violate any rejection rule?", "Does it create excessive fatigue?", "Is the final output actually good enough?"],
+  "qaFailureAction": "REPAIR or REJECT",
+  "masterPrinciple": { "DeathboundIsAnAIContentFactory": false, "DeathboundIsAnAutomatedCinematicStorytellingStudio": true, "qualityOverQuantity": true, "automationIncreases": ["creative throughput", "consistency", "quality", "experimentation", "learning speed"], "automationMustNotExcuse": ["repetitive stories", "low-quality animation", "weak writing", "generic visuals", "robotic audio", "fake engagement", "mass-produced content"] },
+  "needsDecision": [
+    "Operational measurement methods, data sources, and automated repair thresholds for slideshow detection are not specified.",
+    "Operational scoring rubrics and data sources for Viral, Audience, Originality, IP, Monetization, Feasibility, Safety, Content Health, Opportunity, and Fatigue are not specified.",
+    "Analytics evidence threshold and statistical definition of sustained decline in views/hour are not specified.",
+    "Whether Riven actually spares Daniel Cross is explicitly unresolved."
+  ]
+}

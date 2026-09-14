@@ -1,0 +1,208 @@
+﻿{
+    "schema_version":  "1.0.0",
+    "bible_version":  "0.1.0",
+    "episode":  {
+                    "id":  "YR-001",
+                    "title":  "The Billionaire Had 10 Minutes Left",
+                    "status":  "development",
+                    "canon_status":  "partial"
+                },
+    "universe":  {
+                     "name":  "The Reaper\u0027s Ledger",
+                     "channel":  "Deathbound",
+                     "tagline":  "He collects souls. He studies humans."
+                 },
+    "characters":  {
+                       "riven":  {
+                                     "id":  "riven",
+                                     "name":  "Riven",
+                                     "role":  "Young Reaper",
+                                     "universe":  "The Reaper\u0027s Ledger",
+                                     "canonical_reference":  "D:\\Deathbound\\assets\\characters\\Riven\\RIVEN_CANON.json",
+                                     "status":  "canonical"
+                                 }
+                   },
+    "locations":  {
+                      "daniel_cross_bedroom":  {
+                                                   "id":  "loc-daniel-bedroom",
+                                                   "name":  "Daniel Cross Bedroom",
+                                                   "status":  "episode_established"
+                                               }
+                  },
+    "props":  {
+                  "reapers_ledger":  {
+                                         "id":  "prop-reapers-ledger",
+                                         "name":  "Reaper\u0027s Ledger",
+                                         "status":  "universe_established"
+                                     }
+              },
+    "timeline":  [
+
+                 ],
+    "world_rules":  {
+                        "reaper_rules":  [
+                                             {
+                                                 "rule_id":  "RULE-001",
+                                                 "name":  "Appointed Death",
+                                                 "statement":  "Reapers cannot freely change an appointed death.",
+                                                 "status":  "canonical"
+                                             },
+                                             {
+                                                 "rule_id":  "RULE-002",
+                                                 "name":  "Animal Sight",
+                                                 "statement":  "Animals can see Reapers.",
+                                                 "status":  "canonical"
+                                             },
+                                             {
+                                                 "rule_id":  "RULE-003",
+                                                 "name":  "Human Sight",
+                                                 "statement":  "Humans normally cannot see Reapers.",
+                                                 "status":  "canonical"
+                                             },
+                                             {
+                                                 "rule_id":  "RULE-004",
+                                                 "name":  "Temporary Interference",
+                                                 "statement":  "Reapers can temporarily interfere with human events, but interference creates consequences.",
+                                                 "status":  "canonical"
+                                             },
+                                             {
+                                                 "rule_id":  "RULE-005",
+                                                 "name":  "Soul Impressions",
+                                                 "statement":  "Souls retain emotional impressions after death.",
+                                                 "status":  "canonical"
+                                             },
+                                             {
+                                                 "rule_id":  "RULE-006",
+                                                 "name":  "Reaper Memory",
+                                                 "statement":  "Reapers remember every soul they collect.",
+                                                 "status":  "canonical"
+                                             },
+                                             {
+                                                 "rule_id":  "RULE-007",
+                                                 "name":  "Keeper Truth Rule",
+                                                 "statement":  "Reapers cannot lie to The Keeper.",
+                                                 "status":  "canonical"
+                                             },
+                                             {
+                                                 "rule_id":  "RULE-008",
+                                                 "name":  "Ledger Anomalies",
+                                                 "statement":  "Some humans are Ledger anomalies.",
+                                                 "status":  "canonical"
+                                             },
+                                             {
+                                                 "rule_id":  "RULE-009",
+                                                 "name":  "Death Prediction",
+                                                 "statement":  "The Ledger may predict deaths.",
+                                                 "status":  "canonical"
+                                             },
+                                             {
+                                                 "rule_id":  "RULE-010",
+                                                 "name":  "Ledger Alteration",
+                                                 "statement":  "Someone or something is altering Ledger entries.",
+                                                 "status":  "canonical"
+                                             }
+                                         ],
+                        "forbidden_assumptions":  [
+                                                      "Reapers can freely resurrect humans.",
+                                                      "Humans can normally see Reapers.",
+                                                      "Riven can freely ignore appointed deaths.",
+                                                      "The Keeper is automatically evil.",
+                                                      "Every Ledger anomaly has the same cause.",
+                                                      "The Ledger can do anything without defined consequences."
+                                                  ]
+                    },
+    "plot_state":  {
+                       "premise":  null,
+                       "central_conflict":  null,
+                       "stakes":  null,
+                       "resolution":  null,
+                       "ending_decision":  {
+                                               "question":  "Does Riven ultimately spare Daniel Cross?",
+                                               "status":  "unresolved",
+                                               "value":  null
+                                           }
+                   },
+    "knowledge_state":  {
+                            "global_facts":  [
+
+                                             ],
+                            "character_knowledge":  {
+                                                        "riven":  {
+                                                                      "knows":  [
+
+                                                                                ],
+                                                                      "does_not_know":  [
+
+                                                                                        ],
+                                                                      "suspects":  [
+
+                                                                                   ],
+                                                                      "believes":  [
+
+                                                                                   ],
+                                                                      "confirmed":  [
+
+                                                                                    ],
+                                                                      "misunderstands":  [
+
+                                                                                         ]
+                                                                  }
+                                                    },
+                            "audience_known":  [
+
+                                               ],
+                            "audience_unknown":  [
+
+                                                 ],
+                            "secrets":  [
+
+                                        ]
+                        },
+    "relationship_state":  {
+                               "riven":  {
+                                             "status":  "established_character",
+                                             "relationships":  [
+
+                                                               ]
+                                         }
+                           },
+    "open_loops":  [
+                       {
+                           "loop_id":  "LOOP-001",
+                           "question":  "Does Riven ultimately spare Daniel Cross?",
+                           "status":  "unresolved",
+                           "importance":  "high",
+                           "resolution":  null
+                       }
+                   ],
+    "causal_events":  [
+
+                      ],
+    "scene_registry":  [
+
+                       ],
+    "shot_registry":  [
+
+                      ],
+    "continuity":  {
+                       "active_character_states":  {
+                                                       "riven":  "D:\\Deathbound\\projects\\EP001\\characters\\riven.json"
+                                                   },
+                       "active_location_states":  {
+                                                      "daniel_cross_bedroom":  null
+                                                  },
+                       "active_prop_states":  {
+                                                  "reapers_ledger":  null
+                                              },
+                       "last_processed_event":  null,
+                       "last_processed_scene":  null,
+                       "last_processed_shot":  null
+                   },
+    "provenance":  {
+                       "invented_canon":  false,
+                       "episode_specific_content_complete":  false,
+                       "manual_decisions_required":  [
+                                                         "Determine whether Riven ultimately spares Daniel Cross."
+                                                     ]
+                   }
+}

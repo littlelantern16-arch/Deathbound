@@ -1,0 +1,189 @@
+﻿{
+  "schema_version": "1.0",
+  "status": "production_ready",
+  "purpose": "Validate cinematic camera behavior without allowing camera movement to substitute for character or environmental animation.",
+
+  "movement_types": [
+    "static",
+    "push_in",
+    "pull_out",
+    "pan",
+    "tilt",
+    "tracking",
+    "orbit",
+    "handheld",
+    "crane"
+  ],
+
+  "shot_types": [
+    "extreme_wide",
+    "wide",
+    "medium",
+    "medium_close",
+    "close",
+    "extreme_close"
+  ],
+
+  "movement_profiles": {
+    "static": {
+      "requires_motion_subject": false,
+      "camera_only_animation_risk": "low",
+      "preferred_purposes": [
+        "dialogue",
+        "observation",
+        "listening",
+        "emotional_resolution",
+        "tension"
+      ]
+    },
+    "push_in": {
+      "requires_motion_subject": false,
+      "camera_only_animation_risk": "medium",
+      "preferred_purposes": [
+        "realization",
+        "tension",
+        "emotional_emphasis",
+        "supernatural_payoff",
+        "reaction"
+      ]
+    },
+    "pull_out": {
+      "requires_motion_subject": false,
+      "camera_only_animation_risk": "medium",
+      "preferred_purposes": [
+        "isolation",
+        "aftermath",
+        "reveal",
+        "scale"
+      ]
+    },
+    "pan": {
+      "requires_motion_subject": false,
+      "camera_only_animation_risk": "medium",
+      "preferred_purposes": [
+        "reveal",
+        "spatial_discovery",
+        "relationship"
+      ]
+    },
+    "tilt": {
+      "requires_motion_subject": false,
+      "camera_only_animation_risk": "medium",
+      "preferred_purposes": [
+        "scale",
+        "vertical_reveal",
+        "supernatural_reveal"
+      ]
+    },
+    "tracking": {
+      "requires_motion_subject": true,
+      "camera_only_animation_risk": "low",
+      "preferred_purposes": [
+        "character_movement",
+        "action",
+        "walking",
+        "running",
+        "following"
+      ]
+    },
+    "orbit": {
+      "requires_motion_subject": false,
+      "camera_only_animation_risk": "high",
+      "preferred_purposes": [
+        "major_emotional_emphasis",
+        "supernatural_payoff",
+        "revelation"
+      ]
+    },
+    "handheld": {
+      "requires_motion_subject": false,
+      "camera_only_animation_risk": "medium",
+      "preferred_purposes": [
+        "urgency",
+        "instability",
+        "action",
+        "panic"
+      ]
+    },
+    "crane": {
+      "requires_motion_subject": false,
+      "camera_only_animation_risk": "high",
+      "preferred_purposes": [
+        "scale",
+        "establishing",
+        "dramatic_reveal",
+        "transition"
+      ]
+    }
+  },
+
+  "role_rules": {
+    "establishing": {
+      "preferred_movements": ["static", "push_in", "pull_out", "crane"],
+      "preferred_shot_types": ["extreme_wide", "wide"]
+    },
+    "character_coverage": {
+      "preferred_movements": ["tracking", "static", "pan"],
+      "preferred_shot_types": ["medium", "medium_close"]
+    },
+    "dialogue": {
+      "preferred_movements": ["static", "push_in", "pull_out"],
+      "preferred_shot_types": ["medium", "medium_close", "close"]
+    },
+    "reaction": {
+      "preferred_movements": ["static", "push_in", "pull_out"],
+      "preferred_shot_types": ["close", "medium_close", "extreme_close"]
+    },
+    "action": {
+      "preferred_movements": ["tracking", "handheld", "pan", "crane"],
+      "preferred_shot_types": ["wide", "medium"]
+    },
+    "supernatural_payoff": {
+      "preferred_movements": ["push_in", "orbit", "crane", "tilt"],
+      "preferred_shot_types": ["close", "extreme_close", "wide"]
+    },
+    "emotional_resolution": {
+      "preferred_movements": ["static", "push_in", "pull_out"],
+      "preferred_shot_types": ["medium_close", "close", "medium"]
+    }
+  },
+
+  "duration_rules": {
+    "minimum_duration_seconds": 0.25,
+    "maximum_single_shot_seconds": 15.0,
+    "tracking_minimum_seconds": 0.75,
+    "orbit_minimum_seconds": 1.0,
+    "crane_minimum_seconds": 1.0
+  },
+
+  "slideshow_defense": {
+    "camera_only_movement_forbidden_when": [
+      "active_dialogue_without_performance_change",
+      "required_action_without_character_motion",
+      "required_reaction_without_facial_or_body_change"
+    ],
+    "maximum_static_dialogue_seconds_without_performance_change": 5.0,
+    "maximum_camera_only_seconds": 4.0,
+    "repeated_camera_signature_limit": 3
+  },
+
+  "continuity": {
+    "connected_shots_must_preserve_spatial_logic": true,
+    "camera_movement_requires_transition_state": true,
+    "camera_position_must_not_teleport": true,
+    "intentional_cut_allows_composition_change": true
+  },
+
+  "quality_gates": [
+    "camera_type_valid",
+    "camera_movement_valid",
+    "role_behavior_alignment",
+    "movement_duration_valid",
+    "tracking_subject_valid",
+    "camera_only_animation_rejected",
+    "movement_transition_valid",
+    "camera_continuity_valid",
+    "repetition_control_valid",
+    "cinematic_behavior_valid"
+  ]
+}

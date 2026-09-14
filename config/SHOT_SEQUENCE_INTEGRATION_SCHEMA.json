@@ -1,0 +1,78 @@
+﻿{
+  "schema_version": "1.1",
+  "name": "DEATHBOUND_SHOT_SEQUENCE_INTEGRATION",
+  "status": "production_ready_blueprint",
+  "purpose": "Validate continuity, causality, cinematic progression, and anti-slideshow behavior across ordered shots.",
+
+  "sequence_contract": {
+    "required_fields": [
+      "sequence_id",
+      "scene_id",
+      "shots"
+    ],
+    "minimum_shots": 1
+  },
+
+  "shot_contract": {
+    "required_fields": [
+      "shot_id",
+      "duration_seconds",
+      "state_before",
+      "state_after",
+      "character_state",
+      "camera_state",
+      "spatial_state",
+      "props",
+      "environment",
+      "lighting",
+      "effects",
+      "performance",
+      "audio_state",
+      "causal_event_ids"
+    ]
+  },
+
+  "continuity_rules": {
+    "state_before_must_match_previous_state_after": true,
+    "character_state_changes_require_cause": true,
+    "spatial_state_changes_require_cause": true,
+    "prop_state_changes_require_cause": true,
+    "environment_changes_require_cause": true,
+    "lighting_changes_require_cause": true,
+    "camera_changes_are_allowed_at_shot_boundaries": true,
+    "connected_camera_motion_requires_transition_metadata": true,
+    "audio_speaker_changes_require_boundary_or_overlap": true
+  },
+
+  "transition_rules": {
+    "character_teleport_requires_causal_event": true,
+    "prop_teleport_requires_causal_event": true,
+    "lighting_jump_requires_causal_event": true,
+    "environment_jump_requires_causal_event": true,
+    "state_jump_requires_causal_event": true,
+    "connected_camera_change_requires_camera_transition": true
+  },
+
+  "performance_rules": {
+    "active_dialogue_cannot_disappear_without_boundary": true,
+    "supernatural_activation_requires_progression": true,
+    "reaction_requires_visible_change": true,
+    "repeated_identical_performance_is_blocked": true
+  },
+
+  "repetition_rules": {
+    "maximum_identical_camera_signature_run": 3,
+    "maximum_identical_performance_signature_run": 3,
+    "maximum_identical_complete_signature_run": 2,
+    "minimum_distinct_signatures_for_long_sequence": 4,
+    "long_sequence_threshold": 6
+  },
+
+  "slideshow_defense": {
+    "static_shot_run_threshold": 3,
+    "static_character_with_only_camera_change": true,
+    "voiceover_over_repeated_static_frames": true,
+    "effect_overlay_cannot_count_as_character_performance": true,
+    "camera_movement_alone_cannot_count_as_action": true
+  }
+}

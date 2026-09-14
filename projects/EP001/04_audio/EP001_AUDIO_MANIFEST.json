@@ -1,0 +1,767 @@
+{
+  "schema_version": "1.0",
+  "episode": "EP001",
+  "episode_id": "YR-001",
+  "title": "The Billionaire Had 10 Minutes Left",
+  "status": "generated",
+  "generated_at_utc": "2026-09-13T14:25:03.573688+00:00",
+  "voice_mode": "temporary_single_voice",
+  "voice_policy": {
+    "note": "Temporary John Piper voice used for all speakers for Video #1.",
+    "upgrade_after_first_video": true
+  },
+  "line_count": 75,
+  "total_duration_seconds": 165.209978,
+  "lines": [
+    {
+      "line_id": "S01 â€” 11:49 PM_L001",
+      "scene_id": "S01 â€” 11:49 PM",
+      "scene_title": "S01 â€” 11:49 PM",
+      "speaker": "NARRATOR",
+      "text": "At 11:49 PM, Daniel Cross was worth fourteen point seven billion dollars.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S01 â€” 11:49 PM_L001.wav",
+      "duration_seconds": 6.292608,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S01 â€” 11:49 PM_L002",
+      "scene_id": "S01 â€” 11:49 PM",
+      "scene_title": "S01 â€” 11:49 PM",
+      "speaker": "NARRATOR",
+      "text": "At 11:49 PM, he thought he had everything money could buy.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S01 â€” 11:49 PM_L002.wav",
+      "duration_seconds": 4.121542,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S01 â€” 11:49 PM_L003",
+      "scene_id": "S01 â€” 11:49 PM",
+      "scene_title": "S01 â€” 11:49 PM",
+      "speaker": "NARRATOR",
+      "text": "He was wrong.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S01 â€” 11:49 PM_L003.wav",
+      "duration_seconds": 1.021678,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S01 â€” 11:49 PM_L004",
+      "scene_id": "S01 â€” 11:49 PM",
+      "scene_title": "S01 â€” 11:49 PM",
+      "speaker": "NARRATOR",
+      "text": "Because the Ledger had already written his name down.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S01 â€” 11:49 PM_L004.wav",
+      "duration_seconds": 3.041814,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S02 â€” The Appointment_L005",
+      "scene_id": "S02 â€” The Appointment",
+      "scene_title": "S02 â€” The Appointment",
+      "speaker": "NARRATOR",
+      "text": "Riven had collected thousands of souls.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S02 â€” The Appointment_L005.wav",
+      "duration_seconds": 2.438095,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S02 â€” The Appointment_L006",
+      "scene_id": "S02 â€” The Appointment",
+      "scene_title": "S02 â€” The Appointment",
+      "speaker": "NARRATOR",
+      "text": "He never cared how rich they were.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S02 â€” The Appointment_L006.wav",
+      "duration_seconds": 2.136236,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S02 â€” The Appointment_L007",
+      "scene_id": "S02 â€” The Appointment",
+      "scene_title": "S02 â€” The Appointment",
+      "speaker": "NARRATOR",
+      "text": "Death did not negotiate with bank accounts.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S02 â€” The Appointment_L007.wav",
+      "duration_seconds": 2.914104,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S02 â€” The Appointment_L008",
+      "scene_id": "S02 â€” The Appointment",
+      "scene_title": "S02 â€” The Appointment",
+      "speaker": "NARRATOR",
+      "text": "But tonight, the Ledger felt different.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S02 â€” The Appointment_L008.wav",
+      "duration_seconds": 3.250794,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S02 â€” The Appointment_L009",
+      "scene_id": "S02 â€” The Appointment",
+      "scene_title": "S02 â€” The Appointment",
+      "speaker": "Riven",
+      "text": "Ten minutes.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S02 â€” The Appointment_L009.wav",
+      "duration_seconds": 1.381587,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S02 â€” The Appointment_L010",
+      "scene_id": "S02 â€” The Appointment",
+      "scene_title": "S02 â€” The Appointment",
+      "speaker": "Daniel",
+      "text": "Who are you?",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S02 â€” The Appointment_L010.wav",
+      "duration_seconds": 0.684989,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S02 â€” The Appointment_L011",
+      "scene_id": "S02 â€” The Appointment",
+      "scene_title": "S02 â€” The Appointment",
+      "speaker": "Riven",
+      "text": "Someone who already knows how this ends.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S02 â€” The Appointment_L011.wav",
+      "duration_seconds": 2.867664,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S03 â€” The Clock_L012",
+      "scene_id": "S03 â€” The Clock",
+      "scene_title": "S03 â€” The Clock",
+      "speaker": "NARRATOR",
+      "text": "Daniel stared at the clock.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S03 â€” The Clock_L012.wav",
+      "duration_seconds": 1.706667,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S03 â€” The Clock_L013",
+      "scene_id": "S03 â€” The Clock",
+      "scene_title": "S03 â€” The Clock",
+      "speaker": "NARRATOR",
+      "text": "Ten minutes is a long time when you are waiting for something.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S03 â€” The Clock_L013.wav",
+      "duration_seconds": 3.227574,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S03 â€” The Clock_L014",
+      "scene_id": "S03 â€” The Clock",
+      "scene_title": "S03 â€” The Clock",
+      "speaker": "NARRATOR",
+      "text": "It is a very short time when you finally understand what you wasted.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S03 â€” The Clock_L014.wav",
+      "duration_seconds": 3.726803,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S03 â€” The Clock_L015",
+      "scene_id": "S03 â€” The Clock",
+      "scene_title": "S03 â€” The Clock",
+      "speaker": "NARRATOR",
+      "text": "For the first time in years, Daniel stopped thinking about money.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S03 â€” The Clock_L015.wav",
+      "duration_seconds": 4.516281,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S03 â€” The Clock_L016",
+      "scene_id": "S03 â€” The Clock",
+      "scene_title": "S03 â€” The Clock",
+      "speaker": "Daniel",
+      "text": "Ten minutes until what?",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S03 â€” The Clock_L016.wav",
+      "duration_seconds": 2.496145,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S03 â€” The Clock_L017",
+      "scene_id": "S03 â€” The Clock",
+      "scene_title": "S03 â€” The Clock",
+      "speaker": "Riven",
+      "text": "Until the part you cannot buy.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S03 â€” The Clock_L017.wav",
+      "duration_seconds": 1.915646,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S04 â€” The Call_L018",
+      "scene_id": "S04 â€” The Call",
+      "scene_title": "S04 â€” The Call",
+      "speaker": "NARRATOR",
+      "text": "Daniel opened his phone.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S04 â€” The Call_L018.wav",
+      "duration_seconds": 1.544127,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S04 â€” The Call_L019",
+      "scene_id": "S04 â€” The Call",
+      "scene_title": "S04 â€” The Call",
+      "speaker": "NARRATOR",
+      "text": "There was one name he had not called in three years.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S04 â€” The Call_L019.wav",
+      "duration_seconds": 3.088254,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S04 â€” The Call_L020",
+      "scene_id": "S04 â€” The Call",
+      "scene_title": "S04 â€” The Call",
+      "speaker": "NARRATOR",
+      "text": "His daughter.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S04 â€” The Call_L020.wav",
+      "duration_seconds": 0.952018,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S04 â€” The Call_L021",
+      "scene_id": "S04 â€” The Call",
+      "scene_title": "S04 â€” The Call",
+      "speaker": "NARRATOR",
+      "text": "He had sent money instead of apologies so many times that money had started to feel like an apology.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S04 â€” The Call_L021.wav",
+      "duration_seconds": 6.176508,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S04 â€” The Call_L022",
+      "scene_id": "S04 â€” The Call",
+      "scene_title": "S04 â€” The Call",
+      "speaker": "Daniel",
+      "text": "I know it is late.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S04 â€” The Call_L022.wav",
+      "duration_seconds": 1.311927,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S04 â€” The Call_L023",
+      "scene_id": "S04 â€” The Call",
+      "scene_title": "S04 â€” The Call",
+      "speaker": "Daniel",
+      "text": "I just... wanted to hear your voice.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S04 â€” The Call_L023.wav",
+      "duration_seconds": 2.089796,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S04 â€” The Call_L024",
+      "scene_id": "S04 â€” The Call",
+      "scene_title": "S04 â€” The Call",
+      "speaker": "Daughter",
+      "text": "Dad? Is everything okay?",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S04 â€” The Call_L024.wav",
+      "duration_seconds": 1.996916,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S05 â€” What Money Couldn't Fix_L025",
+      "scene_id": "S05 â€” What Money Couldn't Fix",
+      "scene_title": "S05 â€” What Money Couldn't Fix",
+      "speaker": "NARRATOR",
+      "text": "Daniel tried to explain.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S05 â€” What Money Couldn't Fix_L025.wav",
+      "duration_seconds": 1.904036,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S05 â€” What Money Couldn't Fix_L026",
+      "scene_id": "S05 â€” What Money Couldn't Fix",
+      "scene_title": "S05 â€” What Money Couldn't Fix",
+      "speaker": "NARRATOR",
+      "text": "Not the company.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S05 â€” What Money Couldn't Fix_L026.wav",
+      "duration_seconds": 1.172608,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S05 â€” What Money Couldn't Fix_L027",
+      "scene_id": "S05 â€” What Money Couldn't Fix",
+      "scene_title": "S05 â€” What Money Couldn't Fix",
+      "speaker": "NARRATOR",
+      "text": "Not the billions.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S05 â€” What Money Couldn't Fix_L027.wav",
+      "duration_seconds": 1.532517,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S05 â€” What Money Couldn't Fix_L028",
+      "scene_id": "S05 â€” What Money Couldn't Fix",
+      "scene_title": "S05 â€” What Money Couldn't Fix",
+      "speaker": "NARRATOR",
+      "text": "Just the years.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S05 â€” What Money Couldn't Fix_L028.wav",
+      "duration_seconds": 1.149388,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S05 â€” What Money Couldn't Fix_L029",
+      "scene_id": "S05 â€” What Money Couldn't Fix",
+      "scene_title": "S05 â€” What Money Couldn't Fix",
+      "speaker": "NARRATOR",
+      "text": "Riven watched without interrupting.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S05 â€” What Money Couldn't Fix_L029.wav",
+      "duration_seconds": 2.147846,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S05 â€” What Money Couldn't Fix_L030",
+      "scene_id": "S05 â€” What Money Couldn't Fix",
+      "scene_title": "S05 â€” What Money Couldn't Fix",
+      "speaker": "NARRATOR",
+      "text": "He had seen people beg for more time before.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S05 â€” What Money Couldn't Fix_L030.wav",
+      "duration_seconds": 2.890884,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S05 â€” What Money Couldn't Fix_L031",
+      "scene_id": "S05 â€” What Money Couldn't Fix",
+      "scene_title": "S05 â€” What Money Couldn't Fix",
+      "speaker": "NARRATOR",
+      "text": "He had rarely seen anyone use it honestly.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S05 â€” What Money Couldn't Fix_L031.wav",
+      "duration_seconds": 2.658685,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S05 â€” What Money Couldn't Fix_L032",
+      "scene_id": "S05 â€” What Money Couldn't Fix",
+      "scene_title": "S05 â€” What Money Couldn't Fix",
+      "speaker": "Daniel",
+      "text": "I thought giving you everything would make up for not being there.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S05 â€” What Money Couldn't Fix_L032.wav",
+      "duration_seconds": 2.995374,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S05 â€” What Money Couldn't Fix_L033",
+      "scene_id": "S05 â€” What Money Couldn't Fix",
+      "scene_title": "S05 â€” What Money Couldn't Fix",
+      "speaker": "Daughter",
+      "text": "I did not need everything.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S05 â€” What Money Couldn't Fix_L033.wav",
+      "duration_seconds": 1.753107,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S05 â€” What Money Couldn't Fix_L034",
+      "scene_id": "S05 â€” What Money Couldn't Fix",
+      "scene_title": "S05 â€” What Money Couldn't Fix",
+      "speaker": "Daughter",
+      "text": "I needed you.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S05 â€” What Money Couldn't Fix_L034.wav",
+      "duration_seconds": 1.091338,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S06 â€” The Ledger Changes_L035",
+      "scene_id": "S06 â€” The Ledger Changes",
+      "scene_title": "S06 â€” The Ledger Changes",
+      "speaker": "NARRATOR",
+      "text": "Then the Ledger moved.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S06 â€” The Ledger Changes_L035.wav",
+      "duration_seconds": 1.451247,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S06 â€” The Ledger Changes_L036",
+      "scene_id": "S06 â€” The Ledger Changes",
+      "scene_title": "S06 â€” The Ledger Changes",
+      "speaker": "NARRATOR",
+      "text": "Riven looked down.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S06 â€” The Ledger Changes_L036.wav",
+      "duration_seconds": 1.253878,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S06 â€” The Ledger Changes_L037",
+      "scene_id": "S06 â€” The Ledger Changes",
+      "scene_title": "S06 â€” The Ledger Changes",
+      "speaker": "NARRATOR",
+      "text": "The time beside Daniel's name flickered.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S06 â€” The Ledger Changes_L037.wav",
+      "duration_seconds": 2.635465,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S06 â€” The Ledger Changes_L038",
+      "scene_id": "S06 â€” The Ledger Changes",
+      "scene_title": "S06 â€” The Ledger Changes",
+      "speaker": "NARRATOR",
+      "text": "That was impossible.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S06 â€” The Ledger Changes_L038.wav",
+      "duration_seconds": 1.428027,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S06 â€” The Ledger Changes_L039",
+      "scene_id": "S06 â€” The Ledger Changes",
+      "scene_title": "S06 â€” The Ledger Changes",
+      "speaker": "NARRATOR",
+      "text": "An appointed death was not supposed to change because a man finally said what he should have said years ago.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S06 â€” The Ledger Changes_L039.wav",
+      "duration_seconds": 5.700499,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S06 â€” The Ledger Changes_L040",
+      "scene_id": "S06 â€” The Ledger Changes",
+      "scene_title": "S06 â€” The Ledger Changes",
+      "speaker": "Riven",
+      "text": "No.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S06 â€” The Ledger Changes_L040.wav",
+      "duration_seconds": 0.812698,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S06 â€” The Ledger Changes_L041",
+      "scene_id": "S06 â€” The Ledger Changes",
+      "scene_title": "S06 â€” The Ledger Changes",
+      "speaker": "Riven",
+      "text": "That is not how this works.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S06 â€” The Ledger Changes_L041.wav",
+      "duration_seconds": 1.799546,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S07 â€” The Question_L042",
+      "scene_id": "S07 â€” The Question",
+      "scene_title": "S07 â€” The Question",
+      "speaker": "NARRATOR",
+      "text": "Riven had a choice he was never supposed to have.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S07 â€” The Question_L042.wav",
+      "duration_seconds": 2.948934,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S07 â€” The Question_L043",
+      "scene_id": "S07 â€” The Question",
+      "scene_title": "S07 â€” The Question",
+      "speaker": "NARRATOR",
+      "text": "He could close the Ledger.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S07 â€” The Question_L043.wav",
+      "duration_seconds": 1.428027,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S07 â€” The Question_L044",
+      "scene_id": "S07 â€” The Question",
+      "scene_title": "S07 â€” The Question",
+      "speaker": "NARRATOR",
+      "text": "He could collect Daniel's soul.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S07 â€” The Question_L044.wav",
+      "duration_seconds": 2.043356,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S07 â€” The Question_L045",
+      "scene_id": "S07 â€” The Question",
+      "scene_title": "S07 â€” The Question",
+      "speaker": "NARRATOR",
+      "text": "Or he could find out why the entry had changed.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S07 â€” The Question_L045.wav",
+      "duration_seconds": 2.902494,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S07 â€” The Question_L046",
+      "scene_id": "S07 â€” The Question",
+      "scene_title": "S07 â€” The Question",
+      "speaker": "Daniel",
+      "text": "Am I dying?",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S07 â€” The Question_L046.wav",
+      "duration_seconds": 1.137778,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S07 â€” The Question_L047",
+      "scene_id": "S07 â€” The Question",
+      "scene_title": "S07 â€” The Question",
+      "speaker": "Riven",
+      "text": "You were.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S07 â€” The Question_L047.wav",
+      "duration_seconds": 0.684989,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S07 â€” The Question_L048",
+      "scene_id": "S07 â€” The Question",
+      "scene_title": "S07 â€” The Question",
+      "speaker": "Daniel",
+      "text": "And now?",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S07 â€” The Question_L048.wav",
+      "duration_seconds": 0.684989,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S07 â€” The Question_L049",
+      "scene_id": "S07 â€” The Question",
+      "scene_title": "S07 â€” The Question",
+      "speaker": "Riven",
+      "text": "Now I have a question.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S07 â€” The Question_L049.wav",
+      "duration_seconds": 1.660227,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S08 â€” One More Minute_L050",
+      "scene_id": "S08 â€” One More Minute",
+      "scene_title": "S08 â€” One More Minute",
+      "speaker": "NARRATOR",
+      "text": "Riven gave Daniel one more minute.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S08 â€” One More Minute_L050.wav",
+      "duration_seconds": 2.124626,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S08 â€” One More Minute_L051",
+      "scene_id": "S08 â€” One More Minute",
+      "scene_title": "S08 â€” One More Minute",
+      "speaker": "NARRATOR",
+      "text": "Not because Daniel was rich.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S08 â€” One More Minute_L051.wav",
+      "duration_seconds": 2.321995,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S08 â€” One More Minute_L052",
+      "scene_id": "S08 â€” One More Minute",
+      "scene_title": "S08 â€” One More Minute",
+      "speaker": "NARRATOR",
+      "text": "Not because Riven was merciful.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S08 â€” One More Minute_L052.wav",
+      "duration_seconds": 1.950476,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S08 â€” One More Minute_L053",
+      "scene_id": "S08 â€” One More Minute",
+      "scene_title": "S08 â€” One More Minute",
+      "speaker": "NARRATOR",
+      "text": "Because something had altered the Ledger.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S08 â€” One More Minute_L053.wav",
+      "duration_seconds": 2.217506,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S08 â€” One More Minute_L054",
+      "scene_id": "S08 â€” One More Minute",
+      "scene_title": "S08 â€” One More Minute",
+      "speaker": "NARRATOR",
+      "text": "And Riven needed to know who—or what—was behind it.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S08 â€” One More Minute_L054.wav",
+      "duration_seconds": 2.716735,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S08 â€” One More Minute_L055",
+      "scene_id": "S08 â€” One More Minute",
+      "scene_title": "S08 â€” One More Minute",
+      "speaker": "Riven",
+      "text": "You get one more minute.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S08 â€” One More Minute_L055.wav",
+      "duration_seconds": 1.671837,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S08 â€” One More Minute_L056",
+      "scene_id": "S08 â€” One More Minute",
+      "scene_title": "S08 â€” One More Minute",
+      "speaker": "Daniel",
+      "text": "Why?",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S08 â€” One More Minute_L056.wav",
+      "duration_seconds": 0.603719,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S08 â€” One More Minute_L057",
+      "scene_id": "S08 â€” One More Minute",
+      "scene_title": "S08 â€” One More Minute",
+      "speaker": "Riven",
+      "text": "Because someone changed your death.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S08 â€” One More Minute_L057.wav",
+      "duration_seconds": 1.996916,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S08 â€” One More Minute_L058",
+      "scene_id": "S08 â€” One More Minute",
+      "scene_title": "S08 â€” One More Minute",
+      "speaker": "Daniel",
+      "text": "Who?",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S08 â€” One More Minute_L058.wav",
+      "duration_seconds": 0.510839,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S08 â€” One More Minute_L059",
+      "scene_id": "S08 â€” One More Minute",
+      "scene_title": "S08 â€” One More Minute",
+      "speaker": "Riven",
+      "text": "I intend to find out.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S08 â€” One More Minute_L059.wav",
+      "duration_seconds": 1.671837,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S09 â€” 11:59 PM_L060",
+      "scene_id": "S09 â€” 11:59 PM",
+      "scene_title": "S09 â€” 11:59 PM",
+      "speaker": "NARRATOR",
+      "text": "At 11:59 PM, Daniel's phone was still in his hand.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S09 â€” 11:59 PM_L060.wav",
+      "duration_seconds": 3.982222,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S09 â€” 11:59 PM_L061",
+      "scene_id": "S09 â€” 11:59 PM",
+      "scene_title": "S09 â€” 11:59 PM",
+      "speaker": "NARRATOR",
+      "text": "His daughter was still on the line.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S09 â€” 11:59 PM_L061.wav",
+      "duration_seconds": 2.147846,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S09 â€” 11:59 PM_L062",
+      "scene_id": "S09 â€” 11:59 PM",
+      "scene_title": "S09 â€” 11:59 PM",
+      "speaker": "NARRATOR",
+      "text": "And the Ledger was still open.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S09 â€” 11:59 PM_L062.wav",
+      "duration_seconds": 1.753107,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S09 â€” 11:59 PM_L063",
+      "scene_id": "S09 â€” 11:59 PM",
+      "scene_title": "S09 â€” 11:59 PM",
+      "speaker": "NARRATOR",
+      "text": "Riven turned one final page.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S09 â€” 11:59 PM_L063.wav",
+      "duration_seconds": 2.461315,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S09 â€” 11:59 PM_L064",
+      "scene_id": "S09 â€” 11:59 PM",
+      "scene_title": "S09 â€” 11:59 PM",
+      "speaker": "NARRATOR",
+      "text": "There was no new name.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S09 â€” 11:59 PM_L064.wav",
+      "duration_seconds": 1.683447,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S09 â€” 11:59 PM_L065",
+      "scene_id": "S09 â€” 11:59 PM",
+      "scene_title": "S09 â€” 11:59 PM",
+      "speaker": "NARRATOR",
+      "text": "Only a blank line.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S09 â€” 11:59 PM_L065.wav",
+      "duration_seconds": 1.683447,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S10 â€” The Time You Wasted_L066",
+      "scene_id": "S10 â€” The Time You Wasted",
+      "scene_title": "S10 â€” The Time You Wasted",
+      "speaker": "NARRATOR",
+      "text": "Riven closed the Ledger.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S10 â€” The Time You Wasted_L066.wav",
+      "duration_seconds": 1.486077,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S10 â€” The Time You Wasted_L067",
+      "scene_id": "S10 â€” The Time You Wasted",
+      "scene_title": "S10 â€” The Time You Wasted",
+      "speaker": "NARRATOR",
+      "text": "Daniel had been given ten minutes.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S10 â€” The Time You Wasted_L067.wav",
+      "duration_seconds": 2.368435,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S10 â€” The Time You Wasted_L068",
+      "scene_id": "S10 â€” The Time You Wasted",
+      "scene_title": "S10 â€” The Time You Wasted",
+      "speaker": "NARRATOR",
+      "text": "Maybe they had changed his fate.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S10 â€” The Time You Wasted_L068.wav",
+      "duration_seconds": 1.985306,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S10 â€” The Time You Wasted_L069",
+      "scene_id": "S10 â€” The Time You Wasted",
+      "scene_title": "S10 â€” The Time You Wasted",
+      "speaker": "NARRATOR",
+      "text": "Maybe they had only delayed it.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S10 â€” The Time You Wasted_L069.wav",
+      "duration_seconds": 2.101406,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S10 â€” The Time You Wasted_L070",
+      "scene_id": "S10 â€” The Time You Wasted",
+      "scene_title": "S10 â€” The Time You Wasted",
+      "speaker": "NARRATOR",
+      "text": "Riven did not know yet.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S10 â€” The Time You Wasted_L070.wav",
+      "duration_seconds": 1.555737,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S10 â€” The Time You Wasted_L071",
+      "scene_id": "S10 â€” The Time You Wasted",
+      "scene_title": "S10 â€” The Time You Wasted",
+      "speaker": "NARRATOR",
+      "text": "But he knew one thing.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S10 â€” The Time You Wasted_L071.wav",
+      "duration_seconds": 1.404807,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S10 â€” The Time You Wasted_L072",
+      "scene_id": "S10 â€” The Time You Wasted",
+      "scene_title": "S10 â€” The Time You Wasted",
+      "speaker": "NARRATOR",
+      "text": "Ten minutes is not the time you were given.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S10 â€” The Time You Wasted_L072.wav",
+      "duration_seconds": 2.925714,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S10 â€” The Time You Wasted_L073",
+      "scene_id": "S10 â€” The Time You Wasted",
+      "scene_title": "S10 â€” The Time You Wasted",
+      "speaker": "NARRATOR",
+      "text": "It is the time you wasted.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S10 â€” The Time You Wasted_L073.wav",
+      "duration_seconds": 2.078186,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S10 â€” The Time You Wasted_L074",
+      "scene_id": "S10 â€” The Time You Wasted",
+      "scene_title": "S10 â€” The Time You Wasted",
+      "speaker": "Riven",
+      "text": "Ten minutes isn't the time you were given.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S10 â€” The Time You Wasted_L074.wav",
+      "duration_seconds": 3.018594,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    },
+    {
+      "line_id": "S10 â€” The Time You Wasted_L075",
+      "scene_id": "S10 â€” The Time You Wasted",
+      "scene_title": "S10 â€” The Time You Wasted",
+      "speaker": "Riven",
+      "text": "It's the time you wasted.",
+      "wav": "D:\\Deathbound\\projects\\EP001\\04_audio\\lines\\S10 â€” The Time You Wasted_L075.wav",
+      "duration_seconds": 2.020136,
+      "voice_model": "D:\\Deathbound\\tools\\piper\\voices\\en_US-john-medium.onnx"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+﻿{
+  "schema_version": "1.0.0",
+  "character": "riven",
+  "tests": [
+    {
+      "id": "VALID-001",
+      "name": "Normal Riven state",
+      "expected": "PASS",
+      "state": {
+        "age_appearance": "19-22",
+        "body_type": "slim/lean",
+        "clothing": "default",
+        "eye_state": "dark",
+        "knowledge_event": true
+      }
+    },
+    {
+      "id": "VALID-002",
+      "name": "Supernatural eye activation with cause",
+      "expected": "PASS",
+      "state": {
+        "age_appearance": "19-22",
+        "body_type": "slim/lean",
+        "clothing": "default",
+        "eye_state": "supernatural_glow",
+        "eye_change_cause": "supernatural ability activation",
+        "knowledge_event": true
+      }
+    },
+    {
+      "id": "INVALID-001",
+      "name": "Unexplained age change",
+      "expected": "FAIL",
+      "state": {
+        "age_appearance": "30",
+        "body_type": "slim/lean",
+        "clothing": "default",
+        "eye_state": "dark"
+      }
+    },
+    {
+      "id": "INVALID-002",
+      "name": "Unexplained body change",
+      "expected": "FAIL",
+      "state": {
+        "age_appearance": "19-22",
+        "body_type": "muscular",
+        "clothing": "default",
+        "eye_state": "dark"
+      }
+    },
+    {
+      "id": "INVALID-003",
+      "name": "Unexplained clothing change",
+      "expected": "FAIL",
+      "state": {
+        "age_appearance": "19-22",
+        "body_type": "slim/lean",
+        "clothing": "red suit",
+        "clothing_change_cause": null,
+        "eye_state": "dark"
+      }
+    },
+    {
+      "id": "INVALID-004",
+      "name": "Unexplained supernatural eyes",
+      "expected": "FAIL",
+      "state": {
+        "age_appearance": "19-22",
+        "body_type": "slim/lean",
+        "clothing": "default",
+        "eye_state": "supernatural_glow",
+        "eye_change_cause": null
+      }
+    },
+    {
+      "id": "INVALID-005",
+      "name": "Knowledge appears without event",
+      "expected": "FAIL",
+      "state": {
+        "age_appearance": "19-22",
+        "body_type": "slim/lean",
+        "clothing": "default",
+        "eye_state": "dark",
+        "knowledge": [
+          "Daniel Cross will die at midnight"
+        ],
+        "knowledge_event": false
+      }
+    },
+    {
+      "id": "INVALID-006",
+      "name": "Canonical identity mutation",
+      "expected": "FAIL",
+      "state": {
+        "id": "different_character",
+        "name": "Riven",
+        "age_appearance": "19-22",
+        "body_type": "slim/lean",
+        "clothing": "default",
+        "eye_state": "dark"
+      }
+    },
+    {
+      "id": "INVALID-007",
+      "name": "Default giant scythe introduced",
+      "expected": "FAIL",
+      "state": {
+        "age_appearance": "19-22",
+        "body_type": "slim/lean",
+        "clothing": "default",
+        "eye_state": "dark",
+        "default_weapon": "giant scythe"
+      }
+    }
+  ]
+}

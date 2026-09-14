@@ -1,0 +1,3920 @@
+{
+  "schema_version": "1.0",
+  "episode": "EP001",
+  "status": "architecture_validated_audio_retimed",
+  "production_shots": [
+    {
+      "shot_id": "S01-SHOT-001",
+      "scene_id": "S01",
+      "sequence_id": "S01-SEQ-001",
+      "duration_seconds": 14.5,
+      "animation_tier": "atmospheric",
+      "purpose": "establishing",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "idle"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "moderate",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": false,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-001"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 14.477642,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S01-SHOT-002",
+      "scene_id": "S01",
+      "sequence_id": "S01-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "standard",
+      "purpose": "character_coverage",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S01-SHOT-001"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-001"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S01-SHOT-003",
+      "scene_id": "S01",
+      "sequence_id": "S01-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "supernatural_payoff",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [
+          "supernatural_energy"
+        ],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S01-SHOT-002"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-001"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S01-SHOT-004",
+      "scene_id": "S01",
+      "sequence_id": "S01-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "emotional_resolution",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S01-SHOT-003"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-001"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S02-SHOT-001",
+      "scene_id": "S02",
+      "sequence_id": "S02-SEQ-001",
+      "duration_seconds": 15.75,
+      "animation_tier": "atmospheric",
+      "purpose": "establishing",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "idle"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "moderate",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S01-SHOT-004"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-002"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 15.673469,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S02-SHOT-002",
+      "scene_id": "S02",
+      "sequence_id": "S02-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "standard",
+      "purpose": "character_coverage",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S02-SHOT-001"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-002"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S02-SHOT-003",
+      "scene_id": "S02",
+      "sequence_id": "S02-SEQ-001",
+      "duration_seconds": 5.0,
+      "animation_tier": "standard",
+      "purpose": "dialogue",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S02-SHOT-002"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-002"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 5.0
+      }
+    },
+    {
+      "shot_id": "S02-SHOT-004",
+      "scene_id": "S02",
+      "sequence_id": "S02-SEQ-001",
+      "duration_seconds": 3.0,
+      "animation_tier": "standard",
+      "purpose": "reaction",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S02-SHOT-003"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-002"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S02-SHOT-005",
+      "scene_id": "S02",
+      "sequence_id": "S02-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "action",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S02-SHOT-004"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-002"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S02-SHOT-006",
+      "scene_id": "S02",
+      "sequence_id": "S02-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "supernatural_payoff",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [
+          "supernatural_energy"
+        ],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S02-SHOT-005"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-002"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S02-SHOT-007",
+      "scene_id": "S02",
+      "sequence_id": "S02-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "emotional_resolution",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S02-SHOT-006"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-002"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S03-SHOT-001",
+      "scene_id": "S03",
+      "sequence_id": "S03-SEQ-001",
+      "duration_seconds": 17.5,
+      "animation_tier": "atmospheric",
+      "purpose": "establishing",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "idle"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "moderate",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S02-SHOT-007"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-003"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 17.589116,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S03-SHOT-002",
+      "scene_id": "S03",
+      "sequence_id": "S03-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "standard",
+      "purpose": "character_coverage",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S03-SHOT-001"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-003"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S03-SHOT-003",
+      "scene_id": "S03",
+      "sequence_id": "S03-SEQ-001",
+      "duration_seconds": 5.0,
+      "animation_tier": "standard",
+      "purpose": "dialogue",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S03-SHOT-002"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-003"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 5.0
+      }
+    },
+    {
+      "shot_id": "S03-SHOT-004",
+      "scene_id": "S03",
+      "sequence_id": "S03-SEQ-001",
+      "duration_seconds": 3.0,
+      "animation_tier": "standard",
+      "purpose": "reaction",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S03-SHOT-003"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-003"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S03-SHOT-005",
+      "scene_id": "S03",
+      "sequence_id": "S03-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "supernatural_payoff",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [
+          "supernatural_energy"
+        ],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S03-SHOT-004"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-003"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S03-SHOT-006",
+      "scene_id": "S03",
+      "sequence_id": "S03-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "emotional_resolution",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S03-SHOT-005"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-003"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S04-SHOT-001",
+      "scene_id": "S04",
+      "sequence_id": "S04-SEQ-001",
+      "duration_seconds": 17.25,
+      "animation_tier": "atmospheric",
+      "purpose": "establishing",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "idle"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "moderate",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S03-SHOT-006"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-004"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 17.159546,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S04-SHOT-002",
+      "scene_id": "S04",
+      "sequence_id": "S04-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "standard",
+      "purpose": "character_coverage",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S04-SHOT-001"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-004"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S04-SHOT-003",
+      "scene_id": "S04",
+      "sequence_id": "S04-SEQ-001",
+      "duration_seconds": 5.0,
+      "animation_tier": "standard",
+      "purpose": "dialogue",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S04-SHOT-002"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-004"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 5.0
+      }
+    },
+    {
+      "shot_id": "S04-SHOT-004",
+      "scene_id": "S04",
+      "sequence_id": "S04-SEQ-001",
+      "duration_seconds": 3.0,
+      "animation_tier": "standard",
+      "purpose": "reaction",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S04-SHOT-003"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-004"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S04-SHOT-005",
+      "scene_id": "S04",
+      "sequence_id": "S04-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "action",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S04-SHOT-004"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-004"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S04-SHOT-006",
+      "scene_id": "S04",
+      "sequence_id": "S04-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "emotional_resolution",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S04-SHOT-005"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-004"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S05-SHOT-001",
+      "scene_id": "S05",
+      "sequence_id": "S05-SEQ-001",
+      "duration_seconds": 19.25,
+      "animation_tier": "atmospheric",
+      "purpose": "establishing",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "idle"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "moderate",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S04-SHOT-006"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-005"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 19.295783,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S05-SHOT-002",
+      "scene_id": "S05",
+      "sequence_id": "S05-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "standard",
+      "purpose": "character_coverage",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S05-SHOT-001"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-005"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S05-SHOT-003",
+      "scene_id": "S05",
+      "sequence_id": "S05-SEQ-001",
+      "duration_seconds": 5.0,
+      "animation_tier": "standard",
+      "purpose": "dialogue",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S05-SHOT-002"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-005"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 5.0
+      }
+    },
+    {
+      "shot_id": "S05-SHOT-004",
+      "scene_id": "S05",
+      "sequence_id": "S05-SEQ-001",
+      "duration_seconds": 3.0,
+      "animation_tier": "standard",
+      "purpose": "reaction",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S05-SHOT-003"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-005"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S05-SHOT-005",
+      "scene_id": "S05",
+      "sequence_id": "S05-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "emotional_resolution",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S05-SHOT-004"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-005"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S06-SHOT-001",
+      "scene_id": "S06",
+      "sequence_id": "S06-SEQ-001",
+      "duration_seconds": 15.0,
+      "animation_tier": "atmospheric",
+      "purpose": "establishing",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "idle"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "moderate",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S05-SHOT-005"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-006"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 15.08136,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S06-SHOT-002",
+      "scene_id": "S06",
+      "sequence_id": "S06-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "standard",
+      "purpose": "character_coverage",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S06-SHOT-001"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-006"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S06-SHOT-003",
+      "scene_id": "S06",
+      "sequence_id": "S06-SEQ-001",
+      "duration_seconds": 5.0,
+      "animation_tier": "standard",
+      "purpose": "dialogue",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S06-SHOT-002"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-006"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 5.0
+      }
+    },
+    {
+      "shot_id": "S06-SHOT-004",
+      "scene_id": "S06",
+      "sequence_id": "S06-SEQ-001",
+      "duration_seconds": 3.0,
+      "animation_tier": "standard",
+      "purpose": "reaction",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S06-SHOT-003"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-006"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S06-SHOT-005",
+      "scene_id": "S06",
+      "sequence_id": "S06-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "action",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S06-SHOT-004"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-006"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S06-SHOT-006",
+      "scene_id": "S06",
+      "sequence_id": "S06-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "supernatural_payoff",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [
+          "supernatural_energy"
+        ],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S06-SHOT-005"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-006"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S06-SHOT-007",
+      "scene_id": "S06",
+      "sequence_id": "S06-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "emotional_resolution",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S06-SHOT-006"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-006"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S07-SHOT-001",
+      "scene_id": "S07",
+      "sequence_id": "S07-SEQ-001",
+      "duration_seconds": 13.5,
+      "animation_tier": "atmospheric",
+      "purpose": "establishing",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "idle"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "moderate",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S06-SHOT-007"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-007"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 13.490794,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S07-SHOT-002",
+      "scene_id": "S07",
+      "sequence_id": "S07-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "standard",
+      "purpose": "character_coverage",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S07-SHOT-001"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-007"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S07-SHOT-003",
+      "scene_id": "S07",
+      "sequence_id": "S07-SEQ-001",
+      "duration_seconds": 5.0,
+      "animation_tier": "standard",
+      "purpose": "dialogue",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S07-SHOT-002"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-007"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 5.0
+      }
+    },
+    {
+      "shot_id": "S07-SHOT-004",
+      "scene_id": "S07",
+      "sequence_id": "S07-SEQ-001",
+      "duration_seconds": 3.0,
+      "animation_tier": "standard",
+      "purpose": "reaction",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S07-SHOT-003"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-007"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S07-SHOT-005",
+      "scene_id": "S07",
+      "sequence_id": "S07-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "supernatural_payoff",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [
+          "supernatural_energy"
+        ],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S07-SHOT-004"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-007"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S07-SHOT-006",
+      "scene_id": "S07",
+      "sequence_id": "S07-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "emotional_resolution",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S07-SHOT-005"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-007"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S08-SHOT-001",
+      "scene_id": "S08",
+      "sequence_id": "S08-SEQ-001",
+      "duration_seconds": 17.75,
+      "animation_tier": "atmospheric",
+      "purpose": "establishing",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "idle"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "moderate",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S07-SHOT-006"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-008"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 17.786486,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S08-SHOT-002",
+      "scene_id": "S08",
+      "sequence_id": "S08-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "standard",
+      "purpose": "character_coverage",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S08-SHOT-001"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-008"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S08-SHOT-003",
+      "scene_id": "S08",
+      "sequence_id": "S08-SEQ-001",
+      "duration_seconds": 5.0,
+      "animation_tier": "standard",
+      "purpose": "dialogue",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S08-SHOT-002"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-008"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 5.0
+      }
+    },
+    {
+      "shot_id": "S08-SHOT-004",
+      "scene_id": "S08",
+      "sequence_id": "S08-SEQ-001",
+      "duration_seconds": 3.0,
+      "animation_tier": "standard",
+      "purpose": "reaction",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S08-SHOT-003"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-008"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S08-SHOT-005",
+      "scene_id": "S08",
+      "sequence_id": "S08-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "action",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S08-SHOT-004"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-008"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S08-SHOT-006",
+      "scene_id": "S08",
+      "sequence_id": "S08-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "supernatural_payoff",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [
+          "supernatural_energy"
+        ],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S08-SHOT-005"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-008"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S08-SHOT-007",
+      "scene_id": "S08",
+      "sequence_id": "S08-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "emotional_resolution",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S08-SHOT-006"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-008"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S09-SHOT-001",
+      "scene_id": "S09",
+      "sequence_id": "S09-SEQ-001",
+      "duration_seconds": 13.75,
+      "animation_tier": "atmospheric",
+      "purpose": "establishing",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "idle"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "moderate",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S08-SHOT-007"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-009"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 13.711384,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S09-SHOT-002",
+      "scene_id": "S09",
+      "sequence_id": "S09-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "standard",
+      "purpose": "character_coverage",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S09-SHOT-001"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-009"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S09-SHOT-003",
+      "scene_id": "S09",
+      "sequence_id": "S09-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "supernatural_payoff",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [
+          "supernatural_energy"
+        ],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S09-SHOT-002"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-009"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S09-SHOT-004",
+      "scene_id": "S09",
+      "sequence_id": "S09-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "emotional_resolution",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S09-SHOT-003"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-009"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S10-SHOT-001",
+      "scene_id": "S10",
+      "sequence_id": "S10-SEQ-001",
+      "duration_seconds": 21.0,
+      "animation_tier": "atmospheric",
+      "purpose": "establishing",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "wide",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "idle"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "moderate",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S09-SHOT-004"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-010"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 20.944398,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S10-SHOT-002",
+      "scene_id": "S10",
+      "sequence_id": "S10-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "standard",
+      "purpose": "character_coverage",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium",
+        "movement": "tracking"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S10-SHOT-001"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-010"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S10-SHOT-003",
+      "scene_id": "S10",
+      "sequence_id": "S10-SEQ-001",
+      "duration_seconds": 5.0,
+      "animation_tier": "standard",
+      "purpose": "dialogue",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S10-SHOT-002"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-010"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 5.0
+      }
+    },
+    {
+      "shot_id": "S10-SHOT-004",
+      "scene_id": "S10",
+      "sequence_id": "S10-SEQ-001",
+      "duration_seconds": 3.0,
+      "animation_tier": "standard",
+      "purpose": "reaction",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "neutral"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S10-SHOT-003"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-010"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 3.0
+      }
+    },
+    {
+      "shot_id": "S10-SHOT-005",
+      "scene_id": "S10",
+      "sequence_id": "S10-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "supernatural_payoff",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "close",
+        "movement": "push_in"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [
+          "supernatural_energy"
+        ],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S10-SHOT-004"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-010"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    },
+    {
+      "shot_id": "S10-SHOT-006",
+      "scene_id": "S10",
+      "sequence_id": "S10-SEQ-001",
+      "duration_seconds": 4.0,
+      "animation_tier": "hero",
+      "purpose": "emotional_resolution",
+      "characters": [
+        "riven"
+      ],
+      "location": "loc-daniel-bedroom",
+      "props": [
+        "prop-reapers-ledger"
+      ],
+      "camera": {
+        "shot_type": "medium_close",
+        "movement": "static"
+      },
+      "character_performance": {
+        "body": [
+          "gesture"
+        ],
+        "face": [
+          "conflicted"
+        ],
+        "speech": {
+          "required_when_dialogue": true,
+          "lip_sync_required": true
+        }
+      },
+      "environment_motion": "subtle",
+      "lighting": {
+        "continuity_required": true,
+        "changes_require_cause": true
+      },
+      "effects": {
+        "effects": [],
+        "effects_require_narrative_justification": true
+      },
+      "audio": {
+        "dialogue": [
+          "scene_dialogue"
+        ],
+        "sfx": [],
+        "music": "scene_specific"
+      },
+      "continuity": {
+        "inherits_previous_shot_state": true,
+        "connected_to_next_shot": true,
+        "character_identity_locked": true,
+        "environment_identity_locked": true,
+        "prop_identity_locked": true,
+        "lighting_continuity_required": true,
+        "emotional_continuity_required": true,
+        "previous_shot_id": "S10-SHOT-005"
+      },
+      "state_before": {},
+      "state_after": {},
+      "causal_event_ids": [
+        "EV-010"
+      ],
+      "timing": {
+        "audio_retimed": true,
+        "audio_dialogue_seconds": 0.0,
+        "original_duration_seconds": 4.0
+      }
+    }
+  ],
+  "qa_errors": [],
+  "timing_revision": {
+    "method": "dialogue_duration_driven",
+    "source": "D:\\Deathbound\\projects\\EP001\\04_audio\\EP001_AUDIO_MANIFEST.json",
+    "original_total_seconds": 222.0,
+    "new_total_seconds": 357.25,
+    "total_added_seconds": 135.25,
+    "changed_shots": 10,
+    "speech_was_stretched": false,
+    "speech_was_trimmed": false,
+    "speech_was_split": false
+  }
+}

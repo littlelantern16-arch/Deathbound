@@ -1,0 +1,101 @@
+﻿{
+  "schema_version": "1.0",
+  "name": "DEATHBOUND_LIGHTING_EFFECTS_PERFORMANCE",
+  "status": "production_ready_blueprint",
+  "purpose": "Validate lighting, supernatural effects, atmosphere, and visual effects as state-driven cinematic systems with causal continuity.",
+  "lighting": {
+    "required": [
+      "lighting_state",
+      "source_type",
+      "intensity",
+      "direction",
+      "color_temperature"
+    ],
+    "allowed_states": [
+      "daylight",
+      "overcast",
+      "night",
+      "interior",
+      "dim",
+      "dramatic",
+      "supernatural",
+      "blackout"
+    ],
+    "major_change_requires_cause_or_transition": true,
+    "light_source_teleportation_forbidden": true
+  },
+  "effects": {
+    "allowed": [
+      "none",
+      "soul_particles",
+      "reaper_glow",
+      "ledger_glow",
+      "shadow_distortion",
+      "fog",
+      "smoke",
+      "rain",
+      "snow",
+      "sparks",
+      "dust",
+      "energy_pulse",
+      "environmental_light_flicker"
+    ],
+    "supernatural_effects_require_cause": true,
+    "effect_activation_requires_state_change": true,
+    "effect_deactivation_requires_state_change": true,
+    "effect_identity_immutable": true
+  },
+  "causality": {
+    "supernatural_effect_requires_event": true,
+    "lighting_change_requires_event_or_transition": true,
+    "blackout_requires_cause": true,
+    "energy_pulse_requires_cause": true,
+    "reaper_glow_requires_supernatural_state": true,
+    "ledger_glow_requires_ledger_state": true
+  },
+  "continuity": {
+    "effect_persistence_must_be_tracked": true,
+    "lighting_state_must_match_environment": true,
+    "weather_effect_must_match_weather_state": true,
+    "effect_disappearance_requires_cause_or_completion": true
+  },
+  "performance_coupling": {
+    "supernatural_activation": [
+      "reaper_glow",
+      "energy_pulse",
+      "shadow_distortion",
+      "environmental_light_flicker"
+    ],
+    "grief": [
+      "dim",
+      "soft_falloff",
+      "subtle_desaturation"
+    ],
+    "fear": [
+      "dramatic",
+      "shadow_distortion",
+      "environmental_light_flicker"
+    ],
+    "supernatural_intervention": [
+      "reaper_glow",
+      "energy_pulse",
+      "shadow_distortion"
+    ]
+  },
+  "slideshow_defense": {
+    "effect_overlay_cannot_replace_character_performance": true,
+    "effect_only_motion_cannot_fake_action": true,
+    "static_image_with_effect_overlay_rejected_when_motion_required": true,
+    "repeated_effect_loop_rejected_when_no_state_change": true
+  },
+  "quality_gates": [
+    "lighting_validity",
+    "lighting_continuity",
+    "effect_identity",
+    "effect_causality",
+    "effect_state_continuity",
+    "environment_effect_alignment",
+    "performance_effect_coupling",
+    "slideshow_rejection"
+  ]
+}

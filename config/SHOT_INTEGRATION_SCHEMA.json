@@ -1,0 +1,74 @@
+﻿{
+  "schema_version": "1.0",
+  "name": "DEATHBOUND_SHOT_INTEGRATION",
+  "status": "production_ready_blueprint",
+  "purpose": "Integrate all validated cinematic systems into a single pre-render shot contract and reject cross-system contradictions before rendering.",
+  "systems": [
+    "character",
+    "body",
+    "face",
+    "performance",
+    "camera",
+    "environment",
+    "spatial",
+    "props",
+    "lighting",
+    "effects",
+    "audio",
+    "dialogue"
+  ],
+  "integration_rules": {
+    "character_identity_is_immutable": true,
+    "character_performance_must_match_body": true,
+    "character_performance_must_match_face": true,
+    "camera_must_support_performance": true,
+    "camera_must_respect_spatial_state": true,
+    "props_must_match_spatial_state": true,
+    "lighting_must_match_environment": true,
+    "effects_must_match_performance": true,
+    "dialogue_must_match_speaker": true,
+    "lip_sync_must_match_dialogue": true,
+    "audio_timing_must_match_shot_timing": true
+  },
+  "render_contract": {
+    "required": [
+      "shot_id",
+      "duration_seconds",
+      "animation_tier",
+      "character_performance",
+      "camera",
+      "environment",
+      "spatial_state",
+      "props",
+      "lighting",
+      "effects",
+      "audio",
+      "dialogue"
+    ],
+    "minimum_duration_seconds": 0.25,
+    "maximum_duration_seconds": 15
+  },
+  "cross_system_guards": {
+    "walking_requires_tracking_or_spatially_valid_camera": true,
+    "speaking_requires_dialogue_and_lip_sync": true,
+    "supernatural_activation_requires_effect_support": true,
+    "prop_interaction_requires_spatial_validity": true,
+    "environment_motion_requires_environmental_cause": true,
+    "camera_only_motion_cannot_replace_performance": true,
+    "effects_cannot_replace_character_action": true,
+    "audio_cannot_replace_required_visual_action": true
+  },
+  "render_blockers": [
+    "missing_required_system",
+    "identity_contradiction",
+    "performance_contradiction",
+    "camera_contradiction",
+    "spatial_contradiction",
+    "prop_contradiction",
+    "lighting_contradiction",
+    "effect_contradiction",
+    "dialogue_contradiction",
+    "timing_contradiction",
+    "slideshow_substitution"
+  ]
+}

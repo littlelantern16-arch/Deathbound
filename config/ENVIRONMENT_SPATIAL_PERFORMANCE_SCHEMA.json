@@ -1,0 +1,83 @@
+﻿{
+  "schema_version": "1.0",
+  "name": "DEATHBOUND_ENVIRONMENT_SPATIAL_PERFORMANCE",
+  "status": "production_ready_blueprint",
+  "purpose": "Validate environment continuity, spatial relationships, character-environment interaction, and environmental motion without allowing visual contradictions or slideshow substitution.",
+  "hardware_target": {
+    "gpu": "RTX 3050 Laptop 4GB",
+    "ram_gb": 16,
+    "optimization_required": true
+  },
+  "environment_state": {
+    "required": [
+      "location_id",
+      "spatial_layout",
+      "time_of_day",
+      "weather",
+      "lighting",
+      "environment_motion",
+      "interactive_objects"
+    ]
+  },
+  "spatial_layout": {
+    "required": [
+      "character_positions",
+      "prop_positions",
+      "walkable_regions",
+      "obstacles",
+      "exits",
+      "camera_safe_regions"
+    ]
+  },
+  "continuity_rules": {
+    "location_identity_immutable": true,
+    "major_layout_changes_require_causal_event": true,
+    "prop_teleportation_forbidden": true,
+    "character_teleportation_forbidden": true,
+    "weather_change_requires_cause_or_transition": true,
+    "time_change_requires_transition_or_scene_boundary": true,
+    "lighting_change_requires_cause_or_transition": true
+  },
+  "interaction_rules": {
+    "touch_requires_spatial_overlap": true,
+    "pickup_requires_reachable_object": true,
+    "sit_requires_valid_surface": true,
+    "lean_requires_support_surface": true,
+    "walk_requires_walkable_region": true,
+    "collision_with_blocked_region_forbidden": true,
+    "character_exit_requires_valid_exit": true
+  },
+  "environment_motion_rules": {
+    "allowed": [
+      "static",
+      "wind",
+      "rain",
+      "snow",
+      "fog",
+      "smoke",
+      "water",
+      "crowd",
+      "traffic",
+      "particles",
+      "light_flicker"
+    ],
+    "static_environment_cannot_replace_required_character_performance": true,
+    "meaningful_environment_motion_requires_environmental_cause": true
+  },
+  "slideshow_defense": {
+    "camera_only_motion_rejected_when_environment_interaction_required": true,
+    "unchanged_environment_during_required_motion_rejected": true,
+    "repeated_environment_asset_rejected": true,
+    "fake_depth_pan_rejected_when_spatial_action_required": true
+  },
+  "quality_gates": [
+    "location_continuity",
+    "spatial_continuity",
+    "interaction_validity",
+    "prop_continuity",
+    "environment_motion_validity",
+    "lighting_continuity",
+    "weather_continuity",
+    "slideshow_rejection"
+  ]
+}

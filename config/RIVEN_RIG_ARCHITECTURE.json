@@ -1,0 +1,294 @@
+﻿{
+  "schema_version": "1.0.0",
+  "system": "Deathbound Riven Rig Architecture",
+
+  "purpose": "Define the canonical Blender-ready production rig contract for Riven while keeping character identity controlled by the external Deathbound canon system.",
+
+  "character_id": "riven",
+
+  "canonical_source": "D:\\Deathbound\\assets\\characters\\Riven\\RIVEN_CANON.json",
+
+  "architecture": {
+    "primary_style": "cinematic_2.5d",
+    "supported_modes": [
+      "2d_cutout",
+      "2.5d",
+      "3d_hybrid"
+    ],
+    "animation_engine": "blender",
+    "render_engine": "eevee",
+    "final_resolution": "1920x1080",
+    "preview_resolution": "1280x720",
+    "frame_rate": 24
+  },
+
+  "rig_hierarchy": {
+    "root": {
+      "id": "riven_root",
+      "purpose": "Master character transform."
+    },
+
+    "body": {
+      "id": "riven_body",
+      "components": [
+        "pelvis",
+        "torso",
+        "spine",
+        "chest",
+        "shoulder.L",
+        "shoulder.R"
+      ]
+    },
+
+    "arms": {
+      "left": [
+        "upper_arm.L",
+        "forearm.L",
+        "hand.L"
+      ],
+      "right": [
+        "upper_arm.R",
+        "forearm.R",
+        "hand.R"
+      ]
+    },
+
+    "head": {
+      "components": [
+        "neck",
+        "head"
+      ]
+    },
+
+    "face": {
+      "components": [
+        "eye.L",
+        "eye.R",
+        "brow.L",
+        "brow.R",
+        "mouth"
+      ]
+    },
+
+    "clothing": {
+      "components": [
+        "hood",
+        "coat",
+        "shirt",
+        "trousers",
+        "boots"
+      ]
+    },
+
+    "props": {
+      "components": [
+        "reapers_ledger"
+      ]
+    }
+  },
+
+  "body_controls": {
+    "required": [
+      "root_position",
+      "root_rotation",
+      "pelvis_rotation",
+      "spine_rotation",
+      "chest_rotation",
+      "head_rotation",
+      "arm.L",
+      "arm.R",
+      "hand.L",
+      "hand.R"
+    ]
+  },
+
+  "facial_controls": {
+    "required": [
+      "eye_direction",
+      "eye.L",
+      "eye.R",
+      "brow.L",
+      "brow.R",
+      "mouth_open",
+      "mouth_width",
+      "mouth_shape",
+      "expression_intensity"
+    ],
+
+    "expression_system": {
+      "neutral": true,
+      "curious": true,
+      "calm": true,
+      "concerned": true,
+      "confused": true,
+      "sad": true,
+      "angry": true,
+      "afraid": true,
+      "surprised": true,
+      "amused": true,
+      "sarcastic": true,
+      "compassionate": true,
+      "conflicted": true,
+      "determined": true
+    }
+  },
+
+  "gaze_system": {
+    "enabled": true,
+    "control": "look_at_target",
+    "target_types": [
+      "camera",
+      "character",
+      "object",
+      "environment",
+      "ground",
+      "sky",
+      "offscreen"
+    ],
+    "must_be_explicit": true
+  },
+
+  "dialogue_system": {
+    "mouth_animation_required": true,
+    "lip_sync_required": true,
+    "voice_driven_animation_supported": true,
+    "dialogue_state_source": "Deathbound performance state"
+  },
+
+  "emotion_system": {
+    "source": "Deathbound performance state",
+    "expression_must_match_emotion": true,
+    "emotion_transition_requires_cause": true
+  },
+
+  "clothing_system": {
+    "canonical_clothing_locked": true,
+    "default_outfit_source": "RIVEN_CANON.json",
+    "unexplained_outfit_change_forbidden": true
+  },
+
+  "prop_system": {
+    "reapers_ledger": {
+      "canonical": true,
+      "attachment_mode": "explicit",
+      "continuity_required": true
+    }
+  },
+
+  "animation_layers": {
+    "base": {
+      "purpose": "Character identity and default pose."
+    },
+    "body": {
+      "purpose": "Body movement and physical acting."
+    },
+    "facial": {
+      "purpose": "Expression and facial performance."
+    },
+    "gaze": {
+      "purpose": "Eye direction and attention."
+    },
+    "dialogue": {
+      "purpose": "Lip-sync and speech performance."
+    },
+    "secondary": {
+      "purpose": "Hair, coat and subtle secondary motion."
+    },
+    "effects": {
+      "purpose": "Supernatural visual states and controlled effects."
+    }
+  },
+
+  "motion_tiers": {
+    "hero": {
+      "body": "full",
+      "face": "high",
+      "gaze": "explicit",
+      "dialogue": "full",
+      "secondary_motion": "enabled",
+      "effects": "enabled"
+    },
+
+    "standard": {
+      "body": "moderate",
+      "face": "medium",
+      "gaze": "explicit",
+      "dialogue": "required_when_present",
+      "secondary_motion": "selective",
+      "effects": "selective"
+    },
+
+    "atmospheric": {
+      "body": "limited",
+      "face": "subtle",
+      "gaze": "explicit_when_visible",
+      "dialogue": "not_required_without_dialogue",
+      "secondary_motion": "optional",
+      "effects": "optional"
+    }
+  },
+
+  "canonical_protection": {
+    "identity_immutable": true,
+    "body_proportions_immutable": true,
+    "face_structure_immutable": true,
+    "default_clothing_immutable": true,
+    "hair_identity_immutable": true,
+    "eye_identity_immutable": true,
+    "prop_identity_immutable": true,
+    "temporary_animation_changes_require_state": true
+  },
+
+  "continuity_contract": {
+    "character_id_must_match": true,
+    "previous_state_required": true,
+    "current_state_required": true,
+    "causal_event_ids_required_for_state_changes": true,
+    "gaze_continuity_required": true,
+    "emotion_continuity_required": true,
+    "dialogue_continuity_required": true,
+    "prop_continuity_required": true,
+    "clothing_continuity_required": true
+  },
+
+  "slideshow_rejection": {
+    "static_character_over_long_duration": true,
+    "camera_only_motion_rejected_when_character_should_act": true,
+    "dialogue_without_character_performance": true,
+    "unchanged_pose_during_emotional_action": true,
+    "missing_environment_motion_when_required": true,
+    "repeated_static_asset_usage": true
+  },
+
+  "blender_contract": {
+    "external_state_is_source_of_truth": true,
+    "blender_scene_must_not_modify_canon": true,
+    "scene_receives_character_state": true,
+    "animation_exports_state_metadata": true,
+    "render_output_is_versioned": true
+  },
+
+  "qa_requirements": {
+    "identity_check": true,
+    "rig_structure_check": true,
+    "facial_control_check": true,
+    "gaze_control_check": true,
+    "lip_sync_check": true,
+    "continuity_check": true,
+    "prop_check": true,
+    "clothing_check": true,
+    "motion_tier_check": true,
+    "slideshow_check": true
+  },
+
+  "provenance": {
+    "invented_canon": false,
+    "canonical_character": "Riven",
+    "source_documents": [
+      "RIVEN_CANON.json",
+      "CHARACTER_PERFORMANCE_SCHEMA.json",
+      "ANIMATION_ARCHITECTURE.json",
+      "DEATHBOUND_MASTER_SPEC.md"
+    ]
+  }
+}

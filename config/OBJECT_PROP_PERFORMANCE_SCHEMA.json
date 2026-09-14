@@ -1,0 +1,95 @@
+﻿{
+  "schema_version": "1.0",
+  "name": "DEATHBOUND_OBJECT_PROP_PERFORMANCE",
+  "status": "production_ready_blueprint",
+  "purpose": "Treat important objects and props as persistent story entities with identity, state, ownership, spatial continuity, interaction validity, and causal state changes.",
+  "prop_identity": {
+    "required": [
+      "prop_id",
+      "prop_type",
+      "state",
+      "owner",
+      "position",
+      "continuity"
+    ],
+    "identity_immutable": true,
+    "type_immutable": true
+  },
+  "prop_state": {
+    "state_changes_require_causal_event": true,
+    "teleportation_forbidden": true,
+    "ownership_change_requires_cause": true,
+    "destruction_requires_cause": true,
+    "creation_requires_cause": true
+  },
+  "interaction_rules": {
+    "allowed": [
+      "observe",
+      "touch",
+      "pickup",
+      "put_down",
+      "open",
+      "close",
+      "use",
+      "give",
+      "receive",
+      "break",
+      "destroy",
+      "activate",
+      "deactivate"
+    ],
+    "pickup_requires_reachability": true,
+    "put_down_requires_valid_surface": true,
+    "open_requires_openable_prop": true,
+    "close_requires_openable_prop": true,
+    "use_requires_compatible_prop": true,
+    "give_requires_actor_ownership_or_authority": true,
+    "receive_requires_valid_recipient": true
+  },
+  "ownership": {
+    "owners": [
+      "riven",
+      "human",
+      "reaper",
+      "environment",
+      "none"
+    ],
+    "transfer_requires_causal_event": true,
+    "ownership_cannot_change_silently": true
+  },
+  "continuity": {
+    "position_change_requires_valid_transition": true,
+    "state_change_requires_causal_event": true,
+    "owner_change_requires_causal_event": true,
+    "prop_disappearance_requires_cause": true,
+    "prop_reappearance_requires_cause": true
+  },
+  "narrative_props": {
+    "high_importance_props_require_persistent_tracking": true,
+    "examples": [
+      "ledger",
+      "phone",
+      "watch",
+      "money",
+      "keys",
+      "door",
+      "letter",
+      "photograph"
+    ]
+  },
+  "slideshow_defense": {
+    "prop_interaction_cannot_be_fake_camera_motion": true,
+    "required_prop_action_requires_actual_state_change": true,
+    "unchanged_prop_during_required_action_rejected": true
+  },
+  "quality_gates": [
+    "prop_identity",
+    "prop_state_continuity",
+    "prop_spatial_continuity",
+    "ownership_continuity",
+    "interaction_validity",
+    "causal_state_changes",
+    "persistent_story_prop_tracking",
+    "slideshow_rejection"
+  ]
+}

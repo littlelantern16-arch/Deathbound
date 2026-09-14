@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "status": "authoritative_locked",
+  "project": "Deathbound",
+  "purpose": "Authoritative visual identity and rendering constraints for Riven and Deathbound scenes.",
+  "global_target": {
+    "description": "Believable real-human cinematic realism with controlled stylization for a mature supernatural animated drama.",
+    "priority_order": [
+      "human credibility",
+      "Riven identity consistency",
+      "cinematic composition and lighting",
+      "natural materials and anatomy",
+      "subtle stylization",
+      "supernatural atmosphere"
+    ],
+    "visual_formula": "real human foundation + cinematic photography language + restrained animation stylization + supernatural art direction",
+    "do_not_drift_to": [
+      "anime character rendered realistically",
+      "photorealistic fashion model",
+      "3D game avatar",
+      "Roblox or low-poly geometry",
+      "generic Grim Reaper"
+    ]
+  },
+  "riven": {
+    "identity_lock": "same person across every video, shot, pose and environment",
+    "age_appearance": "young adult, approximately 19-22",
+    "build": "slim, lean, ordinary human proportions",
+    "skin": "pale/slightly desaturated with natural texture and minor imperfections",
+    "face": {
+      "construction": "natural masculine human facial anatomy",
+      "eyes": "normal-sized, dark, human-looking",
+      "nose": "natural proportion",
+      "jaw": "natural, not exaggerated",
+      "symmetry": "subtle natural asymmetry",
+      "attractiveness": "understated; not fashion-model perfect",
+      "expression_default": "calm, curious, observant, slightly sarcastic"
+    },
+    "hair": {
+      "color": "black",
+      "shape": "messy/tousled natural hair",
+      "construction": "natural clumps and strands, no exaggerated anime spikes"
+    },
+    "wardrobe": {
+      "outer": "charcoal-black hooded coat or understated black hooded outer layer",
+      "shirt": "dark fitted plain shirt",
+      "trousers": "black trousers",
+      "boots": "practical black boots",
+      "details": "subtle silver details only",
+      "prohibited": [
+        "fantasy armor",
+        "ornate robes",
+        "oversized cloak",
+        "fashion-editorial styling",
+        "giant scythe as default"
+      ]
+    },
+    "supernatural_state": {
+      "normal": "ordinary human appearance",
+      "power_activation": "controlled supernatural eye glow and environmental effects only when causally justified",
+      "default_weapon": null,
+      "giant_scythe_default": false
+    }
+  },
+  "rendering": {
+    "realism_level": "high",
+    "skin_response": "natural pores/subtle texture, restrained smoothing",
+    "hair_response": "natural strand/clump breakup",
+    "fabric_response": "physically believable folds and matte response",
+    "lighting": "cinematic motivated lighting, controlled highlights, atmospheric depth",
+    "camera": "cinematic lens language, natural perspective, intentional depth of field",
+    "environment": "ordinary contemporary American locations before supernatural intrusion",
+    "color": "dark neutral palette with restrained warm/cool contrast",
+    "stylization": "subtle and deliberate; never visibly anime or game-like",
+    "film_language": "premium cinematic drama, not stock AI portrait"
+  },
+  "reference_policy": {
+    "primary_reference": "clean Riven identity portrait/visual target",
+    "reference_framing": "half-bust or chest-up, face unobstructed, hair and ears visible",
+    "reference_background": "simple, low-detail, non-distracting",
+    "reference_expression": "neutral/calm",
+    "reference_count": "one primary identity reference plus optional controlled angle references",
+    "do_not_use_as_primary": [
+      "collage with text",
+      "busy scene",
+      "extreme close crop",
+      "strong facial occlusion",
+      "dramatic expression",
+      "multiple people"
+    ]
+  },
+  "anti_style": [
+    "anime",
+    "manga",
+    "cartoon face",
+    "oversized eyes",
+    "chibi",
+    "kawaii",
+    "pretty-boy model aesthetic",
+    "flawless plastic skin",
+    "fashion model",
+    "hyperreal DSLR portrait look",
+    "3D render",
+    "Roblox",
+    "voxel",
+    "blocky anatomy",
+    "low-poly",
+    "3D game avatar",
+    "toy-like proportions",
+    "generic Grim Reaper",
+    "skull face",
+    "fantasy armor",
+    "ornate cloak",
+    "giant scythe",
+    "medieval fantasy environment",
+    "generic AI influencer portrait"
+  ],
+  "generation_defaults": {
+    "checkpoint_family": "SD1.5",
+    "checkpoint": "Realistic_Vision_V6.0_B1_pruned.safetensors",
+    "resolution": [
+      512,
+      512
+    ],
+    "steps": 28,
+    "cfg": 6.0,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "ipadapter_preset": "FACEID PLUS V2",
+    "ipadapter_weight": 0.75,
+    "ipadapter_faceid_v2_weight": 2.0,
+    "provider": "CPU",
+    "hardware_target": {
+      "gpu": "RTX 3050 Laptop 4GB",
+      "ram_gb": 16,
+      "mode": "LOW_VRAM"
+    }
+  },
+  "qa_gates": {
+    "hard_fail": [
+      "Roblox/game-avatar appearance",
+      "low-poly/blocky anatomy",
+      "anime facial construction",
+      "generic Grim Reaper costume",
+      "major Riven identity drift",
+      "unrealistic human anatomy",
+      "plastic/fake skin",
+      "fashion-model glamour replacing character identity"
+    ],
+    "pass_target": [
+      "recognizably the same Riven",
+      "believable young adult human",
+      "natural facial proportions",
+      "grounded clothing",
+      "cinematic lighting",
+      "ordinary contemporary environment",
+      "supernatural elements remain controlled and causal"
+    ]
+  }
+}

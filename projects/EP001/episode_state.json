@@ -1,0 +1,58 @@
+﻿{
+  "schema_version": "1.0.0",
+  "episode": {
+    "id": "YR-001",
+    "title": "The Billionaire Had 10 Minutes Left"
+  },
+
+  "character": {
+    "id": "riven",
+    "canonical_reference": "D:\\Deathbound\\assets\\characters\\Riven\\RIVEN_CANON.json",
+
+    "episode_state": {
+      "current_scene": null,
+      "current_shot": null,
+      "current_location": null,
+
+      "physical_state": {
+        "condition": "normal",
+        "injuries": [],
+        "clothing_state": "default",
+        "environmental_effects": []
+      },
+
+      "emotional_state": {
+        "primary_emotion": null,
+        "secondary_emotion": null,
+        "intensity": null,
+        "trigger": null,
+        "objective": null,
+        "internal_conflict": null,
+        "external_behavior": null
+      },
+
+      "knowledge_state": {
+        "knows": [],
+        "does_not_know": [],
+        "suspects": [],
+        "believes": [],
+        "confirmed": [],
+        "misunderstands": []
+      },
+
+      "inventory": [],
+
+      "relationships": {},
+
+      "continuity_events": []
+    }
+  },
+
+  "state_policy": {
+    "canonical_identity_is_immutable": true,
+    "temporary_changes_require_cause": true,
+    "knowledge_changes_require_events": true,
+    "relationship_changes_require_events": true,
+    "episode_state_cannot_modify_canonical_state": true
+  }
+}

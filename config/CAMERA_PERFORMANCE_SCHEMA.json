@@ -1,0 +1,274 @@
+﻿{
+  "schema_version": "1.0",
+  "status": "production_ready",
+  "purpose": "Validate synchronization between cinematic camera behavior and character performance so camera choices support, reveal, or follow meaningful character motion and emotion.",
+
+  "performance_intents": [
+    "observe",
+    "listen",
+    "speak",
+    "question",
+    "explain",
+    "comfort",
+    "threaten",
+    "warn",
+    "react",
+    "hesitate",
+    "decide",
+    "protect",
+    "investigate",
+    "supernatural_activation",
+    "supernatural_intervention",
+    "grieve",
+    "celebrate",
+    "sarcastic_response"
+  ],
+
+  "camera_movements": [
+    "static",
+    "push_in",
+    "pull_out",
+    "pan",
+    "tilt",
+    "tracking",
+    "orbit",
+    "handheld",
+    "crane"
+  ],
+
+  "coupling_rules": {
+    "tracking": {
+      "required_performance": [
+        "walking",
+        "running",
+        "moving",
+        "following"
+      ],
+      "allowed_intents": [
+        "investigate",
+        "protect",
+        "follow",
+        "observe",
+        "action"
+      ]
+    },
+
+    "push_in": {
+      "compatible_intents": [
+        "react",
+        "decide",
+        "hesitate",
+        "threaten",
+        "warn",
+        "supernatural_activation",
+        "supernatural_intervention",
+        "speak",
+        "question",
+        "explain"
+      ],
+      "requires_emphasis": true
+    },
+
+    "pull_out": {
+      "compatible_intents": [
+        "grieve",
+        "hesitate",
+        "react",
+        "decide",
+        "observe",
+        "aftermath",
+        "protect"
+      ],
+      "requires_emphasis": true
+    },
+
+    "orbit": {
+      "compatible_intents": [
+        "supernatural_activation",
+        "supernatural_intervention",
+        "decide",
+        "confront",
+        "reveal"
+      ],
+      "requires_emphasis": true
+    },
+
+    "handheld": {
+      "compatible_intents": [
+        "threaten",
+        "protect",
+        "react",
+        "investigate",
+        "supernatural_intervention"
+      ],
+      "requires_instability_or_urgency": true
+    },
+
+    "crane": {
+      "compatible_intents": [
+        "supernatural_activation",
+        "supernatural_intervention",
+        "reveal",
+        "grieve",
+        "celebrate",
+        "observe"
+      ],
+      "requires_scale_or_reveal": true
+    },
+
+    "pan": {
+      "compatible_intents": [
+        "observe",
+        "investigate",
+        "listen",
+        "discover",
+        "confront"
+      ]
+    },
+
+    "tilt": {
+      "compatible_intents": [
+        "observe",
+        "discover",
+        "supernatural_activation",
+        "supernatural_intervention",
+        "reveal"
+      ]
+    },
+
+    "static": {
+      "compatible_intents": [
+        "observe",
+        "listen",
+        "speak",
+        "question",
+        "explain",
+        "comfort",
+        "react",
+        "hesitate",
+        "decide",
+        "grieve",
+        "celebrate",
+        "sarcastic_response"
+      ]
+    }
+  },
+
+  "emotion_camera_coupling": {
+    "fear": [
+      "push_in",
+      "handheld",
+      "static"
+    ],
+    "anger": [
+      "push_in",
+      "handheld",
+      "static"
+    ],
+    "sad": [
+      "static",
+      "pull_out",
+      "push_in"
+    ],
+    "compassionate": [
+      "static",
+      "push_in"
+    ],
+    "concerned": [
+      "static",
+      "push_in"
+    ],
+    "determined": [
+      "push_in",
+      "tracking",
+      "static"
+    ],
+    "conflicted": [
+      "static",
+      "push_in",
+      "pull_out"
+    ],
+    "curious": [
+      "push_in",
+      "tracking",
+      "pan",
+      "static"
+    ],
+    "sarcastic": [
+      "static",
+      "push_in"
+    ],
+    "surprised": [
+      "push_in",
+      "static"
+    ],
+    "neutral": [
+      "static",
+      "tracking",
+      "pan"
+    ]
+  },
+
+  "performance_state_requirements": {
+    "walking": {
+      "compatible_camera": [
+        "tracking",
+        "pan",
+        "static"
+      ]
+    },
+    "running": {
+      "compatible_camera": [
+        "tracking",
+        "handheld",
+        "pan"
+      ]
+    },
+    "supernatural_activation": {
+      "preferred_camera": [
+        "push_in",
+        "orbit",
+        "crane",
+        "tilt"
+      ],
+      "requires_visual_emphasis": true
+    },
+    "react": {
+      "preferred_camera": [
+        "push_in",
+        "static",
+        "pull_out"
+      ],
+      "requires_facial_or_body_change": true
+    },
+    "speak": {
+      "preferred_camera": [
+        "static",
+        "push_in",
+        "pull_out"
+      ],
+      "requires_dialogue": true
+    }
+  },
+
+  "camera_only_performance_rejection": {
+    "forbidden": true,
+    "conditions": [
+      "camera_movement_without_required_performance",
+      "camera_emphasis_without_emotional_or_performance_change",
+      "tracking_without_locomotion",
+      "supernatural_camera_without_supernatural_performance"
+    ]
+  },
+
+  "quality_gates": [
+    "performance_intent_valid",
+    "camera_performance_compatible",
+    "movement_performance_compatible",
+    "emotion_camera_compatible",
+    "state_camera_compatible",
+    "dialogue_camera_compatible",
+    "supernatural_camera_compatible",
+    "camera_only_performance_rejected"
+  ]
+}

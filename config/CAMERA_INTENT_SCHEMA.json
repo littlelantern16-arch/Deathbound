@@ -1,0 +1,272 @@
+﻿{
+  "schema_version": "1.0",
+  "status": "production_ready",
+  "purpose": "Validate cinematic camera intent, composition, subject priority, visual emphasis, and narrative communication without overriding deliberate directorial choices.",
+
+  "composition_fields": [
+    "subject_priority",
+    "framing_intent",
+    "visual_focus",
+    "depth_strategy"
+  ],
+
+  "subject_priority": [
+    "primary_character",
+    "secondary_character",
+    "prop",
+    "environment",
+    "supernatural_effect",
+    "relationship",
+    "negative_space"
+  ],
+
+  "framing_intents": [
+    "establish",
+    "observe",
+    "converse",
+    "react",
+    "reveal",
+    "emphasize",
+    "isolate",
+    "confront",
+    "follow",
+    "discover",
+    "transition",
+    "scale",
+    "aftermath"
+  ],
+
+  "visual_focus": [
+    "character",
+    "face",
+    "eyes",
+    "hands",
+    "prop",
+    "environment",
+    "supernatural_effect",
+    "relationship",
+    "silhouette",
+    "negative_space"
+  ],
+
+  "depth_strategies": [
+    "flat",
+    "shallow",
+    "moderate",
+    "deep",
+    "foreground_occlusion",
+    "layered"
+  ],
+
+  "shot_type_behavior": {
+    "extreme_wide": {
+      "preferred_focus": [
+        "environment",
+        "silhouette",
+        "negative_space",
+        "supernatural_effect"
+      ],
+      "requires_environmental_context": true
+    },
+    "wide": {
+      "preferred_focus": [
+        "environment",
+        "character",
+        "relationship",
+        "supernatural_effect"
+      ]
+    },
+    "medium": {
+      "preferred_focus": [
+        "character",
+        "relationship",
+        "hands",
+        "environment"
+      ]
+    },
+    "medium_close": {
+      "preferred_focus": [
+        "character",
+        "face",
+        "eyes",
+        "relationship",
+        "negative_space"
+      ]
+    },
+    "close": {
+      "preferred_focus": [
+        "face",
+        "eyes",
+        "hands",
+        "prop",
+        "supernatural_effect"
+      ]
+    },
+    "extreme_close": {
+      "preferred_focus": [
+        "eyes",
+        "hands",
+        "prop",
+        "supernatural_effect"
+      ]
+    }
+  },
+
+  "role_rules": {
+    "establishing": {
+      "framing_intents": [
+        "establish",
+        "scale",
+        "transition"
+      ],
+      "focus": [
+        "environment",
+        "silhouette",
+        "negative_space"
+      ]
+    },
+    "character_coverage": {
+      "framing_intents": [
+        "observe",
+        "follow",
+        "confront"
+      ],
+      "focus": [
+        "character",
+        "relationship",
+        "hands"
+      ]
+    },
+    "dialogue": {
+      "framing_intents": [
+        "converse",
+        "observe",
+        "confront",
+        "emphasize"
+      ],
+      "focus": [
+        "character",
+        "face",
+        "eyes",
+        "relationship"
+      ]
+    },
+    "reaction": {
+      "framing_intents": [
+        "react",
+        "emphasize",
+        "isolate"
+      ],
+      "focus": [
+        "face",
+        "eyes",
+        "character"
+      ]
+    },
+    "action": {
+      "framing_intents": [
+        "follow",
+        "confront",
+        "emphasize",
+        "discover"
+      ],
+      "focus": [
+        "character",
+        "relationship",
+        "environment"
+      ]
+    },
+    "supernatural_payoff": {
+      "framing_intents": [
+        "reveal",
+        "emphasize",
+        "discover",
+        "scale"
+      ],
+      "focus": [
+        "supernatural_effect",
+        "face",
+        "eyes",
+        "environment"
+      ]
+    },
+    "emotional_resolution": {
+      "framing_intents": [
+        "react",
+        "isolate",
+        "emphasize",
+        "aftermath"
+      ],
+      "focus": [
+        "face",
+        "eyes",
+        "character",
+        "negative_space"
+      ]
+    }
+  },
+
+  "narrative_requirements": {
+    "dialogue": {
+      "requires_subject_priority": true,
+      "requires_visual_focus": true,
+      "character_must_be_visible": true
+    },
+    "reaction": {
+      "requires_face_or_character_focus": true
+    },
+    "action": {
+      "requires_action_subject": true
+    },
+    "supernatural_payoff": {
+      "requires_reveal_or_effect_focus": true
+    },
+    "establishing": {
+      "requires_environment_or_scale_focus": true
+    },
+    "emotional_resolution": {
+      "requires_emotional_subject_focus": true
+    }
+  },
+
+  "composition_quality": {
+    "subject_priority_required": true,
+    "framing_intent_required": true,
+    "visual_focus_required": true,
+    "depth_strategy_required": true,
+    "purpose_required": true,
+    "composition_must_serve_purpose": true
+  },
+
+  "repetition_defense": {
+    "same_composition_signature_limit": 3,
+    "same_framing_intent_limit": 4,
+    "same_visual_focus_limit": 4,
+    "generic_centered_composition_limit": 3
+  },
+
+  "negative_space": {
+    "allowed_purposes": [
+      "isolate",
+      "aftermath",
+      "tension",
+      "anticipation",
+      "scale"
+    ],
+    "requires_narrative_reason": true
+  },
+
+  "quality_gates": [
+    "composition_fields_valid",
+    "role_composition_alignment",
+    "shot_type_focus_alignment",
+    "narrative_focus_valid",
+    "subject_priority_valid",
+    "framing_intent_valid",
+    "depth_strategy_valid",
+    "purpose_alignment_valid",
+    "composition_repetition_control",
+    "generic_composition_rejected"
+  ]
+}
+
