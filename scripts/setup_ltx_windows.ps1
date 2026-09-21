@@ -105,4 +105,5 @@ Write-Host ""
 Write-Host "=== SETUP COMPLETE ===" -ForegroundColor Cyan
 Write-Host "Next step:"
 Write-Host "  powershell -ExecutionPolicy Bypass -File scripts\test_ltx_local.ps1"
-Write-Host "(weights ~13-15 GB download on first generation; Riven test needs the reference images in RIVEN_REFERENCE_BLOCKER.md)"
+Write-Host "(first generation downloads ~15.5 GB total: 5.9 GB LTX checkpoint + 9.5 GB city96 T5 encoder;"
+Write-Host " NEVER google/t5-v1_1-xxl 44.54 GB; Riven test needs the reference images in RIVEN_REFERENCE_BLOCKER.md)"

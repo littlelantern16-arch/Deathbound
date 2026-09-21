@@ -97,22 +97,44 @@ class LTXGeometryTest(unittest.TestCase):
         self.assertEqual((DEFAULT_WIDTH, DEFAULT_HEIGHT), (512, 320))
 
     def test_resolution_clamped_and_divisible_by_32(self) -> None:
+        """A 1080p delivery request infers natively at the largest exact-16:9
+        /32-divisible canvas inside the 4 GB area budget: 512x288.
+        (768x512 is 3:2 — it would distort 16:9 delivery; 768x432 is 16:9 but
+        not /32-divisible. The FFmpeg delivery step upscales 512x288 to the
+        exact requested frame size, same aspect.)"""
         request = GenerationRequest(
             shot_id="X", prompt="p", duration_seconds=2.0,
             fps=24, resolution="1920x1080",
         )
         width, height = LTXLocalProvider._target_resolution(request)
-        self.assertEqual((width, height), (768, 512))
+        self.assertEqual((width, height), (512, 288))
         self.assertEqual(width % 32, 0)
         self.assertEqual(height % 32, 0)
+        self.assertEqual(width * 9, height * 16)  # aspect preserved exactly
+
+    def test_native_never_exceeds_deliverable(self) -> None:
+        """Native inference geometry is bounded by the delivery frame itself,
+        so tiny/smoke requests never balloon up to the area ceiling."""
+        for resolution in ("512x320", "640x360", "256x256", "320x320"):
+            request = GenerationRequest(
+                shot_id="X", prompt="p", duration_seconds=2.0,
+                fps=24, resolution=resolution,
+            )
+            deliverable = LTXLocalProvider._deliverable_resolution(request)
+            native = LTXLocalProvider._native_resolution(*deliverable)
+            self.assertLessEqual(native[0], deliverable[0], resolution)
+            self.assertLessEqual(native[1], deliverable[1], resolution)
 
     def test_tiny_resolution_floor(self) -> None:
+        """Sub-256px requests floor at the /32 grid minimum WITHOUT ballooning
+        to the area ceiling (regression: 64x64 once produced 576x576)."""
         request = GenerationRequest(
             shot_id="X", prompt="p", duration_seconds=2.0,
             fps=24, resolution="64x64",
         )
         width, height = LTXLocalProvider._target_resolution(request)
         self.assertEqual((width, height), (256, 256))
+        self.assertLessEqual(width * height, 768 * 432)
 
     def test_frames_constrained_to_8n_plus_1(self) -> None:
         for duration in (0.5, 1.0, 2.0, 4.0, 10.0, 14.5):
@@ -212,9 +234,13 @@ class LTXModelSourceTest(unittest.TestCase):
         )
 
     def test_single_file_url_points_at_verified_checkpoint(self) -> None:
+        """The /blob/main/ form is REQUIRED: diffusers 0.40.0's Hub-link parser
+        matches an optional blob/main/ segment but not resolve/main/ (a
+        resolve link builds a doubled URL and 404s). Verified against the
+        installed diffusers source and the live Hub."""
         self.assertEqual(
             LTX_SINGLE_FILE_URL,
-            "https://huggingface.co/Lightricks/LTX-Video/resolve/main/"
+            "https://huggingface.co/Lightricks/LTX-Video/blob/main/"
             "ltxv-2b-0.9.6-distilled-04-25.safetensors",
         )
 
@@ -224,17 +250,24 @@ class LTXModelSourceTest(unittest.TestCase):
 
     def test_provider_uses_single_file_loading(self) -> None:
         """The hosting repo has no diffusers model_index.json; the provider
-        must load the 2B checkpoint via from_single_file, not from_pretrained."""
+        must load the 2B checkpoint via from_single_file, not from_pretrained.
+        The tiered architecture builds both pipelines through the shared
+        ``_tiered_pipeline`` builder (text-encoder-free Phase B)."""
         import inspect
 
         from automation.video import ltx_provider as module
 
-        ensure_loaded_source = inspect.getsource(module.LTXLocalProvider.ensure_loaded)
-        self.assertIn("LTXPipeline.from_single_file", ensure_loaded_source)
-        self.assertNotIn("LTXPipeline.from_pretrained", ensure_loaded_source)
-        self.assertIn("LTXConditionPipeline.from_single_file", inspect.getsource(module.LTXLocalProvider._condition_pipeline))
-        self.assertNotIn("LTXConditionPipeline.from_pretrained", inspect.getsource(module.LTXLocalProvider._condition_pipeline))
-        self.assertNotIn("LTXPipeline.from_pretrained", inspect.getsource(module.LTXLocalProvider._text_pipeline))
+        tiered_source = inspect.getsource(module.LTXLocalProvider._tiered_pipeline)
+        self.assertIn("from_single_file", tiered_source)
+        self.assertNotIn("from_pretrained", tiered_source)
+        ensure_source = inspect.getsource(module.LTXLocalProvider._ensure_pipeline)
+        self.assertIn("LTXConditionPipeline", ensure_source)
+        self.assertIn("LTXPipeline", ensure_source)
+        module_source = inspect.getsource(module)
+        self.assertNotIn("LTXPipeline.from_pretrained", module_source)
+        self.assertNotIn("LTXConditionPipeline.from_pretrained", module_source)
+        # Phase B must never receive a text encoder into the pipeline.
+        self.assertIn("text_encoder=None", tiered_source)
 
     def test_distilled_schedule_used(self) -> None:
         self.assertEqual(DEFAULT_STEPS, 8)

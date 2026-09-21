@@ -78,7 +78,12 @@ def _sample_clip_bytes(tmp: Path) -> Path | None:
 
 
 class FakeMediaProvider(VideoProvider):
-    """Serves a pre-generated real MP4 as its artifact (simulated=false)."""
+    """Serves a pre-generated real MP4 as its artifact (simulated=false).
+
+    The served clip is re-encoded from the synthetic fixture to match each
+    request's duration/fps/resolution, so it satisfies the executor's real
+    media validation gate (which correctly expects 1280x720 @ 24fps shots).
+    """
 
     provider_id = "acceptance-fake-media"
     capabilities = {**DryRunProvider.capabilities, "requires_payment": False, "requires_credentials": False}
@@ -88,12 +93,26 @@ class FakeMediaProvider(VideoProvider):
         self.artifacts_dir = artifacts_dir
 
     def generate(self, request: GenerationRequest):
+        import subprocess
+
         from automation.video.provider_adapter import GenerationResult
 
         shot = request.shot_id
         dest = self.artifacts_dir / shot / "clip.mp4"
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_bytes(self.clip_path.read_bytes())
+        ffmpeg = MediaToolkit(PROJECT_ROOT).resolve_ffmpeg()
+        width, height = (int(x) for x in request.resolution.lower().split("x"))
+        result = subprocess.run(
+            [
+                ffmpeg, "-y",
+                "-f", "lavfi", "-i",
+                f"color=c=red:size={width}x{height}:rate={request.fps}:duration={request.duration_seconds}",
+                "-pix_fmt", "yuv420p", str(dest),
+            ],
+            capture_output=True, text=True,
+        )
+        if result.returncode != 0 or not dest.exists() or dest.stat().st_size == 0:
+            raise RuntimeError(f"fake provider could not encode {dest}: {result.stderr.strip()[:200]}")
         artifact = {
             "artifact_id": f"{shot}-clip",
             "kind": "video_clip",

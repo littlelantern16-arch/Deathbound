@@ -21,7 +21,7 @@ import shutil
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from .ltx_provider import LTX_CHECKPOINT_FILE, LTX_MODEL_ID
+from .ltx_provider import LTX_CHECKPOINT_FILE, LTX_MODEL_ID, T5_ENCODER_REPO, resolve_t5_encoder_source
 from .media import MediaToolkit
 from .paths import find_project_root
 
@@ -85,6 +85,52 @@ def model_cache_dir() -> Optional[Path]:
             return Path(value)
     hub = Path.home() / ".cache" / "huggingface" / "hub"
     return hub
+
+
+def t5_encoder_present() -> Dict[str, Any]:
+    """Scan the local caches for the Phase A T5-XXL encoder weights. No network.
+
+    Checks, in order, the pinned ``DEATHBOUND_T5_LOCAL_PATH`` directory, then
+    the HF cache (config.json + model.safetensors from the city96 encoder
+    repo — never google/t5-v1_1-xxl and never an fp32 text_encoder/ folder).
+    """
+    result = {
+        "present": False,
+        "source": T5_ENCODER_REPO,
+        "local_path": os.environ.get("DEATHBOUND_T5_LOCAL_PATH") or None,
+        "cache": str(model_cache_dir()) if model_cache_dir() else None,
+        "size_gb": 0.0,
+        "file": None,
+    }
+    # A misconfigured pin must not crash this no-network scan; surface it.
+    try:
+        result["source"] = resolve_t5_encoder_source()
+    except Exception as exc:  # pin set but directory missing/invalid
+        result["pin_error"] = str(exc)
+
+    local = os.environ.get("DEATHBOUND_T5_LOCAL_PATH")
+    if local:
+        if os.path.isdir(local):
+            marker = Path(local) / "model.safetensors"
+            if marker.exists():
+                result.update(
+                    present=True,
+                    size_gb=round(marker.stat().st_size / 1024**3, 2),
+                    file=marker.name,
+                )
+        return result
+    cache = model_cache_dir()
+    if cache and cache.exists():
+        for path in cache.rglob("model.safetensors"):
+            if not (path.parent / "config.json").exists():
+                continue  # sharded fp32 text_encoder/ dirs have an index, not this pair
+            size_gb = round(path.stat().st_size / 1024**3, 2)
+            # Phase A uses the ~9.5 GB bf16 single-file encoder. A ~19 GB
+            # fp32 pair would be the forbidden Lightricks text_encoder/ dir.
+            if 8.0 <= size_gb <= 11.0:
+                result.update(present=True, size_gb=size_gb, file=str(path))
+                break
+    return result
 
 
 def model_present() -> Dict[str, Any]:
@@ -182,7 +228,17 @@ def run_diagnostics(*, min_disk_gb: float = MIN_DISK_GB) -> Dict[str, Any]:
     if not weights["present"]:
         warnings.append(
             f"checkpoint {weights.get('checkpoint')} not found in cache ({weights['cache']}); "
-            f"it will be downloaded on first generation (~14-17 GB) from {weights['model_id']}"
+            f"it will be downloaded on first generation (~15.5 GB: 5.9 GB checkpoint + "
+            f"9.5 GB city96 T5 encoder) from {weights['model_id']}"
+        )
+
+    t5 = t5_encoder_present()
+    if not t5["present"]:
+        warnings.append(
+            "T5-XXL encoder not found yet (Phase A will download ~9.5 GB bf16 from "
+            f"{t5['source']} on first generation; NEVER google/t5-v1_1-xxl 44.54 GB "
+            "nor Lightricks' fp32 text_encoder/ 19.05 GB). Pre-fetch per "
+            "automation/video/LTX_SETUP.md section 2."
         )
 
     refs = riven_references()
@@ -200,6 +256,7 @@ def run_diagnostics(*, min_disk_gb: float = MIN_DISK_GB) -> Dict[str, Any]:
         "torch": torch_info,
         "ffmpeg_path": ffmpeg,
         "model_weights": weights,
+        "t5_encoder": t5,
         "riven_references": refs,
         "blocking_errors": blockers,
         "warnings": warnings,
