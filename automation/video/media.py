@@ -57,7 +57,10 @@ class MediaToolkit:
         if base.suffix == "":
             candidates += [base / "ffmpeg.exe", base / "ffmpeg"]
         for candidate in candidates:
-            if candidate.exists():
+            # paths.json may point at a bin/ directory (the Windows install
+            # does); only a real executable FILE is usable — returning the
+            # directory would fail at subprocess spawn time.
+            if candidate.is_file():
                 return str(candidate)
         return None
 
@@ -248,7 +251,7 @@ class MediaToolkit:
             "-q:v",
             "1",
         ]
-        fd, temp_name = tempfile.mkstemp(dir=str(output_png.parent), suffix=".png.tmp")
+        fd, temp_name = tempfile.mkstemp(dir=str(output_png.parent), suffix=".png")
         os.close(fd)
         temp_path = Path(temp_name)
         try:
