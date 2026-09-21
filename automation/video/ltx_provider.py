@@ -178,7 +178,14 @@ def resolve_ltx_checkpoint_source() -> str:
 
 
 def resolve_t5_encoder_source() -> str:
-    """T5 encoder source for Phase A (local dir when declared, else the repo)."""
+    """T5 encoder source for Phase A (local dir when declared, else the repo).
+
+    Download-safety gate: the 44.54 GB fp32 ``google/t5-v1_1-xxl`` repo is
+    never an acceptable Phase A source — not as the default, and not via a
+    stale ``DEATHBOUND_T5_ENCODER`` environment value left over from earlier
+    experiments. A resolved source equal to that repo id raises instead of
+    silently starting the forbidden download.
+    """
     local = os.environ.get("DEATHBOUND_T5_LOCAL_PATH")
     if local:
         if os.path.isdir(local):
@@ -188,7 +195,20 @@ def resolve_t5_encoder_source() -> str:
             f"exist: {local}. Fix the path or unset the variable to download "
             f"the encoder from {T5_ENCODER_REPO}."
         )
-    return T5_ENCODER_REPO
+    # Call-time env read (NOT the import-time T5_ENCODER_REPO constant): a
+    # stale DEATHBOUND_T5_ENCODER set after import must still be caught.
+    source = os.environ.get("DEATHBOUND_T5_ENCODER") or T5_ENCODER_REPO
+    normalized = source.strip().rstrip("/").lower()
+    forbidden = "google/t5-v1_1-xxl"
+    if normalized == forbidden or normalized.endswith("/" + forbidden):
+        raise LTXNotAvailableError(
+            f"Refusing to load the T5 encoder from '{forbidden}': its "
+            "pytorch_model.bin is 44,541,587,809 bytes (~44.54 GB) and is "
+            "forbidden on this pipeline. Set DEATHBOUND_T5_ENCODER to "
+            f"{T5_ENCODER_REPO} (the ~9.52 GB bf16 encoder-only repo) or "
+            "point DEATHBOUND_T5_LOCAL_PATH at a local encoder directory."
+        )
+    return source
 
 
 # 4 GB VRAM target: conservative defaults, divisible by 32 as LTX requires.

@@ -356,5 +356,67 @@ class LTXSingleFileSourceTest(unittest.TestCase):
         self.assertIn("DEATHBOUND_LTX_LOCAL_CHECKPOINT", str(ctx.exception))
 
 
+class T5EncoderSourceSafetyTest(unittest.TestCase):
+    """Phase A download-safety: the 44.54 GB fp32 repo is never loadable.
+
+    The production blocker this guards against: a stale
+    ``DEATHBOUND_T5_ENCODER=google/t5-v1_1-xxl`` environment value left over
+    from earlier experiments must raise, never start the forbidden download.
+    """
+
+    FORBIDDEN = "google/t5-v1_1-xxl"
+    SANCTIONED = "city96/t5-v1_1-xxl-encoder-bf16"
+
+    def setUp(self) -> None:
+        self._old_encoder = os.environ.pop("DEATHBOUND_T5_ENCODER", None)
+        self._old_local = os.environ.pop("DEATHBOUND_T5_LOCAL_PATH", None)
+
+    def tearDown(self) -> None:
+        for key, value in (
+            ("DEATHBOUND_T5_ENCODER", self._old_encoder),
+            ("DEATHBOUND_T5_LOCAL_PATH", self._old_local),
+        ):
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+
+    def _resolve(self):
+        from automation.video.ltx_provider import resolve_t5_encoder_source
+
+        return resolve_t5_encoder_source()
+
+    def test_default_source_is_sanctioned_bf16_encoder(self) -> None:
+        self.assertEqual(self._resolve(), self.SANCTIONED)
+
+    def test_sanctioned_encoder_env_override_accepted(self) -> None:
+        os.environ["DEATHBOUND_T5_ENCODER"] = self.SANCTIONED
+        self.assertEqual(self._resolve(), self.SANCTIONED)
+
+    def test_forbidden_fp32_repo_is_refused(self) -> None:
+        os.environ["DEATHBOUND_T5_ENCODER"] = self.FORBIDDEN
+        with self.assertRaises(Exception) as ctx:
+            self._resolve()
+        message = str(ctx.exception)
+        self.assertIn("44", message)  # the 44.54 GB fact is named
+        self.assertIn(self.SANCTIONED, message)  # the fix is named
+
+    def test_forbidden_repo_with_trailing_slash_refused(self) -> None:
+        os.environ["DEATHBOUND_T5_ENCODER"] = self.FORBIDDEN + "/"
+        with self.assertRaises(Exception):
+            self._resolve()
+
+    def test_forbidden_repo_under_any_prefix_refused(self) -> None:
+        os.environ["DEATHBOUND_T5_ENCODER"] = "mirror.example.com/" + self.FORBIDDEN
+        with self.assertRaises(Exception):
+            self._resolve()
+
+    def test_local_pin_bypasses_env_lookup_without_forbidden_check(self) -> None:
+        """A valid local directory pin wins; no network source is consulted."""
+        with tempfile.TemporaryDirectory() as td:
+            os.environ["DEATHBOUND_T5_LOCAL_PATH"] = td
+            self.assertEqual(self._resolve(), td)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

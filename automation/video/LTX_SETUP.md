@@ -46,7 +46,7 @@ docstring.
 | Component | Size | Source | Notes |
 |---|---|---|---|
 | `ltxv-2b-0.9.6-distilled-04-25.safetensors` | ~5.9 GB | `Lightricks/LTX-Video` (blob/main link) | the 2B DiT + VAE configs (single file) — **already downloaded** |
-| T5-XXL encoder, bf16, encoder-only | ~9.5 GB | `city96/t5-v1_1-xxl-encoder-bf16` | pulled by Phase A (`ensure_text_encoder`), never by from_single_file |
+| T5-XXL encoder, bf16, encoder-only | ~9.52 GB | `city96/t5-v1_1-xxl-encoder-bf16` | pulled by Phase A (`ensure_text_encoder`), never by from_single_file |
 
 > **DO NOT download `google/t5-v1_1-xxl`** — its `pytorch_model.bin` is
 > 44,541,587,809 bytes (≈ 44.54 GB) and will never fit this workflow.
@@ -55,7 +55,8 @@ docstring.
 > verified ₹0-compatible source: config matches LTX's `text_encoder/config.json`
 > exactly (d_model 4096, 24 layers, gated-gelu, untied embeddings).
 
-**Expected total download: ~15.5 GB** (checkpoint ~5.9 GB + city96 T5 ~9.5 GB).
+**Expected total download: ~15.5 GB** (checkpoint 6,340,744,028 bytes ≈ 5.9 GB
++ city96 T5 `model.safetensors` 9,524,648,592 bytes ≈ 9.52 GB).
 Destination: the HF cache (`D:\Deathbound\cache\huggingface` when HF_HOME is
 set by `scripts/setup_ltx_windows.ps1`, else `%USERPROFILE%\.cache\huggingface`).
 Free disk needed: **≥ 20 GB**. Pre-fetch both pieces once (Phase B requires
