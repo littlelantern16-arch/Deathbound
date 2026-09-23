@@ -61,10 +61,15 @@ Phase B: build the pipeline from the single-file checkpoint with
 ``text_encoder=None`` (diffusers 0.40.0 drops passed-None components cleanly:
 loaders/single_file.py ``load_module`` + the
 ``missing_modules <= passed_modules + optional_modules`` branch), so nothing
-T5-shaped ever enters the pipeline or the GPU. The transformer+VAE (~6.7 GB)
-stay CPU-resident and stream to the GPU per block-group via
-``enable_group_offload`` (block-level), keeping peak VRAM ~2-3.5 GB. The
-precomputed embeds are moved to CUDA right before the call.
+T5-shaped ever enters the pipeline or the GPU. The transformer (~4.4 GB)
+stays CPU-resident and streams to the GPU per block-group via
+``enable_group_offload`` (block-level) with ``exclude_modules=["vae"]`` —
+the hook-free VAE (~2.3 GB bf16) is placed on CUDA by the exclusion branch
+and stays resident for decode (a group-offloaded VAE would never onload:
+the pipelines call ``vae.decode`` directly, bypassing ``nn.Module.__call__``
+hooks — see ``_apply_group_offload`` for the verified root cause).
+Peak VRAM ~2-3.5 GB. The precomputed embeds are moved to CUDA right before
+the call.
 
 Peak RAM overall: ~10-11 GB during Phase A (transient), ~7-8 GB steady state
 during Phase B. Both fit the 16 GB machine with the desktop closed.
@@ -86,6 +91,7 @@ T5EncoderModel-compatible folder via ``text_encoder=[...]``.
 from __future__ import annotations
 
 import gc
+import inspect
 import math
 import os
 import time
@@ -138,6 +144,13 @@ GROUP_OFFLOAD_ENABLED = os.environ.get("DEATHBOUND_GROUP_OFFLOAD", "1") != "0"
 # whenever use_stream=True, so DEATHBOUND_GROUP_OFFLOAD_USE_STREAM defaults to
 # 0 — the configured block grouping is what actually runs on the 4 GB card.
 GROUP_OFFLOAD_NUM_BLOCKS = int(os.environ.get("DEATHBOUND_GROUP_OFFLOAD_BLOCKS", "4"))
+# diffusers >= 0.40 `DiffusionPipeline.enable_group_offload(exclude_modules=...)`:
+# the named components are NOT given offload hooks and are instead placed
+# permanently on the onload device (verified in v0.40.0 pipeline_utils.py). The
+# VAE is excluded because pipelines call `vae.decode(...)` DIRECTLY (never the
+# root `nn.Module.__call__`), so a group hook on the VAE would never fire —
+# see `offload_pipeline_components` below for the full root-cause derivation.
+VAE_OFFLOAD_EXCLUDED = os.environ.get("DEATHBOUND_VAE_OFFLOAD", "1") == "1"
 GROUP_OFFLOAD_USE_STREAM = os.environ.get("DEATHBOUND_GROUP_OFFLOAD_USE_STREAM", "0") == "1"
 # Keep the T5 encoder resident in RAM between requests (faster shot chains,
 # ~9.5 GB steady RAM). Default off: free it after every encode so the 16 GB
@@ -413,29 +426,93 @@ class LTXLocalProvider(VideoProvider):
         )
 
     def _apply_group_offload(self, pipeline: Any) -> None:
-        """Stream transformer/VAE block groups onto the 4 GB GPU.
+        """Offload the text-encoder-free pipeline onto the 4 GB GPU.
 
-        ``enable_group_offload`` (diffusers >= 0.31) onloads one block group
-        at a time, so peak VRAM ~= largest group + activations instead of the
-        whole 6.7 GB component set.
+        VAE device-safety fix (root cause verified against diffusers 0.40.0
+        source):
+
+        1. ``DiffusionPipeline.enable_group_offload`` group-offloads EVERY
+           ``nn.Module`` component, including the VAE
+           (pipeline_utils.py::enable_group_offload).
+        2. Block-level ``_apply_group_offloading_block_level`` groups the
+           ModuleList children (encoder/decoder stacks) and registers ONE
+           "unmatched group" ``GroupOffloadingHook`` on the VAE ROOT for its
+           root-level params/buffers (latents_mean/std + conv/attention
+           tensors) (hooks/group_offloading.py).
+        3. That hook runs only from ``nn.Module.__call__`` — and both LTX
+           pipelines call ``self.vae.decode(...)`` DIRECTLY, bypassing it
+           (pipeline_ltx.py:848, pipeline_ltx_condition.py:1285). The VAE
+           decoder weights therefore stay on CPU while the CUDA latent
+           reaches ``decoder.conv_in`` -> ``RuntimeError: Input type
+           (CUDABFloat16Type) and weight type (CPUBFloat16Type)``.
+        4. The transformer is unaffected: the pipelines invoke it through its
+           normal ``__call__``, so its hooks fire and its groups stream.
+
+        The fix is diffusers' own supported mechanism:
+        ``enable_group_offload(..., exclude_modules=["vae"])`` skips the VAE
+        entirely and then places it (``module.to(onload_device)``) on the GPU
+        (verified in v0.40.0 pipeline_utils.py — the exclusion branch is the
+        ONLY ``.to()`` diffusers allows on a hook-free component here).
+        Manually moving the VAE to CUDA afterwards is a logged no-op while
+        it still carries its group hook (``ModelMixin.to`` refuses ``.to()``
+        on group-offloaded modules), so the exclusion must happen inside
+        ``enable_group_offload`` itself.
+
+        Peak VRAM stays bounded: transformer streaming (hook-driven) is
+        unchanged, and the resident VAE is bf16 (~2.3 GB) with tiled
+        decoding — the transformer is NOT resident simultaneously with it at
+        full size.
+
+        The ``enable_model_cpu_offload`` fallback (older diffusers) has the
+        same guarantee by a different mechanism: AutoencoderKLLTXVideo.decode
+        is decorated with ``@apply_forward_hook``, which fires the
+        accelerate ``CpuOffload`` hook even on direct ``.decode()`` calls —
+        the VAE is onloaded for decode and re-offloaded afterwards by
+        ``maybe_free_model_hooks``. No VAE-specific handling is needed there.
         """
         import torch
 
         if not GROUP_OFFLOAD_ENABLED:
+            # >12 GB VRAM opt-out: everything resident on CUDA.
             pipeline.to("cuda")
             return
+        enable_group_offload = getattr(pipeline, "enable_group_offload", None)
+        if enable_group_offload is None:
+            # Pre-group-offload diffusers: the whole-component offloader is
+            # the only available route (and it is VAE-safe, see below).
+            pipeline.enable_model_cpu_offload()
+            return
+        signature_params = inspect.signature(enable_group_offload).parameters
+        if VAE_OFFLOAD_EXCLUDED and "exclude_modules" not in signature_params:
+            # diffusers < 0.40: group offloading the pipeline would hook the
+            # VAE with the SAME broken hook (never fired on .decode()), so it
+            # is unsafe here regardless of VRAM. The whole-component
+            # offloader is the device-safe route: decode() carries
+            # @apply_forward_hook, so its accelerate CpuOffload hook fires on
+            # the direct .decode() call, onloading the VAE for the decode and
+            # re-offloading it afterwards via maybe_free_model_hooks.
+            pipeline.enable_model_cpu_offload()
+            return
+        kwargs: Dict[str, Any] = {
+            "onload_device": torch.device("cuda"),
+            "offload_device": torch.device("cpu"),
+            "offload_type": "block_level",
+            "num_blocks_per_group": GROUP_OFFLOAD_NUM_BLOCKS,
+            "use_stream": GROUP_OFFLOAD_USE_STREAM,
+            "low_cpu_mem_usage": True,
+        }
+        if VAE_OFFLOAD_EXCLUDED:
+            # diffusers >= 0.40: the supported VAE fix. The hook-free VAE
+            # lands (and stays) on CUDA; the transformer keeps streaming.
+            # Opt back in to VAE group offloading (DEATHBOUND_VAE_OFFLOAD=0)
+            # only once upstream fixes the decode-hook dispatch.
+            kwargs["exclude_modules"] = ["vae"]
         try:
-            pipeline.enable_group_offload(
-                onload_device=torch.device("cuda"),
-                offload_device=torch.device("cpu"),
-                offload_type="block_level",
-                num_blocks_per_group=GROUP_OFFLOAD_NUM_BLOCKS,
-                use_stream=GROUP_OFFLOAD_USE_STREAM,
-                low_cpu_mem_usage=True,
-            )
+            pipeline.enable_group_offload(**kwargs)
         except Exception:
-            # Older diffusers or an offload incompatibility: fall back to the
-            # whole-component offloader. Still never loads the T5 to GPU.
+            # Any offload incompatibility (TypeError on newer/older kwargs,
+            # ValueError from hook application, ...): the whole-component
+            # offloader is VAE-safe by hook design (see the branch above).
             pipeline.enable_model_cpu_offload()
 
     def ensure_loaded(self) -> None:
@@ -671,6 +748,11 @@ class LTXLocalProvider(VideoProvider):
                 (info["width"], info["height"]) != (native_w, native_h)
             ),
             "memory_architecture": "tiered_cpu_t5+group_offload",
+            "vae_device_policy": (
+                "resident_cuda_excluded_from_group_offload"
+                if VAE_OFFLOAD_EXCLUDED
+                else "cpu_offload_hook"
+            ),
         }
         return GenerationResult(
             shot_id=shot_id,
