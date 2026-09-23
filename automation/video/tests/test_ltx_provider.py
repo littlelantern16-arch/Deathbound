@@ -418,5 +418,190 @@ class T5EncoderSourceSafetyTest(unittest.TestCase):
             self.assertEqual(self._resolve(), td)
 
 
+class _FakeTorchDevice:
+    def __init__(self, spec: str) -> None:
+        self.spec = spec
+
+
+class _FakeTorch:
+    """Minimal torch stand-in: `_apply_group_offload` only calls torch.device."""
+
+    @staticmethod
+    def device(spec: str) -> _FakeTorchDevice:
+        return _FakeTorchDevice(spec)
+
+
+class _RecordingOffloadPipeline:
+    """Records which offload mechanism the provider chooses."""
+
+    def __init__(self, group_error: bool = False, with_group_method: bool = True) -> None:
+        self.components = {"transformer": object(), "vae": object()}
+        self.calls: list = []
+        self._group_error = group_error
+        if not with_group_method:
+            # Simulate pre-group-offload diffusers (no such method at all).
+            self.enable_group_offload = None  # type: ignore[assignment]
+
+    def enable_group_offload(self, **kwargs):  # noqa: ANN003 - test double
+        self.calls.append(("group", dict(kwargs)))
+        if self._group_error:
+            raise ValueError("simulated group offload incompatibility")
+
+    def enable_model_cpu_offload(self) -> None:
+        self.calls.append(("model_cpu_offload", {}))
+
+    def to(self, device: str) -> None:
+        self.calls.append(("to", device))
+
+
+class _ExcludePipeline(_RecordingOffloadPipeline):
+    """diffusers >= 0.40 shape: enable_group_offload(exclude_modules=...)."""
+
+    def enable_group_offload(self, onload_device, exclude_modules=None, **extra):  # noqa: ANN001
+        recorded = dict(extra)
+        if exclude_modules is not None:
+            recorded["exclude_modules"] = exclude_modules
+        self.calls.append(("group", recorded))
+        if self._group_error:
+            raise ValueError("simulated group offload incompatibility")
+
+
+class _StrictPipeline(_RecordingOffloadPipeline):
+    """Older shape: enable_group_offload without exclude_modules support.
+
+    Group offloading such a pipeline would hook the VAE with the exact
+    broken hook, so the provider must refuse the group path entirely.
+    """
+
+    def enable_group_offload(self, onload_device, offload_device):  # noqa: ANN001
+        self.calls.append(("group", {}))
+
+
+class LTXVAEDevicePolicyTest(unittest.TestCase):
+    """VAE device/offload regression tests (the 4 GB decode fix).
+
+    Root cause verified against diffusers 0.40.0 source: pipeline-level
+    ``enable_group_offload`` hooks the VAE, but the hook only fires from
+    ``nn.Module.__call__`` while both LTX pipelines call ``vae.decode()``
+    directly — leaving decoder weights on CPU against a CUDA latent
+    ("Input type (CUDABFloat16Type) and weight type (CPUBFloat16Type)").
+    The fix excludes the VAE from group offload (diffusers' own
+    ``exclude_modules=["vae"]`` mechanism) so the hook-free VAE is placed
+    on CUDA; older diffusers falls back to ``enable_model_cpu_offload``
+    whose accelerate hook fires on decode via ``@apply_forward_hook``.
+    """
+
+    def setUp(self) -> None:
+        from automation.video import ltx_provider as module
+
+        self._module = module
+        # GROUP_OFFLOAD_ENABLED / VAE_OFFLOAD_EXCLUDED are import-time module
+        # constants (env is only consulted at import), so tests patch the
+        # flags directly and restore them afterwards.
+        self._saved_flags = (module.GROUP_OFFLOAD_ENABLED, module.VAE_OFFLOAD_EXCLUDED)
+        module.GROUP_OFFLOAD_ENABLED = True
+        module.VAE_OFFLOAD_EXCLUDED = True
+
+    def tearDown(self) -> None:
+        (
+            self._module.GROUP_OFFLOAD_ENABLED,
+            self._module.VAE_OFFLOAD_EXCLUDED,
+        ) = self._saved_flags
+
+    def _offload(self, pipeline):
+        import sys
+        from automation.video import ltx_provider as module
+
+        provider = module.LTXLocalProvider.__new__(module.LTXLocalProvider)
+        fake_torch = _FakeTorch()
+        had_torch = "torch" in sys.modules
+        real_torch = sys.modules.get("torch")
+        sys.modules["torch"] = fake_torch
+        try:
+            module.LTXLocalProvider._apply_group_offload(provider, pipeline)
+        finally:
+            if had_torch:
+                sys.modules["torch"] = real_torch
+            else:
+                sys.modules.pop("torch", None)
+        return pipeline
+
+    def test_group_offload_excludes_vae(self) -> None:
+        """diffusers >= 0.40: VAE excluded, transformer keeps streaming."""
+        pipeline = self._offload(_ExcludePipeline())
+        mechanisms = [name for name, _ in pipeline.calls]
+        self.assertEqual(mechanisms, ["group"])
+        kwargs = pipeline.calls[0][1]
+        self.assertEqual(kwargs["exclude_modules"], ["vae"])
+        self.assertEqual(kwargs["offload_type"], "block_level")
+
+    def test_no_exclude_support_falls_back_to_model_cpu_offload(self) -> None:
+        """Older diffusers (enable_group_offload without exclude_modules):
+        group offload would hook the VAE with the exact broken hook, so the
+        pipeline must NOT be group-offloaded at all — the whole-component
+        offloader is the device-safe route."""
+        pipeline = _StrictPipeline()
+        self._offload(pipeline)
+        mechanisms = [name for name, _ in pipeline.calls]
+        self.assertEqual(mechanisms, ["model_cpu_offload"])
+
+    def test_group_offload_failure_falls_back_to_model_cpu_offload(self) -> None:
+        pipeline = _ExcludePipeline(group_error=True)
+        self._offload(pipeline)
+        mechanisms = [name for name, _ in pipeline.calls]
+        self.assertEqual(mechanisms[0], "group")
+        self.assertIn("model_cpu_offload", mechanisms)
+
+    def test_signature_without_exclude_modules_refuses_group_path(self) -> None:
+        """Older diffusers whose enable_group_offload lacks exclude_modules
+        would hook the VAE with the broken hook — the provider must NOT
+        group-offload such a pipeline at all (device-safe fallback only)."""
+        pipeline = _StrictPipeline()
+        self._offload(pipeline)
+        self.assertEqual([name for name, _ in pipeline.calls], ["model_cpu_offload"])
+
+    def test_missing_group_offload_method_uses_model_cpu_offload(self) -> None:
+        """Pre-group-offload diffusers: whole-component offloader only."""
+        pipeline = _RecordingOffloadPipeline(with_group_method=False)
+        self._offload(pipeline)
+        self.assertEqual([name for name, _ in pipeline.calls], ["model_cpu_offload"])
+
+    def test_group_offload_disabled_moves_everything_to_cuda(self) -> None:
+        """The >12 GB VRAM opt-out (DEATHBOUND_GROUP_OFFLOAD=0 at import) is
+        untouched: everything resident on CUDA."""
+        self._module.GROUP_OFFLOAD_ENABLED = False
+        pipeline = _ExcludePipeline()
+        self._offload(pipeline)
+        self.assertEqual(pipeline.calls, [("to", "cuda")])
+
+    def test_vae_offload_opt_out_keeps_group_offload_on_transformer(self) -> None:
+        """DEATHBOUND_VAE_OFFLOAD=0 (import-time) restores upstream default
+        behavior: group offload WITHOUT exclusion (documented as unsafe for
+        LTX until upstream fixes decode-hook dispatch, but user-overridable)."""
+        self._module.VAE_OFFLOAD_EXCLUDED = False
+        pipeline = _ExcludePipeline()
+        self._offload(pipeline)
+        self.assertEqual([name for name, _ in pipeline.calls], ["group"])
+        self.assertIsNone(pipeline.calls[0][1].get("exclude_modules"))
+
+    def test_no_manual_vae_to_calls(self) -> None:
+        """The manual `pipeline.vae.to('cuda')` patch is a logged no-op while
+        the VAE carries its group hook (ModelMixin.to). The supported fix is
+        exclude_modules inside enable_group_offload — the CODE must never
+        re-grow a manual VAE .to() call (the docstring MAY document why)."""
+        import inspect
+
+        from automation.video import ltx_provider as module
+
+        offload_source = inspect.getsource(module.LTXLocalProvider._apply_group_offload)
+        # Strip the docstring so documentation about the forbidden patch
+        # cannot trip the guard; only executable code is inspected.
+        code_only = offload_source.split('"""', 2)[-1]
+        self.assertNotIn(".vae.to(", code_only)
+        self.assertNotIn("vae.to(device", code_only)
+        module_source = inspect.getsource(module)
+        self.assertNotIn("pipeline.vae.to(", module_source)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

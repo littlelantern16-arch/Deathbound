@@ -39,9 +39,27 @@ are 13B-only.)
 the provider NEVER lets a text encoder enter the pipeline. Phase A loads the
 T5-XXL encoder ALONE on CPU, encodes the prompts into `prompt_embeds`, frees
 the encoder; Phase B then builds the pipeline from the single-file checkpoint
-with `text_encoder=None` and streams transformer+VAE to the GPU with
-block-level group offload. Full derivation in the `ltx_provider.py` module
-docstring.
+with `text_encoder=None` and streams the transformer to the GPU with
+block-level group offload while the VAE sits resident on CUDA, excluded from
+group offloading (see the VAE device-safety note below). Full derivation in
+the `ltx_provider.py` module docstring.
+
+> **VAE DEVICE-SAFETY (the "CUDABFloat16Type vs CPUBFloat16Type" decode fix,
+> verified against diffusers 0.40.0 source):** both LTX pipelines call
+> `vae.decode(...)` directly, but diffusers' pipeline-level group offload
+> only hooks components through `nn.Module.__call__` — so a group-offloaded
+> VAE never onloads its weights and decoding dies with
+> `Input type (CUDABFloat16Type) and weight type (CPUBFloat16Type)`.
+> The provider therefore passes `exclude_modules=["vae"]` to
+> `enable_group_offload`: the hook-free VAE is placed on CUDA (bf16, ~2.3 GB,
+> tiled decode) while the transformer keeps streaming block-by-block.
+> Manually calling `pipeline.vae.to("cuda")` afterwards is a logged NO-OP
+> while the VAE still carries its group hook — do not "patch" it that way.
+> On diffusers without `exclude_modules` support the provider refuses the
+> group path entirely and uses `enable_model_cpu_offload`, whose accelerate
+> hook fires correctly on `decode()` (`@apply_forward_hook`).
+> `DEATHBOUND_VAE_OFFLOAD=0` restores upstream group-offload-everything
+> behavior (not recommended for LTX).
 
 | Component | Size | Source | Notes |
 |---|---|---|---|
