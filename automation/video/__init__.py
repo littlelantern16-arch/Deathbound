@@ -11,6 +11,7 @@ architecture. Modules:
 - ``manifest``         generation manifest build/validate/persist
 - ``qa``               QA validation suite + bounded retry
 - ``executor``         episode executor (ordering, chaining, resume, reports)
+- ``build_ep001_v1``   EP001 V1 audio/final assembly (PCM narration + mux + QA)
 """
 
 from .executor import EpisodeExecutor, run_three_shot_vertical_slice

@@ -72,10 +72,33 @@ python3 -m automation.video.run --resume
 
 # Full test suite (44 tests):
 python3 -m automation.video.tests.test_video_pipeline
+
+# EP001 V1 assembly (audio + final mux) regression tests:
+python3 -m automation.video.tests.test_build_ep001_v1
 ```
 
 Exit code 0 + `OVERALL: PASS` means ordering, state propagation, identity
 continuity, final-frame propagation, manifests, and link integrity all passed.
+
+## EP001 V1 final assembly (audio + mux)
+
+```bash
+# Rebuild narration from the ORIGINAL line WAVs, mux onto the existing visual
+# master, then validate projects/EP001/08_output/EP001_V1.mp4:
+python3 -m automation.video.build_ep001_v1
+
+# Re-validate an already-assembled file only:
+python3 -m automation.video.build_ep001_v1 --validate-only
+```
+
+Reads `projects/EP001/04_audio/EP001_AUDIO_TIMELINE.json`, writes
+`08_output/_v1_work/narration.wav` as a real **PCM** WAV (each line placed at
+its exact `start_seconds`, then `loudnorm`), and muxes it onto
+`EP001_visual_v1.mp4` with `-c:v copy` + silence padding. `-shortest` is never
+used: the full 357.331 s visual timeline is preserved and only the audio is
+extended. Post-assembly validation requires h264, 1920x1080, the full duration,
+a valid AAC track covering the timeline, and a zero-error decode pass.
+Exit 0 = assembled and validated; exit 1 = failure (never a fake success).
 
 ## Dry-run honesty
 
